@@ -14,10 +14,10 @@
     <template v-if="!result.errorConnect && result.found === 2">
       <p>Nom: {{result.invoice.patient}}</p>
       <p>Numéro: {{result.invoice.number}}</p>
-      <p><strong>Facture introuvable ! Vérifiez vos données.</strong></p>
+      <p><strong>Facture introuvable ! Vérifiez vos données sur la facture papier.</strong></p>
     </template>
     <template v-if="result.errorConnect">
-      <p><strong>Une erreur de connexion est survenu. Nous sommes désolé.</strong></p>
+      <p><strong>Une erreur de connexion est survenue. Nous sommes navrés de la gêne occasionnée.</strong></p>
     </template>
   </section>
 </template>
