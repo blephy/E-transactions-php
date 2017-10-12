@@ -1,7 +1,7 @@
 {
-  "name": "scotch-store",
+  "name": "Anapath-UI",
   "version": "1.0.0",
-  "description": "Just a test",
+  "description": "The UI interface written with vueJs to pay anapath invoice",
   "author": "Allan Dollé <dolle.allan@gmail.com>",
   "private": true,
   "scripts": {

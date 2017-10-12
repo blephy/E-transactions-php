@@ -1,6 +1,4 @@
-# scotch-store
-
-> Just a test
+# UI for a paiement plateforme
 
 ## Build Setup
 
