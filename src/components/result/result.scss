@@ -1,0 +1,38 @@
+.result {
+  justify-content: space-around;
+  min-height: 20px;
+  border-radius: 5px;
+  width: 90%;
+  margin: 10px auto 300px auto;
+  box-sizing: border-box;
+  padding: 10px;
+  p {
+    text-align: center;
+    line-height: 20px;
+  }
+
+  a.button {
+    box-sizing: border-box;
+    display: block;
+    width: auto;
+    height: 40px;
+    padding: 2px 15px 2px 15px;
+    background-color: rgba(0, 255, 172, 1);
+    text-decoration: none;
+    line-height: 36px;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      box-shadow: 0px 0px 15px 5px rgba(255,255,255,1);
+    }
+  }
+}
+.found {
+  background-color: rgba(0, 255, 255, 0.3);
+}
+.error {
+  background-color: rgba(208, 30, 0, 0.3);
+}
+.alert {
+  background-color: rgba(208, 129, 0, 0.3);
+}

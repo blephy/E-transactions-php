@@ -1,0 +1,16 @@
+.info {
+  display: block;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 1.3rem;
+  line-height: 30px;
+  text-align: center;
+
+  p {
+    box-sizing: border-box;
+    width: auto;
+    padding: 10px;
+    border: #383a6d 2px solid;
+  }
+}
