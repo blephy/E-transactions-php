@@ -6,14 +6,14 @@ import {
   SEARCH_INVOICE_FAILURE,
 } from './mutations-types';
 
-const API_BASE = 'http://anapath.fr';
+const API_BASE = 'http://funny-api.io';
 
 export default {
   searchInvoice({ commit }, payload) {
     console.log('Beginning to connect server. Data to being transmit:', payload);
     commit(SEARCH_INVOICE);
-    axios.post(`${API_BASE}`, payload).then((response) => {
-      if (response.status === '200') {
+    axios.post(`${API_BASE}/get-local-invoice-api`, payload).then((response) => {
+      if (response.status === 200) {
         console.log('Server respond with status 200: Invoice found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_SUCCESS_FOUND, response.data);
       } else {
