@@ -5,10 +5,17 @@
   width: 90%;
   margin: 10px auto 300px auto;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 5px;
+  font-size: 1.3rem;
+
   p {
     text-align: center;
-    line-height: 20px;
+    line-height: normal;
+  }
+
+  .exemple {
+    color: white;
+    font-weight: bold;
   }
 
   a.button {

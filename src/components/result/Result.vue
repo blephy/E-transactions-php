@@ -18,7 +18,7 @@
         <p><strong>Facture introuvable ! Vérifiez vos données sur la facture papier.</strong></p>
       </template>
       <template v-if="result.errorConnect">
-        <p><strong>Une erreur de connexion est survenue. Nous sommes navrés de la gêne occasionnée.<br />Vérifiez votre connexion internet ou réessayer plus tard.</strong></p>
+        <p><strong>Une erreur de connexion est survenue. Nous sommes navrés de la gêne occasionnée.<br />Vérifiez votre connexion internet ou réessayez plus tard.</strong></p>
       </template>
     </template>
     <template v-if="result.validForm.patient === false || result.validForm.number === false">
@@ -27,7 +27,7 @@
         <p>Nom de famille vide !</p>
       </template>
       <template v-if="result.validForm.number=== false">
-        <p>Entrez un numéro de facture valide. Exemple: E17/12345</p>
+        <p>Entrez un numéro de facture valide. Exemple: <span class="exemple">E17/12345</span></p>
       </template>
     </template>
   </section>
