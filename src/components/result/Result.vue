@@ -17,7 +17,7 @@
       <p><strong>Facture introuvable ! Vérifiez vos données sur la facture papier.</strong></p>
     </template>
     <template v-if="result.errorConnect">
-      <p><strong>Une erreur de connexion est survenue. Nous sommes navrés de la gêne occasionnée.</strong></p>
+      <p><strong>Une erreur de connexion est survenue. Nous sommes navrés de la gêne occasionnée.<br />Vérifiez votre connexion internet ou réessayer plus tard.</strong></p>
     </template>
   </section>
 </template>
