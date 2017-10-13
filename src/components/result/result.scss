@@ -1,3 +1,11 @@
+@keyframes light {
+  from {
+    color: #646464;
+  }
+  to {
+    color: rgba(163, 29, 20, 0.8);
+  }
+}
 .result {
   justify-content: space-around;
   min-height: 20px;
@@ -11,6 +19,12 @@
   p {
     text-align: center;
     line-height: normal;
+
+    .pop {
+      font-size: 1.4rem;
+      font-weight: bold;
+      animation: light 1.6s infinite alternate ease;
+    }
   }
 
   .exemple {

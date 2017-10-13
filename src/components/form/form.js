@@ -34,10 +34,10 @@ export default {
           }
           this.$store.dispatch('searchInvoice', dataInvoice);
         }
+        $('html, body').animate({
+          scrollTop: $('#res').offset().top - 0,
+        }, 800, 'swing');
       });
-      $('html, body').animate({
-        scrollTop: $('#res').offset().top - 0,
-      }, 800, 'swing');
     }
   }
 };

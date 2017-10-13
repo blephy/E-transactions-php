@@ -4,7 +4,7 @@
       <template v-if="!result.errorConnect && result.found === 1">
         <p>Nom: {{result.invoice.patient}}</p>
         <p>Numéro: {{result.invoice.number}}</p>
-        <p>Montant: {{result.invoice.price}}€</p>
+        <p>Montant: <span class="pop">{{result.invoice.price}} €</span></p>
         <template v-if="result.invoice.paied === false">
           <a class="button" href="https://www.e-transactions.fr/" title="Vérifiez le montant avant de cliquer">Régler cette facture</a>
         </template>
