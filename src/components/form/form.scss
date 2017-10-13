@@ -22,11 +22,15 @@
       transition: all 0.3s ease-out;
       font-family: 'Source Sans Pro', sans-serif;
       line-height: 40px;
-      box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 0px 7px 2px rgba(0, 255, 255, 0.2);
+    }
+
+    input:focus {
+      outline: none;
     }
 
     input:hover {
-      box-shadow: 0px 0px 10px 4px rgba(0,0,0,0.20);
+      box-shadow: 0px 0px 12px 4px rgba(0, 255, 255, 0.3);
     }
 
     input[type="submit"] {
@@ -38,6 +42,10 @@
 
     input[type="submit"]:hover {
       box-shadow: 0px 0px 15px 5px rgba(76,173,201,0.20);
+    }
+
+    .shadowred {
+      box-shadow: 0px 0px 15px 5px rgba(208, 129, 0, 0.6);
     }
   }
 }

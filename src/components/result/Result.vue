@@ -22,12 +22,12 @@
       </template>
     </template>
     <template v-if="result.validForm.patient === false || result.validForm.number === false">
-      <p>Formulaire non valide !</p>
+      <p>Formulaire invalide:</p>
       <template v-if="result.validForm.patient === false">
-        <p>Nom de famille vide !</p>
+        <p>Nom de famille vide.</p>
       </template>
       <template v-if="result.validForm.number=== false">
-        <p>Entrez un numéro de facture valide. Exemple: <span class="exemple">E17/12345</span></p>
+        <p>Numéro de facture invalide. Exemple: <span class="exemple">E17/12345</span></p>
       </template>
     </template>
   </section>
