@@ -1,6 +1,5 @@
 .info {
   display: block;
-  margin: auto;
   box-sizing: border-box;
   padding: 10px;
   font-size: 1.3rem;
@@ -9,7 +8,8 @@
 
   p {
     box-sizing: border-box;
-    width: auto;
+    width: 90%;
+    margin: auto;
     padding: 10px;
     border: #383a6d 2px solid;
   }

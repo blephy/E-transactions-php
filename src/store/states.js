@@ -1,5 +1,9 @@
 export default {
   showLoader: false,
+  validForm: {
+    patient: null,
+    number: null,
+  },
   found: 0,
   errorConnect: false,
   invoice: {

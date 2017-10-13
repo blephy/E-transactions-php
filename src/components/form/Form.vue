@@ -3,11 +3,11 @@
     <form id="form" class="flex-vertical">
       <div>
         <span>Nom de Famille:</span><br />
-        <input v-model="patientName" id="input1" type="text" name="patientName" value="">
+        <input v-model="patientName" id="input1" type="text" name="patientName" v-bind:value="patientName">
       </div>
       <div>
         <span>Numéro de Facture:</span><br />
-        <input v-model="folderNum" id="input2" type="text" name="folderNum" value="">
+        <input v-model="folderNum" id="input2" type="text" name="folderNum" v-bind:value="folderNum">
       </div>
       <div>
         <input @click="submit" type="submit" value="Envoyer">
