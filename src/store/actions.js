@@ -21,7 +21,7 @@ const configRequest = {
   timeout: 8000,
   responseType: 'json',
   headers: {
-    // 'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/x-www-form-urlencoded',
     'Access-Control-Allow-Origin': 'resultats.anapath.fr',
   },
   validateStatus: function statusCheck(status) {
