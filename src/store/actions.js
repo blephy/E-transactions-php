@@ -14,13 +14,26 @@ import {
   NUMBER_REG_EXP,
 } from './regexp';
 
-const API_BASE = 'https://www.bioserveur.com';
+const API_BASE = 'https://resultats.anapath.fr';
+
+const configRequest = {
+  baseURL: `${API_BASE}/`,
+  timeout: 8000,
+  responseType: 'json',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+    'Access-Control-Allow-Origin': '*',
+  },
+  validateStatus: function statusCheck(status) {
+    return status >= 200 && status < 500;
+  },
+};
 
 export default {
   searchInvoice({ commit }, payload) {
     console.log('Beginning to connect server. Data to being transmit:', payload);
     commit(SEARCH_INVOICE);
-    axios.post(`${API_BASE}/`, payload).then((response) => {
+    axios.post('/', payload, configRequest).then((response) => {
       if (response.status === 200) {
         console.log('Server respond with status 200: Invoice found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_SUCCESS_FOUND, response.data);
@@ -28,8 +41,15 @@ export default {
         console.log('Server respond with status error: Invoice not found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_FAILURE_FOUND, response.data);
       }
-    }).catch(() => {
-      console.log('Error to connect server, this is maybe CORS or server is crashed !', payload);
+    }).catch((error) => {
+      if (error.response) {
+        console.log('Error API Answer:');
+        console.log('Header: ', error.response.headers);
+        console.log('Status: ', error.response.status);
+        console.log('Data: ', error.response.data);
+      } else {
+        console.log('Connexion fail. This is maybe CORS, or API down, or bad client internet accès.');
+      }
       commit(SEARCH_INVOICE_FAILURE, payload);
     });
   },
