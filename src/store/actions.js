@@ -21,11 +21,11 @@ const configRequest = {
   timeout: 8000,
   responseType: 'json',
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Access-Control-Allow-Origin': '*',
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+    'Access-Control-Allow-Origin': 'resultats.anapath.fr',
   },
   validateStatus: function statusCheck(status) {
-    return status >= 200 && status < 500;
+    return status >= 200 && status < 450;
   },
 };
 
@@ -33,7 +33,7 @@ export default {
   searchInvoice({ commit }, payload) {
     console.log('Beginning to connect server. Data to being transmit:', payload);
     commit(SEARCH_INVOICE);
-    axios.post('/', payload, configRequest).then((response) => {
+    axios.post('/cts/cts/index.php', payload, configRequest).then((response) => {
       if (response.status === 200) {
         console.log('Server respond with status 200: Invoice found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_SUCCESS_FOUND, response.data);
