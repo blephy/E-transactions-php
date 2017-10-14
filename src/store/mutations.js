@@ -8,6 +8,7 @@ import {
   INVALID_FORM_PATIENT,
   VALID_FORM_NUMBER,
   VALID_FORM_PATIENT,
+  STORE_QUERY,
 } from './mutations-types';
 
 export default {
@@ -51,5 +52,9 @@ export default {
     state.showLoader = false;
     state.invoice.number = payload;
     state.validForm.number = true;
+  },
+  [STORE_QUERY](state, payload) {
+    state.query.patient = payload.patient;
+    state.query.number = payload.number;
   },
 };

@@ -12,4 +12,8 @@ export default {
     number: null,
     paied: false,
   },
+  query: {
+    patient: null,
+    number: null,
+  },
 };

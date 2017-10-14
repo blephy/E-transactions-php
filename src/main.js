@@ -5,6 +5,8 @@ import App from './App';
 import router from './router';
 import store from './store';
 
+import { STORE_QUERY } from './store/mutations-types';
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
@@ -14,4 +16,7 @@ new Vue({
   store,
   template: '<App/>',
   components: { App },
+  created: function query() {
+    this.$store.commit(STORE_QUERY, this.$route.query);
+  },
 });

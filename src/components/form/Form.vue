@@ -4,27 +4,45 @@
       <div>
         <span>Nom de Famille:</span><br />
         <input
+        v-if="!placeHolderPatient"
         v-model="patientName"
         id="input1"
         type="text"
         name="patientName"
         v-bind:value="patientName"
-        placeholder="Dupond"
+        placeholder="Dupont"
+        v-bind:class="{ shadowred: errorPatient }">
+        <input
+        v-else
+        v-model="patientName"
+        id="input1"
+        type="text"
+        name="patientName"
+        v-bind:placeholder="placeHolderPatient"
         v-bind:class="{ shadowred: errorPatient }">
       </div>
       <div>
         <span>Numéro de Facture:</span><br />
         <input
+        v-if="!placeHolderNumber"
         v-model="folderNum"
         id="input2"
         type="text"
         name="folderNum"
         v-bind:value="folderNum"
-        placeholder="X18/98765"
+        placeholder="X18/65432"
+        v-bind:class="{ shadowred: errorNumber }">
+        <input
+        v-else
+        v-model="folderNum"
+        id="input2"
+        type="text"
+        name="folderNum"
+        v-bind:placeholder="placeHolderNumber"
         v-bind:class="{ shadowred: errorNumber }">
       </div>
       <div>
-        <input @click="submit" type="submit" value="Envoyer">
+        <input @click.prevent="submit" type="submit" value="Envoyer">
       </div>
     </form>
   </section>

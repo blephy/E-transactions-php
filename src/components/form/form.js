@@ -9,6 +9,14 @@ export default {
     return {
       patientName: this.$store.state.invoice.patient,
       folderNum: this.$store.state.invoice.number,
+      placeHolderPatient: this.$store.state.query.patient || false,
+      placeHolderNumber: this.$store.state.query.number || false,
+    }
+  },
+  mounted: function isQuery() {
+    if (this.$store.state.query.patient && this.$store.state.query.number) {
+      console.log('Valid query object present: ', this.$route.query);
+      this.submit();
     }
   },
   computed: {
@@ -20,11 +28,10 @@ export default {
     }
   },
   methods: {
-    submit(e) {
-      e.preventDefault();
+    submit() {
       var dataForm = {
-        patient: this.patientName,
-        number: this.folderNum
+        patient: this.patientName || this.placeHolderPatient,
+        number: this.folderNum || this.placeHolderNumber
       }
       this.$store.dispatch('validForm', dataForm).then(() => {
         if (this.$store.state.validForm.patient && this.$store.state.validForm.number) {
