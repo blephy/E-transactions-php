@@ -6,7 +6,38 @@ footer.piedpage {
   text-align: center;
   background-color: #383a6d;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+
+  p {
+    width: 100vw;
+    height: 49px;
+    justify-content: center;
+    margin: 0;
+
+    &:nth-child(2) {
+      height: 25px;
+      margin-bottom: 5px;
+    }
+
+    span {
+      display: block;
+      width: 49px;
+      height: 31px;
+      background-image: url("../../assets/mode-paiement_sprite.png");
+      margin: 0 25px;
+    }
+
+    @for $i from 1 through 4 {
+      span:nth-child(#{$i}) {
+        @if $i < 2 {
+          background-position: 0px top;
+        } @else {
+          $retard: $i - 1;
+          background-position: -49px*$retard top;
+        }
+      }
+    }
+  }
 
   a {
     color: white;

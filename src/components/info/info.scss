@@ -1,7 +1,9 @@
 .info {
   display: block;
   box-sizing: border-box;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
+  border-radius: 10px;
+  perspective: 250px;
   font-size: 1.3rem;
   line-height: 30px;
   text-align: center;
@@ -11,6 +13,10 @@
     width: 90%;
     margin: auto;
     padding: 10px;
-    // border: #383a6d 2px solid;
+    background-color: rgba(20, 150, 150, 0.3);
+    transform: rotateX(2deg);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    letter-spacing: 1.5px;
   }
 }
