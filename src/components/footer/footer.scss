@@ -27,6 +27,12 @@ footer.piedpage {
       margin: 0 25px;
     }
 
+    @media screen and (max-width: 640px) {
+      span {
+        margin: 0 7px;
+      }
+    }
+
     @for $i from 1 through 4 {
       span:nth-child(#{$i}) {
         @if $i < 2 {

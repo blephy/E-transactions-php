@@ -37,9 +37,11 @@ export default {
       if (response.status === 200) {
         console.log('Server respond with status 200: Invoice found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_SUCCESS_FOUND, response.data);
-      } else {
-        console.log('Server respond with status error: Invoice not found. Fetching data:', response.data);
+      } else if (response.status === 404) {
+        console.log('Server respond with status 404: Invoice not found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_FAILURE_FOUND, response.data);
+      } else {
+        console.log('Server respond with unknow or no permit status. Data:', response);
       }
     }).catch((error) => {
       if (error.response) {

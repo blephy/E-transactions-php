@@ -18,19 +18,6 @@ import FooterAnapath from '@/components/footer/Footer.vue';
 import LoaderAnapath from '@/components/loader/Loader.vue';
 import ResultAnapath from '@/components/result/Result.vue';
 
-// Load Animations
-// import LinkScroll from '../assets/animations/class.linkScroll';
-
-// Init LinkScroll on every a[href^='#']
-// -------------------------------------
-// LinkScroll.init({
-//   target: 'html, body',
-//   selector: 'a[href^="#"]',
-//   offset: 125,
-//   delay: 800,
-//   easing: 'swing',
-// });
-
 export default {
   name: 'index',
   components: {
@@ -41,7 +28,16 @@ export default {
     LoaderAnapath,
     ResultAnapath,
   },
-
+  metaInfo: {
+    title: 'Paiement en ligne votre examen | Laboratoire Anapathologie Amiens',
+    link: { rel: 'canonical', href: 'https://anapath.fr/paiement-examen-en-ligne/' },
+    meta: [
+      { name: 'robots', content: 'index, follow' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { name: 'description', content: 'Payer en ligne votre examen d\'anapathologie effectué au laboratoire d\'Amiens. Paiement sécurisé' },
+      { charset: 'utf-8' },
+    ],
+  },
 };
 </script>
 <style src='./index.scss' lang='scss'></style>
