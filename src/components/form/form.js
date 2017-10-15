@@ -42,7 +42,7 @@ export default {
           this.$store.dispatch('searchInvoice', dataInvoice);
         }
         $('html, body').animate({
-          scrollTop: $('#res').offset().top - 0,
+          scrollTop: $('#res').offset().top - 50,
         }, 800, 'swing');
       });
     }
