@@ -29,7 +29,7 @@ export default {
     ResultAnapath,
   },
   metaInfo: {
-    title: 'Paiement en ligne votre examen | Laboratoire Anapathologie Amiens',
+    title: 'Paiement en ligne de votre examen médical | Centre de Pathologie Amiens',
     link: [
       { rel: 'canonical', href: 'https://anapath.fr/paiement-examen-en-ligne/' },
       { rel: 'icon', type: 'image/png', href: '/test/static/favicon-anapath-amiens.png' },
