@@ -22,7 +22,7 @@
         v-bind:class="{ shadowred: errorPatient }">
       </div>
       <div>
-        <span>Numéro de Facture:</span><br />
+        <span>Numéro d'examen:</span><br />
         <input
         v-if="!placeHolderNumber"
         v-model="folderNum"

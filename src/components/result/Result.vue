@@ -27,7 +27,7 @@
         <p>Nom de famille vide.</p>
       </template>
       <template v-if="result.validForm.number=== false">
-        <p>Numéro de facture invalide. Exemple: <span class="exemple">E17/12345</span></p>
+        <p>Numéro d'examen invalide. Exemple: <span class="exemple">E17/12345</span></p>
       </template>
     </template>
   </section>
