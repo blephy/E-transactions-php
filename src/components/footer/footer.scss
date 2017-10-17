@@ -7,6 +7,7 @@ footer.piedpage {
   background-color: #383a6d;
   color: white;
   font-size: 1rem;
+  box-shadow: 1px -1px 12px #383a6d;
 
   p {
     width: 100vw;
@@ -30,6 +31,10 @@ footer.piedpage {
     @media screen and (max-width: 640px) {
       span {
         margin: 0 7px;
+      }
+
+      &:nth-child(2) {
+        font-size: 0.8rem;
       }
     }
 
