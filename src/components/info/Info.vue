@@ -1,6 +1,6 @@
 <template>
   <section class="info">
-    <p>Pour procéder au paiement d'un examen, veuillez entrer votre <strong>Nom de Famille</strong> ainsi que le <strong>Numéro d'Examen</strong> figurant sur votre note d'honoraires.</p>
+    <p>Pour procéder au paiement d'un examen, veuillez entrer votre <strong>Date de naissance</strong> ainsi que la <strong>Référence d'examen</strong> figurant sur votre note d'honoraires. Votre <strong>Adresse e-mail</strong> est necessaire pour votre notification de paiement.</p>
   </section>
 </template>
 <script src='./info.js'></script>
