@@ -7,39 +7,47 @@ export default {
   name: 'Form',
   data() {
     return {
-      patientName: this.$store.state.invoice.patient,
-      folderNum: this.$store.state.invoice.number,
-      placeHolderPatient: this.$store.state.query.patient || false,
-      placeHolderNumber: this.$store.state.query.number || false,
+      patientMail: this.$store.state.invoice.mail,
+      patientDDN: this.$store.state.invoice.ddn,
+      folderRef: this.$store.state.invoice.ref,
+      placeHolderMail: this.$store.state.query.mail || false,
+      placeHolderRef: this.$store.state.query.ref || false,
+      placeHolderDDN: this.$store.state.query.ddn || false,
     }
   },
   mounted: function isQuery() {
-    if (this.$store.state.query.patient && this.$store.state.query.number) {
+    if (this.$store.state.query.mail && this.$store.state.query.ref && this.$store.state.query.ddn) {
       console.log('Valid query object present: ', this.$route.query);
       this.submit();
     }
   },
   computed: {
-    errorPatient() {
-      return this.$store.state.validForm.patient === false;
+    errorMail() {
+      return this.$store.state.validForm.mail === false;
     },
-    errorNumber() {
-      return this.$store.state.validForm.number === false;
-    }
+    errorRef() {
+      return this.$store.state.validForm.ref === false;
+    },
+    errorDDN() {
+      return this.$store.state.validForm.ddn === false;
+    },
   },
   methods: {
     submit() {
       var dataForm = {
-        patient: this.patientName || this.placeHolderPatient,
-        number: this.folderNum || this.placeHolderNumber
+        mail: this.patientMail || this.placeHolderMail,
+        ref: this.folderRef || this.placeHolderRef,
+        ddn: this.patientDDN || this.placeHolderDDN,
       }
       this.$store.dispatch('validForm', dataForm).then(() => {
-        if (this.$store.state.validForm.patient && this.$store.state.validForm.number) {
+        if (this.$store.state.validForm.mail && this.$store.state.validForm.ref && this.$store.state.validForm.ddn) {
           var dataInvoice = {
-            patient: this.$store.state.invoice.patient,
-            number: this.$store.state.invoice.number
+            mail: this.$store.state.invoice.mail,
+            ref: this.$store.state.invoice.ref,
+            ddn: this.$store.state.invoice.ddn,
           }
-          this.$store.dispatch('searchInvoice', dataInvoice);
+          // this.$store.dispatch('searchInvoice', dataInvoice);
+          this.$store.commit(SEARCH_INVOICE_SUCCESS_FOUND, dataInvoice);
         }
         $('html, body').animate({
           scrollTop: $('#res').offset().top - 50,

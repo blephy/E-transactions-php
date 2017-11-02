@@ -4,10 +4,12 @@ import {
   SEARCH_INVOICE_SUCCESS_FOUND,
   SEARCH_INVOICE_FAILURE_FOUND,
   VALIDATE_FORM,
-  INVALID_FORM_NUMBER,
-  INVALID_FORM_PATIENT,
-  VALID_FORM_NUMBER,
-  VALID_FORM_PATIENT,
+  INVALID_FORM_REF,
+  INVALID_FORM_MAIL,
+  INVALID_FORM_DDN,
+  VALID_FORM_REF,
+  VALID_FORM_MAIL,
+  VALID_FORM_DDN,
   STORE_QUERY,
 } from './mutations-types';
 
@@ -35,26 +37,35 @@ export default {
   [VALIDATE_FORM](state) {
     state.showLoader = true;
   },
-  [INVALID_FORM_NUMBER](state) {
+  [INVALID_FORM_REF](state) {
     state.showLoader = false;
-    state.validForm.number = false;
+    state.validForm.ref = false;
   },
-  [INVALID_FORM_PATIENT](state) {
+  [INVALID_FORM_MAIL](state) {
     state.showLoader = false;
-    state.validForm.patient = false;
+    state.validForm.mail = false;
   },
-  [VALID_FORM_PATIENT](state, payload) {
+  [INVALID_FORM_DDN](state) {
     state.showLoader = false;
-    state.invoice.patient = payload;
-    state.validForm.patient = true;
+    state.validForm.ddn = false;
   },
-  [VALID_FORM_NUMBER](state, payload) {
+  [VALID_FORM_MAIL](state, payload) {
     state.showLoader = false;
-    state.invoice.number = payload;
-    state.validForm.number = true;
+    state.invoice.mail = payload;
+    state.validForm.mail = true;
+  },
+  [VALID_FORM_REF](state, payload) {
+    state.showLoader = false;
+    state.invoice.ref = payload;
+    state.validForm.ref = true;
+  },
+  [VALID_FORM_DDN](state, payload) {
+    state.showLoader = false;
+    state.invoice.ddn = payload;
+    state.validForm.ddn = true;
   },
   [STORE_QUERY](state, payload) {
-    state.query.patient = payload.patient;
-    state.query.number = payload.number;
+    state.query.mail = payload.mail;
+    state.query.ref = payload.ref;
   },
 };

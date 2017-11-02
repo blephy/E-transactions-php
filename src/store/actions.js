@@ -5,13 +5,17 @@ import {
   SEARCH_INVOICE_FAILURE_FOUND,
   SEARCH_INVOICE_FAILURE,
   VALIDATE_FORM,
-  INVALID_FORM_NUMBER,
-  INVALID_FORM_PATIENT,
-  VALID_FORM_NUMBER,
-  VALID_FORM_PATIENT,
+  INVALID_FORM_REF,
+  INVALID_FORM_MAIL,
+  INVALID_FORM_DDN,
+  VALID_FORM_REF,
+  VALID_FORM_MAIL,
+  VALID_FORM_DDN,
 } from './mutations-types';
 import {
-  NUMBER_REG_EXP,
+  REF_REG_EXP,
+  MAIL_REG_EXP,
+  DDN_REG_EXP,
 } from './regexp';
 
 const API_BASE = 'https://resultats.anapath.fr';
@@ -58,19 +62,26 @@ export default {
   validForm({ commit }, payload) {
     console.log('Beginning to validate data. Data to being validate:', payload);
     commit(VALIDATE_FORM);
-    if (payload.patient) {
-      console.log('Input patientName is Valid !');
-      commit(VALID_FORM_PATIENT, payload.patient);
+    if (MAIL_REG_EXP.test(payload.mail)) {
+      console.log('Input patientMail is Valid !');
+      commit(VALID_FORM_MAIL, payload.mail);
     } else {
-      console.log('Input patientName is Invalid !');
-      commit(INVALID_FORM_PATIENT);
+      console.log('Input patientMail is Invalid !');
+      commit(INVALID_FORM_MAIL);
     }
-    if (NUMBER_REG_EXP.test(payload.number)) {
-      console.log('Input invoiceNumber is Valid !');
-      commit(VALID_FORM_NUMBER, payload.number.match(NUMBER_REG_EXP)[0]);
+    if (DDN_REG_EXP.test(payload.ddn)) {
+      console.log('Input patientDDN is Valid !');
+      commit(VALID_FORM_DDN, payload.ddn);
     } else {
-      console.log('Input invoiceNumber is Invalid !');
-      commit(INVALID_FORM_NUMBER);
+      console.log('Input patientDDN is Invalid !');
+      commit(INVALID_FORM_DDN);
+    }
+    if (REF_REG_EXP.test(payload.ref)) {
+      console.log('Input invoiceRef is Valid !');
+      commit(VALID_FORM_REF, payload.ref.match(REF_REG_EXP)[0]);
+    } else {
+      console.log('Input invoiceRef is Invalid !');
+      commit(INVALID_FORM_REF);
     }
   },
 };

@@ -1,45 +1,59 @@
 <template>
   <section class="form">
-    <form id="form" class="flex-vertical">
+    <form class="flex-vertical">
       <div>
-        <span>Nom de Famille:</span><br />
+        <span>E-mail:</span><br />
         <input
-        v-if="!placeHolderPatient"
-        v-model="patientName"
-        id="input1"
+        v-if="!placeHolderMail"
+        v-model="patientMail"
         type="text"
-        name="patientName"
-        v-bind:value="patientName"
-        placeholder="Dupont"
-        v-bind:class="{ shadowred: errorPatient }">
+        name="patientMail"
+        v-bind:value="patientMail"
+        placeholder="dupont@gmail.com"
+        v-bind:class="{ shadowred: errorMail }">
         <input
         v-else
-        v-model="patientName"
-        id="input1"
+        v-model="patientMail"
         type="text"
-        name="patientName"
-        v-bind:placeholder="placeHolderPatient"
-        v-bind:class="{ shadowred: errorPatient }">
+        name="patientMail"
+        v-bind:placeholder="placeHolderMail"
+        v-bind:class="{ shadowred: errorMail }">
+      </div>
+      <div>
+        <span>Date de naissance:</span><br />
+        <input
+        v-if="!placeHolderDDN"
+        v-model="patientDDN"
+        type="text"
+        name="patientDDN"
+        v-bind:value="patientDDN"
+        placeholder="31/12/1990"
+        v-bind:class="{ shadowred: errorDDN }">
+        <input
+        v-else
+        v-model="patientDDN"
+        type="text"
+        name="patientDDN"
+        v-bind:placeholder="placeHolderDDN"
+        v-bind:class="{ shadowred: errorDDN }">
       </div>
       <div>
         <span>Numéro d'Examen:</span><br />
         <input
-        v-if="!placeHolderNumber"
-        v-model="folderNum"
-        id="input2"
+        v-if="!placeHolderRef"
+        v-model="folderRef"
         type="text"
-        name="folderNum"
-        v-bind:value="folderNum"
+        name="folderRef"
+        v-bind:value="folderRef"
         placeholder="X18/65432"
-        v-bind:class="{ shadowred: errorNumber }">
+        v-bind:class="{ shadowred: errorRef }">
         <input
         v-else
-        v-model="folderNum"
-        id="input2"
+        v-model="folderRef"
         type="text"
-        name="folderNum"
-        v-bind:placeholder="placeHolderNumber"
-        v-bind:class="{ shadowred: errorNumber }">
+        name="folderRef"
+        v-bind:placeholder="placeHolderRef"
+        v-bind:class="{ shadowred: errorRef }">
       </div>
       <div>
         <input @click.prevent="submit" type="submit" value="Envoyer">
