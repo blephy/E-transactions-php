@@ -15,19 +15,18 @@ export default {
         alert: this.result.found === 2,
         error: this.result.errorConnect ||
                this.result.validForm.mail === false ||
-               this.result.validForm.ref === false,
+               this.result.validForm.ref === false ||
+               this.result.validForm.ddn === false,
       }
-    }
-  },
-  methods: {
+    },
     makeURL: function () {
       var aim_file = this.$store.state.aimFile;
       var uri = aim_file + '?' +
-        'montant=' + '54,90' + '&' +
+        'montant=' + this.result.invoice.price + '&' +
         'ref=' + this.result.invoice.ref + '&' +
         'porteur=' + this.result.invoice.mail;
       var uri_encoded = encodeURI(uri);
-      console.log(uri_encoded);
+      return uri_encoded;
     }
   },
 }

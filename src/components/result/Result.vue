@@ -7,7 +7,7 @@
         <p>Référence: {{result.invoice.ref}}</p>
         <p>Montant: <span class="pop">{{result.invoice.price}} €</span></p>
         <template v-if="result.invoice.paied === false">
-          <a class="button" @click.prevent="makeURL" title="Vérifiez le montant avant de cliquer">Régler cette facture</a>
+          <a class="button" v-bind:href="makeURL" title="Vérifiez le montant avant de cliquer">Régler cette facture</a>
         </template>
         <template v-else>
           <p><strong>Facture déjà payée !</strong></p>
