@@ -216,25 +216,25 @@ a:hover {
 			</form>
 		</body>
 		<script>
-		// window.onload=function(){
-		// 	var auto = setTimeout(function(){ autoRefresh(); }, 100);
-		//
-		// 	function submitform(){
-		// 		document.forms[0].submit();
-		// 	}
-		//
-		// 	function autoRefresh(){
-		// 		clearTimeout(auto);
-		// 		auto = setTimeout(function(){ submitform(); autoRefresh(); }, 2000);
-		// 	}
-		// }
+		window.onload=function(){
+			var auto = setTimeout(function(){ autoRefresh(); }, 100);
+
+			function submitform(){
+				document.forms[0].submit();
+			}
+
+			function autoRefresh(){
+				clearTimeout(auto);
+				auto = setTimeout(function(){ submitform(); autoRefresh(); }, 2000);
+			}
+		}
 		</script>
 	<?php } else { ?>
 		<div class="entete">
 			<h1>Erreur du montant</h1>
 		</div>
 		<div class="info">
-			<p class="alert">Le montant est inférieur à 1€. Transaction impossible</p>
+			<p class="alert">Le montant est inférieur à 1€. Transaction impossible.</p>
 			<p class="alert">Merci de contacter votre Centre de Pathologie sur <a href="mailto:contact@anapath.fr" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France">contact@anapath.fr</a></p>
 			<button onclick="goBack()">Retour</button>
 		</div>
