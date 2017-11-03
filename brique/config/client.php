@@ -1,6 +1,12 @@
 <?php
 // Debug Mode
-$debug = true;
+// Si true:
+// - ajoute quelques echo de variables pour vérifier les données
+// - enlève la redirection automatique codé en javascript
+$debug = false;
+
+// Force HTTPS et redirection codé en php
+$force_https = false;
 
 // Temps en millisecondes necessaire avant redirection automatique en JS
 $redirect_time = 2000;
