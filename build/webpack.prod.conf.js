@@ -90,7 +90,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       {
         from: path.resolve(__dirname, '../static'),
         to: config.build.assetsSubDirectory,
-        ignore: ['.*']
+        ignore: ['.*', '.DS_Store']
       }
     ]),
     // copy .php files
@@ -98,7 +98,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       {
         from: path.resolve(__dirname, '../brique'),
         to: config.build.phpFilesBrique,
-        ignore: ['.*']
+        ignore: ['.*', '.DS_Store']
       }
     ])
   ]

@@ -1,3 +1,9 @@
+<?php
+include 'config/client.php';
+include 'config/e-transactions.php';
+include 'utils/functions.php';
+include 'config/hmac.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,160 +13,34 @@
 	<meta name="robots" content="noindex, nofollow, noodp">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<style>
-html {
-	font-size: 100%;
-	font-family: 'Source Sans Pro', sans-serif;
-}
-body {
-	background-color: #cccccc;
-	color: #646464;
-	font-size: 16px;
-	font-size: 1rem;
-	position: relative;
-	width: 100%;
-	min-height: 100vh;
-	margin: 0;
-	padding: 0;
-}
-.entete {
-	text-align: center;
-	box-sizing: border-box;
-	padding: 10px;
-}
-h1 {
-	margin: 20px 0;
-	color: #383a6d;
-	font-weight: bolder;
-	text-transform: uppercase;
-	letter-spacing: 1.5px;
-	word-spacing: 7px;
-}
-.info {
-	display: block;
-	box-sizing: border-box;
-	padding: 10px;
-	font-size: 1.1rem;
-	line-height: 30px;
-	text-align: center;
-}
-p {
-	box-sizing: border-box;
-	width: 90%;
-	margin: auto;
-	padding: 10px;
-	background-color: rgba(20, 150, 150, 0.3);
-	border-radius: 5px;
-	letter-spacing: 1.5px;
-}
-.alert {
-	background-color: rgba(208, 129, 0, 0.3);
-	margin-bottom: 10px;
-}
-@keyframes load {
-	from {
-		transform: scale(0.8);
-	}
-
-	to {
-		transform: scale(1.3);
-	}
-}
-span.loading {
-	display: block;
-	width: 50px;
-	height: 50px;
-	background-color: transparent;
-	border: 4px green solid;
-	border-radius: 50%;
-	margin: 50px auto 50px auto;
-	animation: load 0.6s infinite alternate;
-}
-input[type="submit"], button {
-	cursor: pointer;
-	background-color: #4CADC9;
-	text-transform: uppercase;
-	height: 50px;
-	border: none;
-	line-height: 50px;
-	border-radius: 0;
-	padding: 0 10px;
-	box-sizing: border-box;
-	font-size: 1.3rem;
-	transition: all 0.3s ease-out;
-	font-family: 'Source Sans Pro', sans-serif;
-	line-height: 40px;
-	box-shadow: 0px 0px 7px 2px rgba(0, 255, 255, 0.2);
-}
-
-input[type="submit"]:hover, button:hover {
-	box-shadow: 0px 0px 15px 5px rgba(76,173,201,0.20);
-}
-a {
-	text-decoration: none;
-	color: inherit;
-	font-weight: bold;
-}
-a:hover {
-
-}
-</style>
+<?php include 'assets/style.php'; ?>
 <body>
 	<?php
-	// Production ou preprod (dev)
-	$env_dev = true;
-
-	// Function de traitement de la chaine montant
-	function checkAmount( $montant_query ) {
-		$temp = str_replace(",", ".", $montant_query); // replace , par .
-		// echo $temp.'<br>';
-		$temp = round($temp, 2, PHP_ROUND_HALF_UP); // arrondi supérieur avec 2 décimals
-		// echo $temp.'<br>';
-		$temp = floatval( $temp ); // convert to float
-		// echo $temp.'<br>';
-		$temp = $temp * 100;
-		// echo 'temp: '.$temp.'<br>';
-		$temp = str_replace(".", "", $temp);
-		// echo 'final temp: '.$temp.'<br>';
-		if ( $temp > 99 ) {
-			return $temp; // Retourne le montant formatté si > 1€
-		} else {
-			return false;
-		}
-	}
-
-	// Variables propre au client E-transactions
-	$pbx_site = '1542364';
-	$pbx_rang = '01';
-	$pbx_identifiant = '651499961';
-	$server_preprod = 'preprod-tpeweb.e-transactions.fr';
-	$server_prod = 'tpeweb.e-transactions.fr';
-	$url_server = 'http://www.anapath.fr/';
-	$dir_paiement = 'test/brique/';
-	$pbx_effectue = $url_server.$dir_paiement.'accepte.php';
-	$pbx_annule = $url_server.$dir_paiement.'annule.php';
-	$pbx_refuse = $url_server.$dir_paiement.'refuse.php';
-	$pbx_attente = $url_server.$dir_paiement.'attente.php';
-	$pbx_repondre_a = $url_server.$dir_paiement.'retour.php';
-	$pbx_retour = 'MONTANT:M;REF:R;AUTO:A;CB:J;TRANSAC:S;ERROR:E;SIGN:K';
-
+	// Si toutes les variables necessaires existent
 	if ( isset($_GET['ref']) && isset($_GET['porteur']) && isset($_GET['montant']) ) {
 		$pbx_cmd = $_GET['ref'];
 		$pbx_porteur = $_GET['porteur'];
-		$pbx_total = checkAmount($_GET['montant']);
+		// Traiement de la chaine montant en centimes, peut être désactivé (config/client.php)
+		$pbx_total = $amount_processing ? checkAmount($_GET['montant'], $debug) : $_GET['montant'];
 
+		// Si on est en mode debug (config/client.php), afficher les variables
+		if ($debug) {
+			echo 'Reference: '.$pbx_cmd.'<br>';
+			echo 'Porteur: '.$pbx_porteur.'<br>';
+			echo 'Montant: '.$pbx_total.' centimes d\'euro<br>';
+		}
+
+		// Si le montant n'est pas null ou false (cf checkAmount)
 		if ($pbx_total) {
-			// Include HMAC keys
-			include 'utils/hmac.php';
 
 			// Choix de la clé HMAC en fonction de l'environnement
 			$key_hmac = $env_dev ? $key_dev : $key_prod;
 
 			// Choix du serveur e-transactions en fonction de l'environnement
 			$env_server = $env_dev ? $server_preprod : $server_prod;
-			$server_etransactions = 'https://'.$env_server.'/cgi/MYchoix_pagepaiement.cgi';
+			$server_etransactions = $protocol.$env_server.$file_bank;
 
-			// Construction de l'URI et du formulaire POST pour redirection sur la bank
+			// Construction de l'URI et du formulaire POST pour redirection sur la banque
 			$dateTime = date("c");
 			$msg = "PBX_SITE=".$pbx_site.
 			"&PBX_RANG=".$pbx_rang.
@@ -184,7 +64,7 @@ a:hover {
 			</div>
 			<span class="loading"></span>
 			<div class="info">
-				<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après 2 secondes:</p>
+				<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo $redirect_time/1000 ?> secondes:</p>
 			</div>
 			<form id="form" style="text-align: center; margin: 20px auto;" method="POST" action="<?php echo $server_etransactions; ?>">
 				<input type="hidden" name="PBX_SITE" value="<?php echo $pbx_site; ?>">
@@ -205,21 +85,7 @@ a:hover {
 				<input type="submit" value="Réessayer">
 			</form>
 		</body>
-		<script>
-		window.onload=function(){
-			var auto = setTimeout(function(){ autoRefresh(); }, 100);
-
-			function submitform(){
-				document.forms[0].submit();
-			}
-
-			function autoRefresh(){
-				clearTimeout(auto);
-				auto = setTimeout(function(){ submitform(); autoRefresh(); }, 2000);
-			}
-		}
-		</script>
-	<?php } else { ?>
+	<?php if (!$debug) { include 'assets/auto-redirect-javascript.php';} } else { ?>
 		<div class="entete">
 			<h1>Erreur du montant</h1>
 		</div>
