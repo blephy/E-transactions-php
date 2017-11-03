@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Redirection vers l'espace de paiement bancaire | Centre de Pathologie</title>
 	<meta name="description" content="Page intermédiaire de redirection vers l'espace de paiement bancaire, afin de régler votre note d'honoraire">
 	<meta name="robots" content="noindex, nofollow, noodp">
-	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <style>
 html {
@@ -113,7 +114,7 @@ a:hover {
 	function checkAmount( $montant_query ) {
 		$temp = str_replace(",", ".", $montant_query); // replace , par .
 		// echo $temp.'<br>';
-		$temp = round($temp, 2, PHP_ROUND_HALF_UP);
+		$temp = round($temp, 2, PHP_ROUND_HALF_UP); // arrondi supérieur avec 2 décimals
 		// echo $temp.'<br>';
 		$temp = floatval( $temp ); // convert to float
 		// echo $temp.'<br>';
@@ -122,7 +123,7 @@ a:hover {
 		$temp = str_replace(".", "", $temp);
 		// echo 'final temp: '.$temp.'<br>';
 		if ( $temp > 99 ) {
-			return $temp;
+			return $temp; // Retourne le montant formatté si > 1€
 		} else {
 			return false;
 		}
@@ -132,46 +133,35 @@ a:hover {
 	$pbx_site = '1542364';
 	$pbx_rang = '01';
 	$pbx_identifiant = '651499961';
+	$server_preprod = 'preprod-tpeweb.e-transactions.fr';
+	$server_prod = 'tpeweb.e-transactions.fr';
+	$url_server = 'http://www.anapath.fr/';
+	$dir_paiement = 'test/brique/';
+	$pbx_effectue = $url_server.$dir_paiement.'accepte.php';
+	$pbx_annule = $url_server.$dir_paiement.'annule.php';
+	$pbx_refuse = $url_server.$dir_paiement.'refuse.php';
+	$pbx_attente = $url_server.$dir_paiement.'attente.php';
+	$pbx_repondre_a = $url_server.$dir_paiement.'retour.php';
+	$pbx_retour = 'MONTANT:M;REF:R;AUTO:A;CB:J;TRANSAC:S;ERROR:E;SIGN:K';
 
-	// Variables de transaction client
 	if ( isset($_GET['ref']) && isset($_GET['porteur']) && isset($_GET['montant']) ) {
 		$pbx_cmd = $_GET['ref'];
 		$pbx_porteur = $_GET['porteur'];
 		$pbx_total = checkAmount($_GET['montant']);
 
 		if ($pbx_total) {
-			// URL de retour serveur
-			$url_server = 'http://www.anapath.fr/';
-			$dir_paiement = 'test/brique/';
-
-			// Détails URL de redirection après paiement
-			$pbx_effectue = $url_server.$dir_paiement.'accepte.php';
-			$pbx_annule = $url_server.$dir_paiement.'annule.php';
-			$pbx_refuse = $url_server.$dir_paiement.'refuse.php';
-			$pbx_attente = $url_server.$dir_paiement.'attente.php';
-			$pbx_repondre_a = $url_server.$dir_paiement.'retour.php';
-			$pbx_retour = 'MONTANT:M;REF:R;AUTO:A;CB:J;TRANSAC:S;ERROR:E;SIGN:K';
-
 			// Include HMAC keys
 			include 'utils/hmac.php';
 
 			// Choix de la clé HMAC en fonction de l'environnement
 			$key_hmac = $env_dev ? $key_dev : $key_prod;
 
-			$server_preprod = 'preprod-tpeweb.e-transactions.fr';
-			$server_prod = 'tpeweb.e-transactions.fr';
-
 			// Choix du serveur e-transactions en fonction de l'environnement
 			$env_server = $env_dev ? $server_preprod : $server_prod;
-
 			$server_etransactions = 'https://'.$env_server.'/cgi/MYchoix_pagepaiement.cgi';
 
-
-
-			// --------------- TRAITEMENT DES VARIABLES ---------------
-
+			// Construction de l'URI et du formulaire POST pour redirection sur la bank
 			$dateTime = date("c");
-
 			$msg = "PBX_SITE=".$pbx_site.
 			"&PBX_RANG=".$pbx_rang.
 			"&PBX_IDENTIFIANT=".$pbx_identifiant.
@@ -238,11 +228,6 @@ a:hover {
 			<p class="alert">Merci de contacter votre Centre de Pathologie sur <a href="mailto:contact@anapath.fr" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France">contact@anapath.fr</a></p>
 			<button onclick="goBack()">Retour</button>
 		</div>
-		<script>
-		function goBack() {
-			window.history.back();
-		}
-		</script>
 	<?php }	?>
 <?php } else { ?>
 	<div class="entete">
@@ -253,10 +238,10 @@ a:hover {
 		<p class="alert">Merci de contacter votre Centre de Pathologie pour signaler ce problème ou sur <a href="mailto:contact@anapath.fr" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France">contact@anapath.fr</a></p>
 		<button onclick="goBack()">Retour</button>
 	</div>
-	<script>
-	function goBack() {
-		window.history.back();
-	}
-	</script>
 <?php } ?>
+<script>
+function goBack() {
+	window.history.back();
+}
+</script>
 </html>

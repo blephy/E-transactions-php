@@ -35,7 +35,7 @@ export default {
       { rel: 'icon', type: 'image/png', href: '/test/static/favicon-anapath-amiens.png' },
     ],
     meta: [
-      { name: 'robots', content: 'index, follow' },
+      { name: 'robots', content: 'index, follow, noodp' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'description', content: 'Payer en ligne votre examen d\'anapathologie effectué au laboratoire d\'Amiens. Paiement sécurisé' },
       { charset: 'utf-8' },
