@@ -5,7 +5,7 @@ function errorHandler($code_error) {
       echo 'Transaction approuvée. Opération réussie';
       break;
     case '00001':
-      echo 'La connexion au centre d\'autorisation a échoué';
+      echo 'La connexion au centre d\'autorisation a échoué, ou le client a annulé.';
       break;
     case '00003':
       echo 'Erreur de la plateforme bancaire';

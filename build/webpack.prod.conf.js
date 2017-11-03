@@ -98,7 +98,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       {
         from: path.resolve(__dirname, '../brique'),
         to: config.build.phpFilesBrique,
-        ignore: ['.*', '.DS_Store']
+        ignore: ['.DS_Store']
       }
     ])
   ]
