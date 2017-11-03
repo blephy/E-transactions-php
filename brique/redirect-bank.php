@@ -126,7 +126,7 @@ a:hover {
 
 		// URL de retour serveur
 		$url_server = 'http://www.anapath.fr/';
-		$dir_paiement = 'test/';
+		$dir_paiement = 'test/brique/';
 
 		// Détails URL de redirection après paiement
 		$pbx_effectue = $url_server.$dir_paiement.'accepte.php';
