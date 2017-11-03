@@ -87,11 +87,11 @@ include 'config/hmac.php';
 	</form>
 	    <?php if (!$debug) { include 'assets/auto-redirect-javascript.php';} } else { ?>
 	<div class="entete">
-		<h1>Erreur du montant</h1>
+		<h1>Erreur de montant</h1>
 	</div>
 	<div class="info">
-		<p class="alert">Le montant est inférieur à 1€. Transaction impossible.</p>
-		<p class="alert">Merci de contacter votre Centre de Pathologie sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a></p>
+		<p class="alert">Le montant est inférieur à 1€ après conversion en centimes d'euro. Transaction impossible.</p>
+		<p class="alert">Si votre facture était de plus de 1€ à l'écran précédent, merci de contacter votre Centre de Pathologie sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a> afin de signaler ce bug de développement informatique lié à la conversion du montant en centimes d'euro.</p>
 		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour</button>
 	</div>
 	<?php }	?>
@@ -104,11 +104,6 @@ include 'config/hmac.php';
 		<p class="alert">Merci de contacter votre Centre de Pathologie pour signaler ce problème ou sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a></p>
 		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour</button>
 	</div>
-			<?php } ?>
-<script>
-function goBack() {
-	window.history.back();
-}
-</script>
+	<?php } ?>
 </body>
 </html>
