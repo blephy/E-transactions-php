@@ -15,7 +15,7 @@ include 'config/hmac.php';
 </head>
 <?php include 'assets/style.php'; ?>
 <body>
-	<?php
+<?php
 	// Si toutes les variables necessaires existent
 	if ( isset($_GET['ref']) && isset($_GET['porteur']) && isset($_GET['montant']) ) {
 		$pbx_cmd = $_GET['ref'];
@@ -38,7 +38,7 @@ include 'config/hmac.php';
 
 			// Choix du serveur e-transactions en fonction de l'environnement
 			$env_server = $env_dev ? $server_preprod : $server_prod;
-			$server_etransactions = $protocol.$env_server.$file_bank;
+			$server_etransactions = $server_protocol.$env_server.$server_file;
 
 			// Construction de l'URI et du formulaire POST pour redirection sur la banque
 			$dateTime = date("c");
@@ -59,55 +59,56 @@ include 'config/hmac.php';
 			$binKey = pack("H*", $key_hmac);
 			$hmac = strtoupper(hash_hmac('sha512', $msg, $binKey));
 			?>
-			<div class="entete">
-				<h1>Redirection en cours ...</h1>
-			</div>
-			<span class="loading"></span>
-			<div class="info">
-				<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo $redirect_time/1000 ?> secondes:</p>
-			</div>
-			<form id="form" style="text-align: center; margin: 20px auto;" method="POST" action="<?php echo $server_etransactions; ?>">
-				<input type="hidden" name="PBX_SITE" value="<?php echo $pbx_site; ?>">
-				<input type="hidden" name="PBX_RANG" value="<?php echo $pbx_rang; ?>">
-				<input type="hidden" name="PBX_IDENTIFIANT" value="<?php echo $pbx_identifiant; ?>">
-				<input type="hidden" name="PBX_TOTAL" value="<?php echo $pbx_total; ?>">
-				<input type="hidden" name="PBX_DEVISE" value="978">
-				<input type="hidden" name="PBX_CMD" value="<?php echo $pbx_cmd; ?>">
-				<input type="hidden" name="PBX_PORTEUR" value="<?php echo $pbx_porteur; ?>">
-				<input type="hidden" name="PBX_REPONDRE_A" value="<?php echo $pbx_repondre_a; ?>">
-				<input type="hidden" name="PBX_RETOUR" value="<?php echo $pbx_retour; ?>">
-				<input type="hidden" name="PBX_EFFECTUE" value="<?php echo $pbx_effectue; ?>">
-				<input type="hidden" name="PBX_ANNULE" value="<?php echo $pbx_annule; ?>">
-				<input type="hidden" name="PBX_REFUSE" value="<?php echo $pbx_refuse; ?>">
-				<input type="hidden" name="PBX_HASH" value="SHA512">
-				<input type="hidden" name="PBX_TIME" value="<?php echo $dateTime; ?>">
-				<input type="hidden" name="PBX_HMAC" value="<?php echo $hmac; ?>">
-				<input type="submit" value="Réessayer">
-			</form>
-		</body>
-	<?php if (!$debug) { include 'assets/auto-redirect-javascript.php';} } else { ?>
-		<div class="entete">
-			<h1>Erreur du montant</h1>
-		</div>
-		<div class="info">
-			<p class="alert">Le montant est inférieur à 1€. Transaction impossible.</p>
-			<p class="alert">Merci de contacter votre Centre de Pathologie sur <a href="mailto:contact@anapath.fr" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France">contact@anapath.fr</a></p>
-			<button onclick="goBack()">Retour</button>
-		</div>
+	<div class="entete">
+		<h1>Redirection en cours ...</h1>
+	</div>
+	<span class="loading"></span>
+	<div class="info">
+		<p>Vous allez automatiquement être redirigé sur le siteweb sécurisé de notre banque.</p>
+		<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo $redirect_time/1000 ?> secondes:</p>
+	</div>
+	<form id="form" style="text-align: center; margin: 20px auto;" method="POST" action="<?php echo $server_etransactions; ?>">
+		<input type="hidden" name="PBX_SITE" value="<?php echo $pbx_site; ?>">
+		<input type="hidden" name="PBX_RANG" value="<?php echo $pbx_rang; ?>">
+		<input type="hidden" name="PBX_IDENTIFIANT" value="<?php echo $pbx_identifiant; ?>">
+		<input type="hidden" name="PBX_TOTAL" value="<?php echo $pbx_total; ?>">
+		<input type="hidden" name="PBX_DEVISE" value="978">
+		<input type="hidden" name="PBX_CMD" value="<?php echo $pbx_cmd; ?>">
+		<input type="hidden" name="PBX_PORTEUR" value="<?php echo $pbx_porteur; ?>">
+		<input type="hidden" name="PBX_REPONDRE_A" value="<?php echo $pbx_repondre_a; ?>">
+		<input type="hidden" name="PBX_RETOUR" value="<?php echo $pbx_retour; ?>">
+		<input type="hidden" name="PBX_EFFECTUE" value="<?php echo $pbx_effectue; ?>">
+		<input type="hidden" name="PBX_ANNULE" value="<?php echo $pbx_annule; ?>">
+		<input type="hidden" name="PBX_REFUSE" value="<?php echo $pbx_refuse; ?>">
+		<input type="hidden" name="PBX_HASH" value="SHA512">
+		<input type="hidden" name="PBX_TIME" value="<?php echo $dateTime; ?>">
+		<input type="hidden" name="PBX_HMAC" value="<?php echo $hmac; ?>">
+		<input type="submit" value="Réessayer">
+	</form>
+	    <?php if (!$debug) { include 'assets/auto-redirect-javascript.php';} } else { ?>
+	<div class="entete">
+		<h1>Erreur du montant</h1>
+	</div>
+	<div class="info">
+		<p class="alert">Le montant est inférieur à 1€. Transaction impossible.</p>
+		<p class="alert">Merci de contacter votre Centre de Pathologie sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a></p>
+		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour</button>
+	</div>
 	<?php }	?>
-<?php } else { ?>
+	<?php } else { ?>
 	<div class="entete">
 		<h1>Problème du formulaire</h1>
 	</div>
 	<div class="info">
 		<p class="alert">Des variables sont manquantes ou erronées.</p>
-		<p class="alert">Merci de contacter votre Centre de Pathologie pour signaler ce problème ou sur <a href="mailto:contact@anapath.fr" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France">contact@anapath.fr</a></p>
-		<button onclick="goBack()">Retour</button>
+		<p class="alert">Merci de contacter votre Centre de Pathologie pour signaler ce problème ou sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a></p>
+		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour</button>
 	</div>
-<?php } ?>
+			<?php } ?>
 <script>
 function goBack() {
 	window.history.back();
 }
 </script>
+</body>
 </html>

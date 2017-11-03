@@ -14,29 +14,37 @@ include 'utils/error-handler.php'
 <?php include 'assets/style.php'; ?>
 <body>
   <?php
-  if ( isset($_GET[$client_pbx_montant]) && isset($_GET[$client_pbx_ref]) && isset($_GET[$client_pbx_transaction]) && isset($_GET[$client_pbx_error]) && isset($_GET[$client_pbx_date])) {
+  if ( isset($_GET[$client_pbx_montant]) &&
+       isset($_GET[$client_pbx_ref]) &&
+       isset($_GET[$client_pbx_transaction]) &&
+       isset($_GET[$client_pbx_error]) &&
+       isset($_GET[$client_pbx_heure]) &&
+       isset($_GET[$client_pbx_date])) {
     $montant=$_GET[$client_pbx_montant];
     $reference=$_GET[$client_pbx_ref];
     $transaction=$_GET[$client_pbx_transaction];
     $error=$_GET[$client_pbx_error];
     $date=$_GET[$client_pbx_date];
+    $heure=$_GET[$client_pbx_heure];
     ?>
     <div class="entete">
-      <h1>Transaction annulée avec succès</h1>
+      <h1>Transaction annulée</h1>
     </div>
     <div class="info">
-      <p class="alert">Montant de la transaction: <?php echo $montant/100 ?>€</p>
-      <p class="alert">Référence de la facture: <?php echo $reference ?></p>
-      <p class="alert">Numéro de transaction: <?php echo $transaction ?></p>
-      <p class="alert">Transaction du: <?php echo $date ?></p>
-      <p class="alert">Motif: <?php errorHandler($error) ?></p>
+      <p class="error">Montant de la transaction: <?php echo $montant/100; ?>€</p>
+      <p class="error">Référence de la facture: <?php echo $reference; ?></p>
+      <p class="error">Numéro de transaction: <?php echo $transaction; ?></p>
+      <p class="error">Transaction du: <?php echo $date; ?> à <?php echo $heure; ?></p>
+      <p class="error">Motif: <?php errorHandler($error); ?></p>
+      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
     </div>
   <?php } else { ?>
     <div class="entete">
-      <h1>Transaction annulée avec succès</h1>
+      <h1>Transaction annulée</h1>
     </div>
     <div class="info">
-      <p class="alert">Récapitulatif non disponible.</p>
+      <p class="error">Récapitulatif non disponible.</p>
+      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
     </div>
   <?php } ?>
 </body>

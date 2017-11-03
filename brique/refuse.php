@@ -14,7 +14,12 @@ include 'utils/error-handler.php'
 <?php include 'assets/style.php'; ?>
 <body>
   <?php
-  if ( isset($_GET[$client_pbx_montant]) && isset($_GET[$client_pbx_ref]) && isset($_GET[$client_pbx_transaction]) && isset($_GET[$client_pbx_cb]) && isset($_GET[$client_pbx_error]) && isset($_GET[$client_pbx_date])) {
+  if ( isset($_GET[$client_pbx_montant]) &&
+       isset($_GET[$client_pbx_ref]) &&
+       isset($_GET[$client_pbx_transaction]) &&
+       isset($_GET[$client_pbx_cb]) &&
+       isset($_GET[$client_pbx_error]) &&
+       isset($_GET[$client_pbx_date])) {
     $montant=$_GET[$client_pbx_montant];
     $reference=$_GET[$client_pbx_ref];
     $transaction=$_GET[$client_pbx_transaction];
@@ -32,6 +37,7 @@ include 'utils/error-handler.php'
       <p class="alert">Numéro de transaction: <?php echo $transaction ?></p>
       <p class="alert">Transaction du: <?php echo $date ?></p>
       <p class="alert">Motif: <?php errorHandler($error) ?></p>
+      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
     </div>
   <?php } else { ?>
     <div class="entete">
@@ -39,6 +45,7 @@ include 'utils/error-handler.php'
     </div>
     <div class="info">
       <p class="alert">Récapitulatif non disponible.</p>
+      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
     </div>
   <?php } ?>
 </body>

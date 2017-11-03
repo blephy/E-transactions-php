@@ -7,7 +7,7 @@ body {
 	background-color: #cccccc;
 	color: #646464;
 	font-size: 16px;
-	font-size: 1rem;
+	font-size: 0.9rem;
 	position: relative;
 	width: 100%;
 	min-height: 100vh;
@@ -31,8 +31,7 @@ h1 {
 	display: block;
 	box-sizing: border-box;
 	padding: 10px;
-	font-size: 1.1rem;
-	line-height: 30px;
+	line-height: 20px;
 	text-align: center;
 }
 p {
@@ -46,6 +45,9 @@ p {
 }
 .alert {
 	background-color: rgba(208, 129, 0, 0.3);
+}
+.error {
+  background-color: rgba(208, 30, 0, 0.3);
 }
 @keyframes load {
 	from {
