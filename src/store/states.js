@@ -8,7 +8,7 @@ export default {
   found: 0,
   errorConnect: false,
   invoice: {
-    price: null,
+    price: 100,
     mail: null,
     ddn: null,
     ref: null,
@@ -18,5 +18,4 @@ export default {
     mail: null,
     ref: null,
   },
-  aimFile: 'http://www.anapath.fr/test/Paiement_Hmac.php',
 };

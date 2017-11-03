@@ -1,3 +1,4 @@
+import config from '../../../config/index';
 export default {
   name: 'Result',
   data() {
@@ -20,11 +21,13 @@ export default {
       }
     },
     makeURL: function () {
-      var aim_file = this.$store.state.aimFile;
-      var uri = aim_file + '?' +
-        'montant=' + this.result.invoice.price + '&' +
-        'ref=' + this.result.invoice.ref + '&' +
-        'porteur=' + this.result.invoice.mail;
+      var uri = config.build.urlDomaine +
+                config.build.assetsPublicPath +
+                config.build.phpFilesBrique + '/' +
+                config.build.redirectBankFileName + '?' +
+                'montant=' + this.result.invoice.price + '&' +
+                'ref=' + this.result.invoice.ref + '&' +
+                'porteur=' + this.result.invoice.mail;
       var uri_encoded = encodeURI(uri);
       return uri_encoded;
     }

@@ -92,6 +92,14 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
+    ]),
+    // copy .php files
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../brique'),
+        to: config.build.phpFilesBrique,
+        ignore: ['.*']
+      }
     ])
   ]
 })
