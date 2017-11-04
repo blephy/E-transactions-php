@@ -20,4 +20,13 @@ function checkAmount( $montant_query, $is_debug ) {
     return false;
   }
 }
+
+function convertDate($string, $insert) {
+  $arr=str_split($string, 2);
+  $day=array_slice($arr, 0, 1);
+  $month=array_slice($arr, 1, 1);
+  $year=array_slice($arr, 2, 2);
+
+  return $day[0].$insert.$month[0].$insert.$year[0].$year[1];
+}
 ?>

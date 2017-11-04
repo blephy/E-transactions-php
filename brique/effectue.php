@@ -1,6 +1,7 @@
 <?php
 include 'config/client.php';
-include 'utils/error-handler.php'
+include 'utils/error-handler.php';
+include 'utils/functions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,6 +33,8 @@ include 'utils/error-handler.php'
     $date=$_GET[$client_pbx_date];
     $heure=$_GET[$client_pbx_heure];
     $type=$_GET[$client_pbx_type_paiement];
+    // convertit le format de la query DATE pour lisibilité
+    $date=convertDate($date, '/');
     ?>
     <div class="entete">
       <h1>Transaction effectuée avec succès</h1>
