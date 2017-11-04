@@ -11,7 +11,7 @@ include 'utils/error-handler.php'
   <meta name="robots" content="noindex, nofollow, noodp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<?php include 'assets/style.php'; ?>
+<?php include 'assets/style.css.php'; ?>
 <body>
   <?php
   if ( isset($_GET[$client_pbx_ref]) &&
