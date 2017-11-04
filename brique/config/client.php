@@ -11,7 +11,7 @@ $force_https = false;
 // Temps en millisecondes necessaire avant redirection automatique en JS
 $redirect_time = 1000;
 
-// Production ou Preprod (dev) environnement
+// Production ou Pre-prod (dev) environnement
 // true = pre-prod environnement
 // false = production environnement
 // Changez par false lorsque tous vos tests sont passés

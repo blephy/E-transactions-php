@@ -88,7 +88,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 		<input type="hidden" name="PBX_HMAC" value="<?php echo $hmac; ?>">
 		<input type="submit" value="Réessayer">
 	</form>
-	    <?php if (!$debug) { include 'assets/auto-redirect-javascript.php';} } else { ?>
+	    <?php if (!$debug) { include 'assets/auto-redirect.js.php';} } else { ?>
 	<div class="entete">
 		<h1>Erreur de montant</h1>
 	</div>
