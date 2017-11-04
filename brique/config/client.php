@@ -9,7 +9,7 @@ $debug = false;
 $force_https = false;
 
 // Temps en millisecondes necessaire avant redirection automatique en JS
-$redirect_time = 2000;
+$redirect_time = 1000;
 
 // Production ou Preprod (dev) environnement
 // true = pre-prod environnement

@@ -28,7 +28,7 @@ include 'utils/error-handler.php'
       <p class="error">Référence de la facture: <?php echo $reference; ?></p>
       <p class="error">Numéro de transaction: <?php echo $transaction; ?></p>
       <p class="error">Motif: <?php errorHandler($error); ?></p>
-      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Payer ma facture</button>
+      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Régler ma facture</button>
     </div>
   <?php } else { ?>
     <div class="entete">
@@ -36,7 +36,7 @@ include 'utils/error-handler.php'
     </div>
     <div class="info">
       <p class="error">Récapitulatif non disponible.</p>
-      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Payer ma facture</button>
+      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Régler ma facture</button>
     </div>
   <?php } ?>
 </body>
