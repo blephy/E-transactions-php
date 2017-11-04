@@ -31,12 +31,12 @@ include 'utils/error-handler.php'
       <h1>Transaction refusée</h1>
     </div>
     <div class="info">
-      <p class="alert">Montant de la transaction: <?php echo $montant/100 ?>€</p>
-      <p class="alert">Référence de la facture: <?php echo $reference ?></p>
-      <p class="alert">Numéro de carte bancaire: XXXX XXXX XXXX <?php echo $cb ?></p>
-      <p class="alert">Numéro de transaction: <?php echo $transaction ?></p>
-      <p class="alert">Transaction du: <?php echo $date ?></p>
-      <p class="alert">Motif: <?php errorHandler($error) ?></p>
+      <p class="alert">Montant de la transaction: <?php echo $montant/100; ?>€</p>
+      <p class="alert">Référence de la facture: <?php echo $reference; ?></p>
+      <p class="alert">Numéro de carte bancaire: XXXX XXXX XXXX <?php echo $cb; ?></p>
+      <p class="alert">Numéro de transaction: <?php echo $transaction; ?></p>
+      <p class="alert">Transaction du: <?php echo $date; ?></p>
+      <p class="alert">Motif: <?php errorHandler($error); ?></p>
       <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
     </div>
   <?php } else { ?>

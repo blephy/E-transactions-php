@@ -44,7 +44,7 @@ include 'utils/error-handler.php'
       <p>Numéro d'autorisation: <?php echo $autorisation; ?></p>
       <p>Numéro de transaction: <?php echo $transaction; ?></p>
       <p>Transaction effectuée le: <?php echo $date; ?> à <?php echo $heure; ?></p>
-      <p>Status: <?php errorHandler($error) ?></p>
+      <p>Status: <?php errorHandler($error); ?></p>
       <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour sur anapath.fr</button>
     </div>
   <?php } else { ?>

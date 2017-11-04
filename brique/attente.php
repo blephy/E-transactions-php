@@ -37,14 +37,14 @@ include 'utils/error-handler.php'
       <h1>Transaction en attente</h1>
     </div>
     <div class="info">
-      <p>Montant de la transaction: <?php echo $montant/100 ?>€</p>
-      <p>Référence de la facture: <?php echo $reference ?></p>
-      <p>Numéro de carte bancaire: XXXX XXXX XXXX <?php echo $cb ?></p>
+      <p>Montant de la transaction: <?php echo $montant/100; ?>€</p>
+      <p>Référence de la facture: <?php echo $reference; ?></p>
+      <p>Numéro de carte bancaire: XXXX XXXX XXXX <?php echo $cb; ?></p>
       <p>Type de paiement choisi: <?php echo $type; ?></p>
       <p>Numéro d'autorisation: <?php echo $autorisation; ?></p>
-      <p>Numéro de transaction: <?php echo $transaction ?></p>
-      <p>Transaction du: <?php echo $date ?> à <?php echo $heure; ?></p>
-      <p>Status: <?php errorHandler($error) ?></p>
+      <p>Numéro de transaction: <?php echo $transaction; ?></p>
+      <p>Transaction du: <?php echo $date; ?> à <?php echo $heure; ?></p>
+      <p>Status: <?php errorHandler($error); ?></p>
       <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour</button>
     </div>
   <?php } else { ?>

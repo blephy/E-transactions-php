@@ -68,7 +68,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	<span class="loading"></span>
 	<div class="info">
 		<p>Vous allez automatiquement être redirigé sur le siteweb sécurisé de notre banque.</p>
-		<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo ($redirect_time/1000)+7 ?> secondes:</p>
+		<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo ($redirect_time/1000)+7; ?> secondes:</p>
 	</div>
 	<form id="form" style="text-align: center; margin: 20px auto;" method="POST" action="<?php echo $server_etransactions; ?>">
 		<input type="hidden" name="PBX_SITE" value="<?php echo $pbx_site; ?>">
