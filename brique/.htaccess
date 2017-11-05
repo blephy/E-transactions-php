@@ -1,0 +1,4 @@
+<files pubkey.pem>
+Order Deny,Allow
+Deny from all
+</files>

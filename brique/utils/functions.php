@@ -29,4 +29,57 @@ function convertDate($string, $insert) {
 
   return $day[0].$insert.$month[0].$insert.$year[0].$year[1];
 }
+
+function LoadKey( $keyfile, $pub=true, $pass='' ) {         // chargement de la cl� (publique par d�faut)
+  $fp = $filedata = $key = FALSE;                         // initialisation variables
+  $fsize =  filesize( $keyfile );                         // taille du fichier
+  if( !$fsize ) return FALSE;                             // si erreur on quitte de suite
+  $fp = fopen( $keyfile, 'r' );                           // ouverture fichier
+  if( !$fp ) return FALSE;                                // si erreur ouverture on quitte
+  $filedata = fread( $fp, $fsize );                       // lecture contenu fichier
+  fclose( $fp );                                          // fermeture fichier
+  if( !$filedata ) return FALSE;                          // si erreur lecture, on quitte
+  if( $pub )
+  $key = openssl_pkey_get_public( $filedata );        // recuperation de la cle publique
+  else                                                    // ou recuperation de la cle privee
+  $key = openssl_pkey_get_private( array( $filedata, $pass ));
+
+  return $key;                                            // renvoi cle ( ou erreur )
+}
+
+function GetAllData( $qrystr, &$data ) {
+  $pos = strrpos( $qrystr, '&' );
+  $data = substr( $qrystr, 0, $pos );
+}
+
+function GetOnlyDataPbx( $qrystr, &$data ) {
+  $pos_last = strrpos( $qrystr, '&SIGN' );
+  $pos = strpos( $qrystr, 'DDN' );
+  $pos = strpos( $qrystr, '&', $pos ) + 1;
+  $data = substr( $qrystr, $pos, $pos_last-$pos );
+}
+
+function GetOnlySignature( $qrystr, &$sig ) {          // renvoi les donnes signees et la signature
+  $pos = strrpos( $qrystr, '&' );                         // cherche dernier separateur
+  $pos = strpos( $qrystr, '=', $pos ) + 1;                 // cherche debut valeur signature
+  $sig = substr( $qrystr, $pos );                         // et voila la signature
+  $sig = base64_decode( urldecode( $sig ));               // decodage signature
+}
+
+function PbxVerSign( $qrystr, $keyfile, $deep ) {                  // verification signature Paybox
+  $key = LoadKey( $keyfile );                             // chargement de la cle
+  if( !$key ) return -1;                                  // si erreur chargement cle
+  //  penser � openssl_error_string() pour diagnostic openssl si erreur
+  GetOnlySignature( $qrystr, $sig );
+  switch ($deep) {
+    case 'all':
+      GetAllData( $qrystr, $data );
+      break;
+    case 'pbx':
+      GetOnlyDataPbx( $qrystr, $data );
+      break;
+  }
+
+  return openssl_verify( $data, $sig, $key );             // verification : 1 si valide, 0 si invalide, -1 si erreur
+}
 ?>

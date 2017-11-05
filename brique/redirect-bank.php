@@ -20,9 +20,23 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 <body>
 <?php
 	// Si toutes les variables necessaires existent
-	if ( isset($_GET['ref']) && isset($_GET['porteur']) && isset($_GET['montant']) ) {
+	if ( isset($_GET['ref']) && isset($_GET['porteur']) && isset($_GET['montant']) && isset($_GET['ddn']) ) {
 		$pbx_cmd = $_GET['ref'];
 		$pbx_porteur = $_GET['porteur'];
+		$prv_query_ddn = $_GET['ddn'];
+
+		// Requetes à ajouter
+		$prv_query = '?'.$client_prv_email.'='.
+								 urlencode($pbx_porteur).'&'.
+								 $client_prv_ddn.'='.
+								 urlencode($prv_query_ddn);
+		// ajout des requetes perso pour la reponse e-transactions
+		$pbx_annule .= $prv_query;
+		$pbx_attente .= $prv_query;
+		$pbx_effectue .= $prv_query;
+		$pbx_refuse .= $prv_query;
+		$pbx_repondre_a .= $prv_query;
+
 		// Traiement de la chaine montant en centimes, peut être désactivé (config/client.php)
 		$pbx_total = $amount_processing ? checkAmount($_GET['montant'], $debug) : $_GET['montant'];
 
@@ -95,7 +109,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	<div class="info">
 		<p class="alert">Le montant est inférieur à 1€ après conversion en centimes d'euro. Transaction impossible.</p>
 		<p class="alert">Si votre facture était de plus de 1€ à l'écran précédent, merci de contacter votre Centre de Pathologie sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a> afin de signaler ce bug de développement informatique lié à la conversion du montant en centimes d'euro.</p>
-		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour</button>
+		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
 	</div>
 	<?php }	?>
 	<?php } else { ?>
@@ -105,7 +119,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	<div class="info">
 		<p class="alert">Des variables sont manquantes ou erronées.</p>
 		<p class="alert">Merci de contacter votre Centre de Pathologie pour signaler ce problème ou sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a></p>
-		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour</button>
+		<button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
 	</div>
 	<?php } ?>
 </body>

@@ -2,6 +2,9 @@
 include 'config/client.php';
 include 'utils/error-handler.php';
 include 'utils/functions.php';
+
+// Force HTTPS only if force_https = true (cf config/client.php)
+if ( $force_https ) { include 'utils/force-https.php'; }
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +26,9 @@ include 'utils/functions.php';
        isset($_GET[$client_pbx_error]) &&
        isset($_GET[$client_pbx_date]) &&
        isset($_GET[$client_pbx_heure]) &&
-       isset($_GET[$client_pbx_type_paiement])) {
+       isset($_GET[$client_pbx_type_paiement]) &&
+       isset($_GET[$client_prv_ddn]) &&
+       isset($_GET[$client_prv_email])) {
     $montant=$_GET[$client_pbx_montant];
     $reference=$_GET[$client_pbx_ref];
     $autorisation=$_GET[$client_pbx_autorisation];
@@ -33,6 +38,8 @@ include 'utils/functions.php';
     $date=$_GET[$client_pbx_date];
     $heure=$_GET[$client_pbx_heure];
     $type=$_GET[$client_pbx_type_paiement];
+    $ddn=$_GET[$client_prv_ddn];
+    $email=$_GET[$client_prv_email];
     // convertit le format de la query DATE pour lisibilité
     $date=convertDate($date, '/');
     ?>
@@ -40,15 +47,17 @@ include 'utils/functions.php';
       <h1>Transaction effectuée avec succès</h1>
     </div>
     <div class="info">
-      <p>Montant de la transaction: <?php echo $montant/100; ?>€</p>
+      <p>Email rensseigné: <?php echo $email; ?></p>
+      <p>Date de naissance: <?php echo $ddn; ?></p>
       <p>Référence de la facture: <?php echo $reference; ?></p>
+      <p>Montant de la transaction: <?php echo $montant/100; ?>€</p>
       <p>Numéro de carte bancaire: XXXX XXXX XXXX <?php echo $cb; ?></p>
       <p>Type de paiement choisi: <?php echo $type; ?></p>
       <p>Numéro d'autorisation: <?php echo $autorisation; ?></p>
       <p>Numéro de transaction: <?php echo $transaction; ?></p>
       <p>Transaction effectuée le: <?php echo $date; ?> à <?php echo $heure; ?></p>
       <p>Status: <?php errorHandler($error); ?></p>
-      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour sur anapath.fr</button>
+      <button onclick="window.location.href = '<?php echo $client_url_server ?>';">Retour sur anapath.fr</button>
     </div>
   <?php } else { ?>
     <div class="entete">
@@ -56,7 +65,7 @@ include 'utils/functions.php';
     </div>
     <div class="info">
       <p class="alert">Récapitulatif non disponible, vérifiez vos e-mails.</p>
-      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Retour sur anapath.fr</button>
+      <button onclick="window.location.href = '<?php echo $client_url_server ?>';">Retour sur anapath.fr</button>
     </div>
   <?php } ?>
 </body>

@@ -27,6 +27,7 @@ export default {
                 config.build.redirectBankFileName + '?' +
                 'montant=' + this.result.invoice.price + '&' +
                 'ref=' + this.result.invoice.ref + '&' +
+                'ddn=' + this.result.invoice.ddn + '&' +
                 'porteur=' + this.result.invoice.mail;
       var uri_encoded = encodeURI(uri);
       return uri_encoded;

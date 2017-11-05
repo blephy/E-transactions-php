@@ -50,6 +50,8 @@ $pbx_identifiant = '651499961';
 $client_email = 'contact@anapath.fr';
 
 // Variables demandées en retour à la banque (cf doc)
+$client_prv_ddn = 'DDN';
+$client_prv_email = 'EMAIL';
 $client_pbx_montant = 'MONTANT';
 $client_pbx_ref = 'REF';
 $client_pbx_autorisation = 'AUTO';
