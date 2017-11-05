@@ -82,4 +82,15 @@ function PbxVerSign( $qrystr, $keyfile, $deep ) {                  // verificati
 
   return openssl_verify( $data, $sig, $key );             // verification : 1 si valide, 0 si invalide, -1 si erreur
 }
+
+function IsAuthRequest() {
+  $is_all_valid = PbxVerSign( $_SERVER['QUERY_STRING'], 'pubkey.pem', 'all');
+  $is_pbx_valid = PbxVerSign( $_SERVER['QUERY_STRING'], 'pubkey.pem', 'pbx');
+  if ( $is_all_valid || $is_pbx_valid ) {
+    return 1;
+  } else {
+    $error = $is_all_valid < $is_pbx_valid ? $is_pbx_valid : $is_all_valid;
+    return $error;
+  }
+}
 ?>
