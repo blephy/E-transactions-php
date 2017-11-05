@@ -35,7 +35,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
         <h1>Transaction annulée</h1>
       </div>
       <div class="info">
-        <p class="error">Email rensseigné: <?php echo $email; ?></p>
+        <p class="error">Email renseigné: <?php echo $email; ?></p>
         <p class="error">Date de naissance: <?php echo $ddn; ?></p>
         <p class="error">Référence de la facture: <?php echo $reference; ?></p>
         <p class="error">Numéro de transaction: <?php echo $transaction; ?></p>

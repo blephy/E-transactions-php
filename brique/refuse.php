@@ -47,7 +47,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
         <h1>Transaction refusée</h1>
       </div>
       <div class="info">
-        <p class="alert">Email rensseigné: <?php echo $email; ?></p>
+        <p class="alert">Email renseigné: <?php echo $email; ?></p>
         <p class="alert">Date de naissance: <?php echo $ddn; ?></p>
         <p class="alert">Référence de la facture: <?php echo $reference; ?></p>
         <p class="alert">Montant de la transaction: <?php echo $montant/100; ?>€</p>

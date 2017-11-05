@@ -17,7 +17,7 @@ function errorHandler($code_error) {
       echo 'Accès refusé';
       break;
     case '00008':
-      echo 'Date de fin de validité incorrect';
+      echo 'Date de fin de validité incorrecte';
       break;
     case '00009':
       echo 'Erreur de création d\'un abonnement';

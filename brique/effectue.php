@@ -49,7 +49,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
         <h1>Transaction effectuée avec succès</h1>
       </div>
       <div class="info">
-        <p>Email rensseigné: <?php echo $email; ?></p>
+        <p>Email renseigné: <?php echo $email; ?></p>
         <p>Date de naissance: <?php echo $ddn; ?></p>
         <p>Référence de la facture: <?php echo $reference; ?></p>
         <p>Montant de la transaction: <?php echo $montant/100; ?>€</p>
