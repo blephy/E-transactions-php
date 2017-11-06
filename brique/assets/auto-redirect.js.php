@@ -3,7 +3,7 @@ window.onload=function(){
   var auto = setTimeout(function(){ autoRefresh(); }, 100);
 
   function submitform(){
-    document.forms[0].submit();
+    document.getElementById('form').submit();
   }
 
   function autoRefresh(){

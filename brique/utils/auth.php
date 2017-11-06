@@ -12,7 +12,6 @@ function LoadKey( $keyfile, $pub=true, $pass='' ) {         // chargement de la 
   $key = openssl_pkey_get_public( $filedata );            // recuperation de la cle publique
   else                                                    // ou recuperation de la cle privee
   $key = openssl_pkey_get_private( array( $filedata, $pass ));
-
   return $key;                                            // renvoi cle ( ou erreur )
 }
 
@@ -49,12 +48,21 @@ function PbxVerSign( $qrystr, $keyfile, $deep ) {                  // verificati
       GetOnlyDataPbx( $qrystr, $data);
       break;
   }
-
   return openssl_verify( $data, $sig, $key );             // verification : 1 si valide, 0 si invalide, -1 si erreur
 }
 
-function IsAuthRequest($deep = 'all') { // $deep = 'all' ou 'pbx' (all pour vérifier toutes les données. pbx pour vérifier seulement les données propres à e-transactions). E-transactions précise que pour l'IPN, la vérification doit se faire uniquement sur les variables pbx, alors que pour les autres URL de retour sur l'ensemble des variables envoyées.
-  $is_valid = PbxVerSign( $_SERVER['QUERY_STRING'], 'pubkey.pem', $deep);
+function IsAuthRequest($deep) { // $deep = 'all' ou 'pbx' (all pour vérifier toutes les données. pbx pour vérifier seulement les données propres à e-transactions). E-transactions précise que pour l'IPN, la vérification doit se faire uniquement sur les variables pbx, alors que pour les autres URL de retour sur l'ensemble des variables envoyées.
+  global $debug;
+  if ($deep) {
+    $is_valid = PbxVerSign( $_SERVER['QUERY_STRING'], 'pubkey.pem', $deep);
+  } else { // Si deep pas renseigné, on test les deux (car e-transactions doc pas vraiment à jour !!!!) et on renvoie la valeur la plus haute.
+    $is_valid_all = PbxVerSign( $_SERVER['QUERY_STRING'], 'pubkey.pem', 'all');
+    if ($debug) { echo 'Vérification RSA ALL query: '.$is_valid_all.'<br>'; }
+    $is_valid_pbx = PbxVerSign( $_SERVER['QUERY_STRING'], 'pubkey.pem', 'pbx');
+    if ($debug) { echo 'Vérification RSA PBX query: '.$is_valid_pbx.'<br>'; }
+    $is_valid = $is_valid_all < $is_valid_pbx ? $is_valid_pbx : $is_valid_all;
+  }
+  if ($debug) { echo 'Status retenu pour vérification RSA: '.$is_valid.'<br>'; }
   return $is_valid;
 }
 ?>

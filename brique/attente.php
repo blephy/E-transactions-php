@@ -20,7 +20,10 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 <?php include 'assets/style.css.php'; ?>
 <body>
   <?php
-  if (IsAuthRequest()) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
+  // Vérification RSA de la requète - Securité !
+  $IS_AUTH_REQUEST = IsAuthRequest('all');
+
+  if ( $IS_AUTH_REQUEST ) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
 
     if ( isset($_GET[$client_pbx_montant]) &&
        isset($_GET[$client_pbx_ref]) &&
@@ -75,7 +78,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       </div>
     <?php
     }
-  } else if ( IsAuthRequest() === 0 ) { // Requète non sécurisé. Ne provient pas d'e-transactions ou les variables ont été modifiés après envoie.
+  } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisé. Ne provient pas d'e-transactions ou les variables ont été modifiés après envoie.
     ?>
     <div class="entete">
       <h1>Requète non signée</h1>
