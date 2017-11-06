@@ -32,7 +32,7 @@ Configuration de vos variables client e-transactions
 > [brique/config/client.php](brique/config/client.php)
 
 Configuration des url d'appels e-transactions
-> [brique/config/e-transactions.ph](brique/config/client.php)
+> [brique/config/e-transactions.php](brique/config/e-transactions.php)
 
 Configuraton de vos clé HMAC (Production et Pré-Production)
-> [brique/config/hmac.php](brique/config/client.php)
+> [brique/config/hmac.php](brique/config/hmac.php)
