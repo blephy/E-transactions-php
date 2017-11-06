@@ -14,6 +14,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
   <meta name="description" content="Votre paiement a été annulé !">
   <meta name="robots" content="noindex, nofollow, noodp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="<?php echo $client_dir_ui_js ?>/static/favicon-anapath-amiens.png" />
 </head>
 <?php include 'assets/style.css.php'; ?>
 <body>

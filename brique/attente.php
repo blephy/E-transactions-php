@@ -1,6 +1,7 @@
 <?php
 include 'config/client.php';
 include 'utils/error-handler.php';
+include 'utils/functions.php';
 include 'utils/auth.php';
 
 // Force HTTPS only if force_https = true (cf config/client.php)
@@ -14,6 +15,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
   <meta name="description" content="Votre paiement est en attente !">
   <meta name="robots" content="noindex, nofollow, noodp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" href="<?php echo $client_dir_ui_js ?>/static/favicon-anapath-amiens.png" />
 </head>
 <?php include 'assets/style.css.php'; ?>
 <body>

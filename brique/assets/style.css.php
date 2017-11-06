@@ -70,6 +70,7 @@ span.loading {
 }
 input[type="submit"], button {
 	cursor: pointer;
+	margin: 15px 20px;
 	background-color: #4CADC9;
 	text-transform: uppercase;
 	height: 50px;
@@ -95,5 +96,10 @@ a {
 }
 a:hover {
 
+}
+@media print {
+	button {
+		display: none;
+	}
 }
 </style>

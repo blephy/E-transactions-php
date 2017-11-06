@@ -53,7 +53,7 @@ function PbxVerSign( $qrystr, $keyfile, $deep ) {                  // verificati
   return openssl_verify( $data, $sig, $key );             // verification : 1 si valide, 0 si invalide, -1 si erreur
 }
 
-function IsAuthRequest($deep = 'pbx') { // $deep = 'all' ou 'pbx' (all pour vérifier toutes les données. pbx pour vérifier seulement les données propres à e-transactions)
+function IsAuthRequest($deep = 'all') { // $deep = 'all' ou 'pbx' (all pour vérifier toutes les données. pbx pour vérifier seulement les données propres à e-transactions). E-transactions précise que pour l'IPN, la vérification doit se faire uniquement sur les variables pbx, alors que pour les autres URL de retour sur l'ensemble des variables envoyées.
   $is_valid = PbxVerSign( $_SERVER['QUERY_STRING'], 'pubkey.pem', $deep);
   return $is_valid;
 }

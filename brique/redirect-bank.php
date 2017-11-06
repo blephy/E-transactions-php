@@ -15,6 +15,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	<meta name="description" content="Page intermédiaire de redirection vers l'espace de paiement bancaire, afin de régler votre note d'honoraire">
 	<meta name="robots" content="noindex, nofollow, noodp">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/png" href="<?php echo $client_dir_ui_js ?>/static/favicon-anapath-amiens.png" />
 </head>
 <?php include 'assets/style.css.php'; ?>
 <body>
@@ -55,7 +56,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 
 			// Choix du serveur e-transactions en fonction de l'environnement
 			$env_server = $env_dev ? $server_preprod : $server_prod;
-			$server_etransactions = $server_protocol.$env_server.$server_file;
+			$server_etransactions = $server_protocol.$env_server.$server_file_desktop;
 
 			// Construction de l'URI et du formulaire POST pour redirection sur la banque
 			$dateTime = date("c");
