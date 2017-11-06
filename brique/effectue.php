@@ -1,7 +1,7 @@
 <?php
 include 'config/client.php';
 include 'utils/error-handler.php';
-include 'utils/functions.php';
+include 'utils/auth.php';
 
 // Force HTTPS only if force_https = true (cf config/client.php)
 if ( $force_https ) { include 'utils/force-https.php'; }
