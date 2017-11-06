@@ -72,7 +72,8 @@ if ( $force_https ) { include 'utils/force-https.php'; }
         </div>
         <div class="info">
           <p class="error">Récapitulatif non disponible.</p>
-          <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
+          <button onclick="window.location.href = '<?php echo $client_url_server ?>';">Retour sur anapath.fr</button>
+          <button onclick="window.print();">Imprimer le justificatif</button>
         </div>
     <?php
     }

@@ -42,6 +42,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
         <p class="error">Numéro de transaction: <?php echo $transaction; ?></p>
         <p class="error">Motif: <?php errorHandler($error); ?></p>
         <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
+        <button onclick="window.print();">Imprimer ce rapport</button>
       </div>
     <?php
     } else {
@@ -52,6 +53,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       <div class="info">
         <p class="error">Récapitulatif non disponible.</p>
         <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
+        <button onclick="window.print();">Imprimer ce rapport</button>
       </div>
     <?php
     }
@@ -65,6 +67,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       <p class="alert">Une vérification de la clé publique est nécessaire.</p>
       <p class="alert">Merci de contacter votre Centre de Pathologie pour signaler ce problème ou sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a></p>
       <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
+      <button onclick="window.print();">Imprimer ce rapport</button>
     </div>
     <?php
   } else { // Problème interne (dépendances, ouverture clé, etc ...)
@@ -77,6 +80,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       <p class="error">Par mesure de sécurité, nous bloquons la requète.</p>
       <p class="error">Merci de contacter votre Centre de Pathologie pour signaler ce problème ou sur <a href="mailto:<?php echo $client_email; ?>" title="Envoyer un e-mail au Centre de Pathologie des Hauts de France"><?php echo $client_email; ?></a></p>
       <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
+      <button onclick="window.print();">Imprimer ce rapport</button>
     </div>
     <?php
   }
