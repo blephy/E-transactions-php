@@ -8,7 +8,7 @@ export default {
   found: 0,
   errorConnect: false,
   invoice: {
-    price: 100,
+    price: 100.98,
     mail: null,
     ddn: null,
     ref: null,

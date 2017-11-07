@@ -3,7 +3,7 @@
 // Si true:
 // - ajoute quelques echo de variables pour vérifier les données
 // - enlève la redirection automatique codé en javascript
-$debug = false;
+$debug = true;
 
 // Force HTTPS et redirection codé en php
 $force_https = false;
@@ -49,15 +49,16 @@ $pbx_identifiant = '651499961';
 // Email de contact si problème lors de la transaction
 $client_email = 'contact@anapath.fr';
 
-// Variables demandées en retour à la banque (cf doc)
+// Variables demandées en retour à la banque (cf doc PBX_RETOUR)
 $client_prv_ddn = 'DDN';
 $client_prv_email = 'EMAIL';
+$client_prv_error_trad = 'ERRORTRAD';
 $client_pbx_montant = 'MONTANT';
 $client_pbx_ref = 'REF';
 $client_pbx_autorisation = 'AUTO';
 $client_pbx_cb = 'CB';
 $client_pbx_transaction = 'TRANSAC';
-$client_pbx_error = 'ERROR';
+$client_pbx_error = 'ERRORCODE';
 $client_pbx_sign = 'SIGN';
 $client_pbx_date = 'DATE';
 $client_pbx_heure = 'HEURE';

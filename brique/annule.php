@@ -1,6 +1,7 @@
 <?php
 include 'config/client.php';
 include 'utils/error-handler.php';
+include 'utils/functions.php';
 include 'utils/auth.php';
 
 // Force HTTPS only if force_https = true (cf config/client.php)
@@ -23,45 +24,30 @@ if ( $force_https ) { include 'utils/force-https.php'; }
   $IS_AUTH_REQUEST = IsAuthRequest();
 
   if ( $IS_AUTH_REQUEST ) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
-
-    if ( isset($_GET[$client_pbx_ref]) &&
-         isset($_GET[$client_pbx_transaction]) &&
-         isset($_GET[$client_pbx_error]) &&
-         isset($_GET[$client_prv_ddn]) &&
-         isset($_GET[$client_prv_email])) {
-      $reference=$_GET[$client_pbx_ref];
-      $transaction=$_GET[$client_pbx_transaction];
-      $error=$_GET[$client_pbx_error];
-      $ddn=$_GET[$client_prv_ddn];
-      $email=$_GET[$client_prv_email];
-      ?>
-      <div class="entete">
-        <h1>Transaction annulée</h1>
-      </div>
-      <div class="info">
-        <p class="error">Email renseigné: <?php echo $email; ?></p>
-        <p class="error">Date de naissance: <?php echo $ddn; ?></p>
-        <p class="error">Référence de la facture: <?php echo $reference; ?></p>
-        <p class="error">Numéro de transaction: <?php echo $transaction; ?></p>
-        <p class="error">Motif: <?php errorHandler($error); ?></p>
-        <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
-        <button onclick="window.print();">Imprimer ce rapport</button>
-      </div>
-    <?php
-    } else {
-      ?>
-      <div class="entete">
-        <h1>Transaction annulée</h1>
-      </div>
-      <div class="info">
-        <p class="error">Récapitulatif non disponible.</p>
-        <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
-        <button onclick="window.print();">Imprimer ce rapport</button>
-      </div>
-    <?php
-    }
-  } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisé. Ne provient pas d'e-transactions ou les variables ont été modifiés après envoie.
-    ?>
+  ?>
+    <div class="entete">
+      <h1>Transaction annulée</h1>
+    </div>
+    <div class="info">
+      <?php
+        echo verifBeforePrintOut($client_prv_email, 'error');
+        echo verifBeforePrintOut($client_prv_ddn, 'error');
+        echo verifBeforePrintOut($client_pbx_ref, 'error');
+        echo verifBeforePrintOut($client_pbx_montant, 'error');
+        echo verifBeforePrintOut($client_pbx_type_paiement, 'error');
+        echo verifBeforePrintOut($client_pbx_cb, 'error');
+        echo verifBeforePrintOut($client_pbx_transaction, 'error');
+        echo verifBeforePrintOut($client_pbx_date, 'error');
+        echo verifBeforePrintOut($client_pbx_heure, 'error');
+        echo verifBeforePrintOut($client_pbx_autorisation, 'error');
+        echo verifBeforePrintOut($client_pbx_error, 'error');
+       ?>
+      <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
+      <button onclick="window.print();">Imprimer ce rapport</button>
+    </div>
+  <?php
+  } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisé.
+  ?>
     <div class="entete">
       <h1>Requète non signée</h1>
     </div>
@@ -72,9 +58,9 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
       <button onclick="window.print();">Imprimer ce rapport</button>
     </div>
-    <?php
+  <?php
   } else { // Problème interne (dépendances, ouverture clé, etc ...)
-    ?>
+  ?>
     <div class="entete">
       <h1>Problème interne de décodage signature</h1>
     </div>
@@ -85,8 +71,8 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       <button onclick="window.location.href = '<?php echo $client_url_server.$client_dir_ui_js ?>';">Réessayer</button>
       <button onclick="window.print();">Imprimer ce rapport</button>
     </div>
-    <?php
+  <?php
   }
-    ?>
+  ?>
 </body>
 </html>
