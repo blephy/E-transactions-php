@@ -7,9 +7,9 @@ include 'utils/error-handler.php';
 // Paiement en attente: error 99999, autorisation != 0
 // Paiement effectué: error 00000, autorisation != 0
 // Paiement refusé: error 001XX, autorisation = 0
-// Paiement annulé: le paiement n'est pas engagé, donc cette page c'est pas appelé (cf doc IPN)
+// Paiement annulé: la transaction n'est pas engagé, donc cette page n'est pas appelé (cf doc IPN)
 
-$IS_AUTH_REQUEST = 1;
+$IS_AUTH_REQUEST = IsAuthRequest('pbx');
 $response = null;
 
 
@@ -41,7 +41,7 @@ if ( $IS_AUTH_REQUEST ) {
     $response[$client_prv_error_trad] = errorHandler(verifBeforeGetQuery($client_pbx_error));
     $response[$client_pbx_autorisation] = verifBeforeGetQuery($client_pbx_autorisation);
     $response_json = json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    if ($debug && $env_dev) { echo($response_json); } // on force si env = prod car on doit rien renvoyer !
+    if ($debug && $env_dev) { echo($response_json); } // on force false si env = prod car on doit rien renvoyer !
     mail('dolle.allan@gmail.com','Auth OK',$_SERVER['QUERY_STRING'].$_SERVER['REMOTE_ADDR']);
   } else {
     // EMAIL et/ou DDN non présent, il faut donc absolument vérifier les LOG sur votre interface e-transactions !

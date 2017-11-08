@@ -39,7 +39,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 		$pbx_repondre_a .= $prv_query;
 
 		// Traiement de la chaine montant en centimes, peut être désactivé (config/client.php)
-		$pbx_total = $amount_processing ? checkAmount($_GET['montant'], $debug) : $_GET['montant'];
+		$pbx_total = $amount_processing ? checkAmount($_GET['montant']) : $_GET['montant'];
 
 		// Si on est en mode debug (config/client.php), afficher les variables
 		if ($debug) {
