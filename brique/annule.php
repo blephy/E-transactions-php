@@ -30,7 +30,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
   if ( $IS_AUTH_REQUEST ) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
 
     // Si toutes les variables necessaires existent
-  	if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
+  	if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) ) {
   ?>
       <div class="entete">
         <h1>Transaction annulée</h1>
@@ -50,7 +50,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
           echo verifBeforePrintOut($client_pbx_error, 'error');
          ?>
         <?php include 'template/button-form-vuejs.php'; ?>
-        <?php include 'template/button-form-bank.php'; ?>
+        <?php if ( isset($_GET[$client_pbx_montant]) ) { include 'template/button-form-bank.php'; } ?>
         <?php include 'template/button-print.php'; ?>
       </div>
     <?php
