@@ -25,10 +25,10 @@ export default {
                 config.build.assetsPublicPath +
                 config.build.phpFilesBrique + '/' +
                 config.build.redirectBankFileName + '?' +
-                'montant=' + this.result.invoice.price + '&' +
-                'ref=' + this.result.invoice.ref + '&' +
-                'ddn=' + this.result.invoice.ddn + '&' +
-                'porteur=' + this.result.invoice.mail;
+                'MONTANT=' + this.result.invoice.price + '&' +
+                'REF=' + this.result.invoice.ref + '&' +
+                'DDN=' + this.result.invoice.ddn + '&' +
+                'EMAIL=' + this.result.invoice.mail;
       var uri_encoded = encodeURI(uri);
       return uri_encoded;
     }

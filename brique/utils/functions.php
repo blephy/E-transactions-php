@@ -15,11 +15,7 @@ function checkAmount( $montant_query) {
   if ( $debug ) { echo 'Multiply by 100: '.$temp.'<br>'; }
   $temp = str_replace(".", "", $temp);
   if ( $debug ) { echo 'Replace . by nothing in case of: '.$temp.'<br>'; }
-  if ( $temp > 99 ) {
     return $temp; // Retourne le montant formatté si > 1€
-  } else {
-    return false;
-  }
 }
 
 function convertDate($string, $insert) {
@@ -99,5 +95,13 @@ function verifBeforeGetQuery($query) {
   } else {
     return null;
   }
+}
+
+function getUrlPath() {
+  return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+}
+
+function isPage($page) {
+  return strpos(getUrlPath(), $page);
 }
 ?>

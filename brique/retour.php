@@ -1,25 +1,32 @@
 <?php
+header('Content-type: application/json; charset=utf-8');
+
 include 'config/client.php';
+include 'config/e-transactions.php';
 include 'utils/auth.php';
 include 'utils/functions.php';
 include 'utils/error-handler.php';
 
+// Restreindre l'accès à ce fichier par IP (cf config/e-transactions.php)
+if ( in_array($_SERVER['REMOTE_ADDR'], $serveur_ip) ) {
+  http_response_code(200);
+} else {
+  http_response_code(403);
+  die('Forbidden');
+}
 // Paiement en attente: error 99999, autorisation != 0
 // Paiement effectué: error 00000, autorisation != 0
 // Paiement refusé: error 001XX, autorisation = 0
 // Paiement annulé: la transaction n'est pas engagé, donc cette page n'est pas appelé (cf doc IPN)
 
 $IS_AUTH_REQUEST = IsAuthRequest('pbx');
-$response = null;
-
+$response = array();
 
 
 
 
 // A FAIRE:
-// SMTP pour envoie mail d'erreur sur compta@anapath.fr
 // CURL pour envoie sur API local
-// RESTREINDRE les IP autorisée à e-transactions
 
 
 
@@ -41,17 +48,17 @@ if ( $IS_AUTH_REQUEST ) {
     $response[$client_prv_error_trad] = errorHandler(verifBeforeGetQuery($client_pbx_error));
     $response[$client_pbx_autorisation] = verifBeforeGetQuery($client_pbx_autorisation);
     $response_json = json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-    if ($debug && $env_dev) { echo($response_json); } // on force false si env = prod car on doit rien renvoyer !
-    mail('dolle.allan@gmail.com','Auth OK',$_SERVER['QUERY_STRING'].$_SERVER['REMOTE_ADDR']);
+    if ($debug && $env_dev) { echo $response_json; } // on force false si env = prod car on doit rien renvoyer !
+    mail('dolle.allan@gmail.com','Auth OK',"QUERY: ".$response_json."\r\nIP: ".$_SERVER['REMOTE_ADDR']);
   } else {
     // EMAIL et/ou DDN non présent, il faut donc absolument vérifier les LOG sur votre interface e-transactions !
-    mail('dolle.allan@gmail.com','Auth OK - DDN ou EMAIL Absent',$_SERVER['QUERY_STRING'].$_SERVER['REMOTE_ADDR']);
+    mail('dolle.allan@gmail.com','Auth OK - DDN ou EMAIL Absent',"QUERY: ".$_SERVER['QUERY_STRING']."\r\nIP: ".$_SERVER['REMOTE_ADDR']);
   }
 } else if ( $IS_AUTH_REQUEST === 0 ) {
   // Variables modifié ou pubkey changé ou message ne venant pas directement de e-transactions
-  mail('dolle.allan@gmail.com','Auth FAIL',$_SERVER['QUERY_STRING'].$_SERVER['REMOTE_ADDR']);
+  mail('dolle.allan@gmail.com','Auth FAIL',"QUERY: ".$_SERVER['QUERY_STRING']."\r\nIP: ".$_SERVER['REMOTE_ADDR']);
 } else {
   // Problème interne de décodage
-  mail('dolle.allan@gmail.com','Auth INTERN ERROR',$_SERVER['QUERY_STRING'].$_SERVER['REMOTE_ADDR']);
+  mail('dolle.allan@gmail.com','Auth INTERN ERROR',"QUERY: ".$_SERVER['QUERY_STRING']."\r\nIP: ".$_SERVER['REMOTE_ADDR']);
 }
 ?>

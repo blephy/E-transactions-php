@@ -3,7 +3,7 @@
 // Si true:
 // - ajoute quelques echo de variables pour vérifier les données
 // - enlève la redirection automatique codé en javascript
-$debug = true;
+$debug = false;
 
 // Force HTTPS et redirection codé en php
 $force_https = false;
@@ -34,12 +34,20 @@ $client_dir_php = '/test/brique';
 // Repertoire contenant le fichier index.html de l'UI VueJs
 $client_dir_ui_js = '/test';
 
+// Nom des pages de communication dans le repertoire $client_dir_ui_js
+$page_effectue = 'effectue.php';
+$page_annule = 'annule.php';
+$page_refuse = 'refuse.php';
+$page_attente = 'attente.php';
+$page_retour_ipn = 'retour.php';
+$page_redirect = 'redirect-bank.php';
+
 // URL des fichier .php de retour bancaire
-$pbx_effectue = $client_url_server.$client_dir_php.'/effectue.php';
-$pbx_annule = $client_url_server.$client_dir_php.'/annule.php';
-$pbx_refuse = $client_url_server.$client_dir_php.'/refuse.php';
-$pbx_attente = $client_url_server.$client_dir_php.'/attente.php';
-$pbx_repondre_a = $client_url_server.$client_dir_php.'/retour.php';
+$pbx_effectue = $client_url_server.$client_dir_php.'/'.$page_effectue;
+$pbx_annule = $client_url_server.$client_dir_php.'/'.$page_annule;
+$pbx_refuse = $client_url_server.$client_dir_php.'/'.$page_refuse;
+$pbx_attente = $client_url_server.$client_dir_php.'/'.$page_attente;
+$pbx_repondre_a = $client_url_server.$client_dir_php.'/'.$page_retour_ipn;
 
 // Informations propre à l'abonnement e-transactions du client
 $pbx_site = '1542364';

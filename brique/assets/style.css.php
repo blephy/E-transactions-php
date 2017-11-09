@@ -68,6 +68,13 @@ span.loading {
 	margin: 50px auto 50px auto;
 	animation: load 0.6s infinite alternate;
 }
+#form {
+	margin: auto;
+	text-align: center;
+}
+.inline {
+	display: inline;
+}
 input[type="submit"], button {
 	cursor: pointer;
 	margin: 15px 20px;
