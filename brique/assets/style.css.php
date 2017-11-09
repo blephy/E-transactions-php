@@ -18,7 +18,7 @@ body {
 .entete {
 	text-align: center;
 	box-sizing: border-box;
-	padding: 10px;
+	padding: 0 10px 10px 10px;
 }
 img {
 	width: 90%;
