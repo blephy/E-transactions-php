@@ -4,8 +4,8 @@ Order Deny,Allow
 Deny from all
 </files>
 
-# Limiter l'appel de l'IPN (retour.php) aux server d'e-transactions
-#<files retour.php>
+# Limiter l'appel de l'IPN (ipn.php) aux server d'e-transactions
+#<files ipn.php>
 #Order Deny,Allow
 #Deny from all
 # Allow pre-prod e-transactions ip server

@@ -9,7 +9,7 @@ $server_file_desktop = '/php/';
 $server_file_mobile = '/cgi/ChoixPaiementMobile.cgi';
 
 // IP des serveurs e-transactions
-// Permet de limiter l'appel de retour.php à e-transactions
+// Permet de limiter l'appel de ipn.php à e-transactions
 $serveur_ip = array(
   '194.2.122.158',
   '194.2.122.190',

@@ -39,7 +39,7 @@ $page_effectue = 'effectue.php';
 $page_annule = 'annule.php';
 $page_refuse = 'refuse.php';
 $page_attente = 'attente.php';
-$page_retour_ipn = 'retour.php';
+$page_retour_ipn = 'ipn.php';
 $page_redirect = 'redirect-bank.php';
 
 // URL des fichier .php de retour bancaire
