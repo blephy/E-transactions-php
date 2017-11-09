@@ -24,7 +24,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
   // PBX alors que la documentation dit qu'e-transactions crypte sur toutes les variables. Donc on test les 2.
   $IS_AUTH_REQUEST = IsAuthRequest();
 
-  if ( $IS_AUTH_REQUEST ) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
+  if ( $IS_AUTH_REQUEST === 1 ) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
 
     // Si toutes les variables necessaires existent
   	if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) ) {

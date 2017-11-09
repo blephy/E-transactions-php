@@ -28,7 +28,7 @@ $IS_AUTH_REQUEST = IsAuthRequest('pbx');
 
 $response = array();
 
-if ( $IS_AUTH_REQUEST === 1) {
+if ( $IS_AUTH_REQUEST === 1 ) {
   // Envoie de la requete sur l'API
   if ( isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) && isset($_GET[$client_pbx_ref]) ) {
     $response[$client_prv_email] = verifBeforeGetQuery($client_prv_email);
