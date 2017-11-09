@@ -52,20 +52,12 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       </div>
     <?php
     } else { // Il manque des variables importantes et nécessaires
-    ?>
-      <?php include 'template/query-missing.php'; ?>
-    <?php
+        include 'template/query-missing.php';
     }
-    ?>
-  <?php
   } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisé.
-  ?>
-    <?php include 'template/query-not-sign.php'; ?>
-  <?php
+      include 'template/query-not-sign.php';
   } else { // Problème interne (dépendances, ouverture clé, etc ...)
-  ?>
-    <?php include 'template/query-sign-intern-error.php'; ?>
-  <?php
+      include 'template/query-sign-intern-error.php';
   }
   ?>
 </body>

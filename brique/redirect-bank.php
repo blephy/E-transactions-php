@@ -36,9 +36,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 		<?php include 'template/button-form-bank.php'; ?>
 	<?php
 	} else { // Il manque des variables importantes et nécessaires
-	?>
-		<?php include 'template/query-missing.php'; ?>
-	<?php
+ 			include 'template/query-missing.php';
 	}
 	?>
 </body>
