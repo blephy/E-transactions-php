@@ -1,4 +1,5 @@
 <div class="entete">
+  <img src="//www.anapath.fr/wp-content/uploads/2017/06/logo-300px.png" alt="Logo Laboratoire Anapathologie Amiens">
   <h1>Requète non signée</h1>
 </div>
 <div class="info">
