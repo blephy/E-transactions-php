@@ -5,9 +5,9 @@ Repo du [Centre de Pathologie Haut de France](https://www.anapath.fr).
 Voir aussi la [documentation E-transactions officielle](https://www.e-transactions.fr/pages/global.php?page=telechargement)
 
 L'interface utilisateur est développée avec VueJS, permet de faire des requètes HTTP sur une API qui vous renvoie le montant de la facture en fonction des variables envoyées (ici la date de naissance du patient et la référence de la facture). (Dossier /src)
-La gestion de la communication avec e-transactions est gérée en PHP (dossier /brique)
+La gestion de la communication avec e-transactions est gérée en PHP ([dossier brique/](brique/))
 
-## Installation & build
+## Installation & build de l'interface utilisateur VueJS
 
 ``` bash
 # Installation des dépendances pour l'interface utilisateur
@@ -19,12 +19,12 @@ npm run dev
 # build le projet avec minification
 npm run build
 
-# build for production and view the bundle analyzer report
+# build le projet avec minification et montre un rapport de build
 npm run build --report
 ```
 Pour plus de détail concernant VueJS: [guide](http://vuejs-templates.github.io/webpack/) et [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-## Personnalisation
+## Personnalisation de la solution PHP
 Vous pouvez personnaliser votre propre solution, notamment la communication avec e-transactions.
 Configurer votre solution dans les fichiers:
 
