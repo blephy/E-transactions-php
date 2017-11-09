@@ -61,7 +61,8 @@ $pbx_identifiant = '651499961';
 $client_email_contact = 'contact@anapath.fr';
 
 // Email de notification IPN
-$client_email_ipn = 'dolle.allan@gmail.com';
+$client_email_ipn_to = 'dolle.allan@gmail.com';
+$client_email_master = 'dolle.allan@gmail.com';
 $client_email_ipn_from = 'webmaster@anapath.fr';
 
 // Variables demandées en retour à la banque (cf doc PBX_RETOUR)

@@ -1,11 +1,12 @@
 <?php
-header('Content-type: application/json; charset=utf-8');
+header('Content-type: text/html; charset=utf-8');
 
 include_once 'config/client.php';
 include_once 'config/e-transactions.php';
 include_once 'utils/auth.php';
 include_once 'utils/functions.php';
 include_once 'utils/error-handler.php';
+include_once 'utils/notif-ipn.php';
 
 // Restreindre l'accès à l'IPN par IP (cf config/e-transactions.php)
 $CLIENT_IP = $_SERVER['REMOTE_ADDR'];
@@ -15,7 +16,11 @@ if ( in_array($CLIENT_IP, $serveur_etransactions_ip) ) {
 } else {
   http_response_code(403);
   sendNotifIPN('FILTER_IP');
-  die('Forbidden');
+  echo 'Vous n\'avez pas les autorisations pour accéder à cette page.<br>';
+  echo 'Votre adresse IP publique nous sera communiquée: <span style="color: red;">'.$CLIENT_IP.'</span><br><br>';
+  echo 'Si vous avez été invité à visiter cette page, merci de signaler auprès du Centre de Pathologie des Haut de France la personne vous ayant invitée à le faire.<br><br>';
+  echo '<a href='.$client_url_server.'>'.'Aller sur www.anapath.fr</a><br><br>';
+  die('<h1 style="color: red;">403 - Forbidden - You don\'t have permission to access this file.</h1>');
 }
 
 // Paiement en attente: error 99999, autorisation != 0
