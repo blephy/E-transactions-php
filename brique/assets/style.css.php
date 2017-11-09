@@ -1,7 +1,8 @@
 <style>
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 html {
-	font-size: 100%;
-	font-family: 'Source Sans Pro', sans-serif;
+  font-size: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 body {
 	background-color: #cccccc;
@@ -18,6 +19,11 @@ body {
 	text-align: center;
 	box-sizing: border-box;
 	padding: 10px;
+}
+img {
+	width: 90%;
+	max-width: 260px;
+	height: auto;
 }
 h1 {
 	margin: 20px 0;

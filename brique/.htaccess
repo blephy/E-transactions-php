@@ -1,4 +1,4 @@
-# La cle public n'est pas accessible
+# La cle public n'est pas accessible ( pourquoi pas ? XD )
 <files pubkey.pem>
 Order Deny,Allow
 Deny from all

@@ -29,6 +29,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
     if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
   ?>
       <div class="entete">
+        <img src="//www.anapath.fr/wp-content/uploads/2017/06/logo-300px.png" alt="Logo Laboratoire Anapathologie Amiens">
         <h1>Transaction en attente</h1>
       </div>
       <div class="info">

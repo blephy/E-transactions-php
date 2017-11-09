@@ -24,13 +24,14 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
 	?>
 		<div class="entete">
+			<img src="//www.anapath.fr/wp-content/uploads/2017/06/logo-300px.png" alt="Logo Laboratoire Anapathologie Amiens">
 			<h1>Redirection en cours ...</h1>
 		</div>
-		<span class="loading"></span>
 		<div class="info">
 			<p>Vous allez automatiquement être redirigé sur le siteweb sécurisé de notre banque.</p>
 			<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo ($redirect_time/1000)+7; ?> secondes:</p>
 		</div>
+		<span class="loading"></span>
 		<?php include 'template/button-form-bank.php'; ?>
 	<?php
 	} else { // Il manque des variables importantes et nécessaires
