@@ -34,6 +34,9 @@ $client_dir_php = '/test/brique';
 // Repertoire contenant le fichier index.html de l'UI VueJs
 $client_dir_ui_js = '/test';
 
+// Chemin de votre Logo
+$client_file_logo = $client_url_server.'/wp-content/uploads/2017/06/logo-300px.png';
+
 // Nom des pages de communication dans le repertoire $client_dir_ui_js
 $page_effectue = 'effectue.php';
 $page_annule = 'annule.php';
@@ -54,8 +57,12 @@ $pbx_site = '1542364';
 $pbx_rang = '01';
 $pbx_identifiant = '651499961';
 
-// Email de contact si problème lors de la transaction
-$client_email = 'contact@anapath.fr';
+// Email de contact pour les patient si problème lors de la transaction
+$client_email_contact = 'contact@anapath.fr';
+
+// Email de notification IPN
+$client_email_ipn = 'dolle.allan@gmail.com';
+$client_email_ipn_from = 'webmaster@anapath.fr';
 
 // Variables demandées en retour à la banque (cf doc PBX_RETOUR)
 $client_prv_ddn = 'DDN';

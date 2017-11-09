@@ -1,10 +1,7 @@
 <?php
-include 'config/client.php';
-include 'config/e-transactions.php';
-include 'config/hmac.php';
-include 'utils/error-handler.php';
-include 'utils/functions.php';
-include 'utils/auth.php';
+include_once 'config/client.php';
+include_once 'utils/functions.php';
+include_once 'utils/auth.php';
 
 // Force HTTPS only if force_https = true (cf config/client.php)
 if ( $force_https ) { include 'utils/force-https.php'; }
@@ -31,7 +28,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
     if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) ) {
   ?>
       <div class="entete">
-        <img src="//www.anapath.fr/wp-content/uploads/2017/06/logo-300px.png" alt="Logo Laboratoire Anapathologie Amiens">
+        <img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens">
         <h1>Transaction refusée</h1>
       </div>
       <div class="info">
@@ -56,7 +53,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
     } else { // Il manque des variables importantes et nécessaires
         include 'template/query-missing.php';
     }
-  } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisé.
+  } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisée.
       include 'template/query-not-sign.php';
   } else { // Problème interne (dépendances, ouverture clé, etc ...)
       include 'template/query-sign-intern-error.php';

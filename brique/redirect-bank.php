@@ -1,9 +1,6 @@
 <?php
-include 'config/client.php';
-include 'config/e-transactions.php';
-include 'config/hmac.php';
-include 'vendor/Mobile_Detect.php';
-include 'utils/functions.php';
+include_once 'config/client.php';
+include_once 'utils/functions.php';
 
 // Force HTTPS only if force_https = true (cf config/client.php)
 if ( $force_https ) { include 'utils/force-https.php'; }
@@ -25,7 +22,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
 	?>
 		<div class="entete">
-			<img src="//www.anapath.fr/wp-content/uploads/2017/06/logo-300px.png" alt="Logo Laboratoire Anapathologie Amiens">
+			<img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens">
 			<h1>Redirection en cours ...</h1>
 		</div>
 		<div class="info">

@@ -1,4 +1,10 @@
 <?php
+include_once 'config/client.php';
+include_once 'config/e-transactions.php';
+include_once 'config/hmac.php';
+include_once 'vendor/Mobile_Detect.php';
+include_once 'utils/functions.php';
+
 $pbx_cmd = $_GET[$client_pbx_ref];
 $prv_query_email = $_GET[$client_prv_email];
 $prv_query_ddn = $_GET[$client_prv_ddn];
@@ -35,7 +41,7 @@ if ($debug) {
   // Choix de l'url de redirection si mobile ou desktop (pour responssivité)
   $detect = new Mobile_Detect;
   if ($debug) { echo 'Détection mobile ou tablet: '.$detect->isMobile(); }
-  $server_file = $detect->isMobile() ? $server_file_mobile : $server_file_desktop;
+  $server_file = $detect->isMobile() && !$detect->isTablet() ? $server_file_mobile : $server_file_desktop;
 
   // Construction de l'url à appeler
   $server_etransactions = $server_protocol.$env_server.$server_file;
