@@ -3,6 +3,7 @@ include 'config/client.php';
 include 'config/e-transactions.php';
 include 'config/hmac.php';
 include 'utils/error-handler.php';
+include 'vendor/Mobile_Detect.php';
 include 'utils/functions.php';
 include 'utils/auth.php';
 
