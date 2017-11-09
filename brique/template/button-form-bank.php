@@ -31,7 +31,14 @@ if ($debug) {
 
   // Choix du serveur e-transactions en fonction de l'environnement
   $env_server = $env_dev ? $server_preprod : $server_prod;
-  $server_etransactions = $server_protocol.$env_server.$server_file_desktop;
+
+  // Choix de l'url de redirection si mobile ou desktop (pour responssivité)
+  $detect = new Mobile_Detect;
+  if ($debug) { echo 'Détection mobile ou tablet: '.$detect->isMobile(); }
+  $server_file = $detect->isMobile() ? $server_file_mobile : $server_file_desktop;
+
+  // Construction de l'url à appeler
+  $server_etransactions = $server_protocol.$env_server.$server_file;
 
   // Construction de l'URI et du formulaire POST pour redirection sur la banque
   $dateTime = date("c");

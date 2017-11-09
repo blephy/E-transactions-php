@@ -1,8 +1,9 @@
 <?php
 include 'config/client.php';
 include 'config/e-transactions.php';
-include 'utils/functions.php';
 include 'config/hmac.php';
+include 'vendor/Mobile_Detect.php';
+include 'utils/functions.php';
 
 // Force HTTPS only if force_https = true (cf config/client.php)
 if ( $force_https ) { include 'utils/force-https.php'; }
