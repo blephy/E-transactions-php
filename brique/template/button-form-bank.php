@@ -22,7 +22,7 @@ $pbx_refuse .= $prv_query;
 $pbx_repondre_a .= $prv_query;
 
 // Traiement de la chaine montant en centimes, peut être désactivé (config/client.php)
-$pbx_total = $amount_processing && isPage($page_redirect) ? checkAmount($_GET[$client_pbx_montant]) : $_GET[$client_pbx_montant];
+$pbx_total = $amount_processing && isPage($page_redirect) ? amountToCentimes($_GET[$client_pbx_montant]) : $_GET[$client_pbx_montant];
 
 // Si on est en mode debug (config/client.php), afficher les variables
 if ($debug) {
@@ -38,7 +38,7 @@ if ($debug) {
   // Choix du serveur e-transactions en fonction de l'environnement
   $env_server = $env_dev ? $server_preprod : $server_prod;
 
-  // Choix de l'url de redirection si mobile ou desktop (pour responssivité)
+  // Choix de l'url de redirection si mobile ou desktop/tablet (pour responssivité)
   $detect = new Mobile_Detect;
   if ($debug) { echo 'Détection mobile ou tablet: '.$detect->isMobile(); }
   $server_file = $detect->isMobile() && !$detect->isTablet() ? $server_file_mobile : $server_file_desktop;

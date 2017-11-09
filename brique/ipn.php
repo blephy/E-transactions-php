@@ -14,6 +14,7 @@ if ( in_array($CLIENT_IP, $serveur_etransactions_ip) ) {
   http_response_code(200);
 } else {
   http_response_code(403);
+  sendNotifIPN('FILTER_IP');
   die('Forbidden');
 }
 
@@ -27,9 +28,9 @@ $IS_AUTH_REQUEST = IsAuthRequest('pbx');
 
 $response = array();
 
-if ( $IS_AUTH_REQUEST ) {
+if ( $IS_AUTH_REQUEST === 1) {
   // Envoie de la requete sur l'API
-  if ( isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) ) {
+  if ( isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) && isset($_GET[$client_pbx_ref]) ) {
     $response[$client_prv_email] = verifBeforeGetQuery($client_prv_email);
     $response[$client_prv_ddn] = verifBeforeGetQuery($client_prv_ddn);
     $response[$client_pbx_ref] = verifBeforeGetQuery($client_pbx_ref);
@@ -51,20 +52,20 @@ if ( $IS_AUTH_REQUEST ) {
     }
 
     // Send mail
-    sendNotifIPN("Auth OK", $response_json);
+    sendNotifIPN('AUTH_OK', $response_json);
 
   } else {
     // EMAIL et/ou DDN non présent, il faut donc absolument vérifier les LOG sur votre interface e-transactions !
     // Send mail
-    mail('dolle.allan@gmail.com','Auth OK - DDN ou EMAIL Absent',"QUERY: ".$_SERVER['QUERY_STRING']."\r\nIP: ".$_SERVER['REMOTE_ADDR']);
+    sendNotifIPN('QUERY_FAIL');
   }
 } else if ( $IS_AUTH_REQUEST === 0 ) {
   // Variables modifiées ou pubkey changée ou message ne venant pas directement de e-transactions
   // Send mail
-  mail('dolle.allan@gmail.com','Auth FAIL',"QUERY: ".$_SERVER['QUERY_STRING']."\r\nIP: ".$_SERVER['REMOTE_ADDR']);
+  sendNotifIPN('AUTH_FAIL');
 } else {
   // Problème interne de décodage
   // Send mail
-  mail('dolle.allan@gmail.com','Auth INTERN ERROR',"QUERY: ".$_SERVER['QUERY_STRING']."\r\nIP: ".$_SERVER['REMOTE_ADDR']);
+  sendNotifIPN('CRITIQUE');
 }
 ?>
