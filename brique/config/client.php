@@ -65,6 +65,9 @@ $client_email_ipn_to = 'dolle.allan@gmail.com';
 $client_email_master = 'dolle.allan@gmail.com';
 $client_email_ipn_from = 'webmaster@anapath.fr';
 
+// url de l'API retour
+$client_url_api = 'http://resultats.anapath.fr/post';
+
 // Variables demandées en retour à la banque (cf doc PBX_RETOUR)
 $client_prv_ddn = 'DDN';
 $client_prv_email = 'EMAIL';

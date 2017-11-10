@@ -7,6 +7,7 @@ include_once 'utils/auth.php';
 include_once 'utils/functions.php';
 include_once 'utils/error-handler.php';
 include_once 'utils/notif-ipn.php';
+include_once 'utils/curl.php';
 
 // Restreindre l'accès à l'IPN par IP (cf config/e-transactions.php)
 $CLIENT_IP = $_SERVER['REMOTE_ADDR'];
@@ -56,11 +57,16 @@ if ( $IS_AUTH_REQUEST === 1 ) {
       echo 'Requete format Json: '.$response_json.'\n';
     }
 
-    // Send mail
-    sendNotifIPN('AUTH_OK', $response_json);
-
+    // Send json data to API
+    try {
+      curl_post($client_url_api, $response_json);
+      sendNotifIPN('AUTH_OK', $response_json);
+    } catch(Exception $e) {
+      sendNotifIPN('ERR_CURL', $e);
+    }
   } else {
-    // EMAIL et/ou DDN non présent, il faut donc absolument vérifier les LOG sur votre interface e-transactions !
+    // EMAIL ou DDN ou REF ou MONTANT non présent
+    // il faut donc absolument vérifier les LOG sur votre interface e-transactions !
     // Send mail
     sendNotifIPN('QUERY_FAIL');
   }

@@ -110,6 +110,17 @@ function sendNotifIPN($case, $message_json) {
                  "et de lui fournir cette information supplémentaire (query string):".$new_line.
                  $qs;
       break;
+    case 'ERR_CURL':
+      $sujet = "!! ERR TRANSFERT !! Erreur de communication serveur";
+      $message = "Le server appelant ".$ip." a bien communiqué avec vos serveurs".$new_line.
+                 "et la requète à bien été authentifié.".$new_line.$new_line.
+                 "Mais une erreur de transfert CURL est survenue avec l'API SOTRAIG".$new_line.
+                 "Merci d'en informer votre responsable informatique: ".$client_email_master.$new_line.
+                 "et de lui fournir ces informations supplémentaires (query string):".$new_line.
+                 $qs.$new_line.$new_line.
+                 "erreur:".$new_line.
+                 $message_json;
+      break;
   }
   return mail($client_email_ipn_to, $sujet, $message, $headers);
 }
