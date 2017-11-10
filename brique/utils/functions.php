@@ -58,7 +58,7 @@ function verifBeforePrintOut($query, $class = '') {
         return '<p class="'.$class.'">Montant de la transaction: '.$temp.'€</p>';
         break;
       case $client_pbx_ref:
-        return '<p class="'.$class.'">Référence de la facture: '.$temp.'</p>';
+        return '<p class="'.$class.'">Référence examen: '.$temp.'</p>';
         break;
       case $client_prv_email:
         return '<p class="'.$class.'">Email renseigné: '.$temp.'</p>';

@@ -1,11 +1,13 @@
-# Exemple Intégration Paiement E-transactions
-Exemple d'un développement custom de l'intégration d'un système de paiement en ligne entre commercant et e-transactions, la solution de paiement en ligne du Crédit Agricole.
+# Intégration Paiement E-transactions
+Projet concernant l'intégration d'un système de paiement en ligne entre commercant et e-transactions, la solution de paiement en ligne du Crédit Agricole.
 
-Repo du [Centre de Pathologie Haut de France](https://www.anapath.fr).
-Voir aussi la [documentation E-transactions officielle](https://www.e-transactions.fr/pages/global.php?page=telechargement)
+Projet du [Centre de Pathologie Haut de France](https://www.anapath.fr).
+Voir aussi la [documentation E-transactions officielle](https://www.e-transactions.fr/pages/global.php?page=telechargement).
 
-L'interface utilisateur est développée avec VueJS, permet de faire des requètes HTTP sur une API qui vous renvoie le montant de la facture en fonction des variables envoyées (ici la date de naissance du patient et la référence de la facture). (Dossier /src)
-La gestion de la communication avec e-transactions est gérée en PHP ([dossier brique/](brique/))
+Sans autorisation écrite de la part du [Centre de Pathologie Haut de France](https://www.anapath.fr), vous n'êtes aucunement en droit d'utiliser, reproduire, commercialiser, ou modifier ce projet.
+
+L'interface utilisateur est développée avec VueJS, permet de faire des requètes HTTP sur une API qui vous renvoie le montant de la facture en fonction des variables envoyées (ici la date de naissance du patient et la référence de l'examen') ([dossier /src](src/)).
+La gestion de la communication avec e-transactions est gérée en PHP ([dossier brique/](brique/)).
 
 ## Installation & build de l'interface utilisateur VueJS
 

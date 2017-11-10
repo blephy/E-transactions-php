@@ -36,7 +36,7 @@ function sendNotifIPN($case, $message_json) {
                  "---------------------------------------------------------------------------".$new_line.
                  "Email client: ".$message_obj->$client_prv_email.$new_line.
                  "Date de naissance: ".$message_obj->$client_prv_ddn.$new_line.
-                 "Référence facture: ".$message_obj->$client_pbx_ref.$new_line.
+                 "Référence examen: ".$message_obj->$client_pbx_ref.$new_line.
                  "Montant facture: ".$message_obj->$client_pbx_montant." €".$new_line.
                  "Date transaction: ".$message_obj->$client_pbx_date.$new_line.
                  "Heure transaction: ".$message_obj->$client_pbx_heure.$new_line.
