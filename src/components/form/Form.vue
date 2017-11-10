@@ -8,7 +8,6 @@
         v-model="patientMail"
         type="text"
         name="patientMail"
-        v-bind:value="patientMail"
         placeholder="dupont@gmail.com"
         v-bind:class="{ shadowred: errorMail }">
         <input
@@ -26,7 +25,6 @@
         v-model="patientDDN"
         type="text"
         name="patientDDN"
-        v-bind:value="patientDDN"
         placeholder="31/12/1990"
         v-bind:class="{ shadowred: errorDDN }">
         <input
@@ -44,7 +42,6 @@
         v-model="folderRef"
         type="text"
         name="folderRef"
-        v-bind:value="folderRef"
         placeholder="X18/65432"
         v-bind:class="{ shadowred: errorRef }">
         <input
