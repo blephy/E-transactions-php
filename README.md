@@ -38,3 +38,5 @@ Configuration des url d'appels e-transactions
 
 Configuraton de vos clé HMAC (Production et Pré-Production)
 > [brique/config/hmac.php](brique/config/hmac.php)
+
+Pour faire fonctionner la gestion interface client <-> e-transactions, vous aurez besoin de faire tourner un serveur HTTP, comme [Nginx](https://nginx.org/en/) ou [Apache](https://httpd.apache.org/) configurer pour executer PHP 7+.

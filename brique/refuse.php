@@ -22,7 +22,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
   // Vérification RSA de la requète - Securité !
   $IS_AUTH_REQUEST = IsAuthRequest('all');
 
-  if ( $IS_AUTH_REQUEST === 1) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
+  if ( $IS_AUTH_REQUEST === 1 ) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
 
     // Si toutes les variables necessaires existent
     if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) ) {
