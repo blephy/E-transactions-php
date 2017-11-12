@@ -34,6 +34,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	<?php
 	} else { // Il manque des variables importantes et nécessaires
  			include 'template/query-missing.php';
+			customLog('Variables manquantes dans la query string.');
 	}
 	?>
 </body>

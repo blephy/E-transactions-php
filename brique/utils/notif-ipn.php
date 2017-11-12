@@ -1,5 +1,5 @@
 <?php
-function sendNotifIPN($case, $message_json) {
+function sendNotifIPN($case, $message_json = NULL) {
   global $client_email_contact,
          $client_email_ipn_to,
          $client_email_ipn_from,

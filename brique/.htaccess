@@ -1,3 +1,5 @@
+Options All -Indexes
+
 # Redirect HTTPS
 #<IfModule mod_rewrite.c>
 #RewriteEngine on
@@ -12,13 +14,19 @@ Deny from all
 </files>
 
 # Limiter l'appel de l'IPN (ipn.php) aux server d'e-transactions
-<files ipn.php>
+#<files ipn.php>
+#Order Deny,Allow
+#Deny from all
+# Allow e-transactions ip server
+#Allow from 194.2.122.158
+#Allow from 194.2.122.190
+#Allow from 195.101.99.76
+#Allow from 195.25.67.22
+#Allow from 195.25.7.166
+#</files>
+
+# Sécuriser les fichiers .log
+<files *.log>
 Order Deny,Allow
 Deny from all
-# Allow e-transactions ip server
-Allow from 194.2.122.158
-Allow from 194.2.122.190
-Allow from 195.101.99.76
-Allow from 195.25.67.22
-Allow from 195.25.7.166
 </files>

@@ -52,11 +52,14 @@ if ( $force_https ) { include 'utils/force-https.php'; }
     <?php
     } else { // Il manque des variables importantes et nécessaires
         include 'template/query-missing.php';
+        customLog('Variables manquantes dans la query string.');
     }
   } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisée.
       include 'template/query-not-sign.php';
+      customLog('Query string non signée.');
   } else { // Problème interne (dépendances, ouverture clé, etc ...)
       include 'template/query-sign-intern-error.php';
+      customLog('Problème interne de décodage signature.');
   }
   ?>
 </body>

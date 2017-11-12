@@ -110,4 +110,14 @@ function getUrlPath() {
 function isPage($page) {
   return strpos(getUrlPath(), $page);
 }
+
+function customLog($message, $message_type = 3) {
+  $ip = "IP: ".$_SERVER['REMOTE_ADDR'];
+  $qs = "Query: ".$_SERVER['QUERY_STRING'];
+  $cp = "File: ".getUrlPath();
+  $date = date("d/m/Y G:i:s");
+  $new_line = " \r\n";
+  $log = $date." -> ".$ip." -> ".$qs." -> ".$cp." -> ".$message.$new_line;
+  return error_log($log, 3, "log-server.log");
+}
 ?>
