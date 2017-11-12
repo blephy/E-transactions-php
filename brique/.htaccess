@@ -1,5 +1,3 @@
-Options All -Indexes
-
 # Redirect HTTPS
 #<IfModule mod_rewrite.c>
 #RewriteEngine on
@@ -25,8 +23,9 @@ Deny from all
 #Allow from 195.25.7.166
 #</files>
 
-# Sécuriser les fichiers .log
-<files *.log>
+# Sécuriser le fichiers .log
+<files log-server.log>
 Order Deny,Allow
 Deny from all
 </files>
+Options All -Indexes
