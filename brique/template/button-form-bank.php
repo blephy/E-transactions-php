@@ -87,6 +87,11 @@ if ($debug) {
   } else {
     echo 'Retour au paiement';
   }
+?>"
+class="<?php
+  if ( isPage($page_redirect) ) {
+    echo 'appear';
+  }
 ?>">
 </form>
 <?php if (!$debug && isPage($page_redirect)) { include 'assets/auto-redirect.js.php';} ?>

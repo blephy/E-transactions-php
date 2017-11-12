@@ -108,7 +108,7 @@ input[type="submit"], button {
 	box-shadow: 0px 0px 7px 2px rgba(0, 255, 255, 0.2);
 }
 
-input[type="submit"] {
+.appear {
   opacity: 0;
   animation: appear 0.5s 4s forwards ease-out;
 }
