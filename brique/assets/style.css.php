@@ -66,12 +66,12 @@ p {
 }
 span.loading {
 	display: block;
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	background-color: transparent;
-	border: 4px green solid;
+	border: 2px #383a6d solid;
 	border-radius: 50%;
-	margin: 50px auto 50px auto;
+	margin: 20px auto 20px auto;
 	animation: load 0.6s infinite alternate;
 }
 #form {
@@ -80,6 +80,15 @@ span.loading {
 }
 .inline {
 	display: inline;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 input[type="submit"], button {
 	cursor: pointer;
@@ -97,6 +106,11 @@ input[type="submit"], button {
 	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 40px;
 	box-shadow: 0px 0px 7px 2px rgba(0, 255, 255, 0.2);
+}
+
+input[type="submit"] {
+  opacity: 0;
+  animation: appear 0.5s 4s forwards ease-out;
 }
 
 input[type="submit"]:hover, button:hover {
