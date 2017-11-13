@@ -71,7 +71,7 @@ export default {
     }
     if (DDN_REG_EXP.test(payload.ddn)) {
       console.log('Input patientDDN is Valid !');
-      commit(VALID_FORM_DDN, payload.ddn);
+      commit(VALID_FORM_DDN, payload.ddn.match(DDN_REG_EXP)[0]);
     } else {
       console.log('Input patientDDN is Invalid !');
       commit(INVALID_FORM_DDN);

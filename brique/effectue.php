@@ -10,7 +10,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Paiement accepté | Centre de Pathologie</title>
+  <title>Règlement accepté | Centre de Pathologie</title>
   <meta name="description" content="Votre paiement a été accepté !">
   <meta name="robots" content="noindex, nofollow, noodp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,10 +28,11 @@ if ( $force_https ) { include 'utils/force-https.php'; }
     if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
   ?>
       <div class="entete">
-        <img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens">
+        <a href="//www.anapath.fr" title="retour sur le site du Centre de Pathologie Haut de France"><img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens"></a>
         <h1>Transaction effectuée avec succès</h1>
       </div>
       <div class="info">
+        <p class="alert" style="font-size: 20px;"><strong>Vous recevrez prochainement la feuille de soins ou la facture acquittée pour obtenir le remboursement de ces frais.</strong></p>
         <?php
           echo verifBeforePrintOut($client_prv_email);
           echo verifBeforePrintOut($client_prv_ddn);

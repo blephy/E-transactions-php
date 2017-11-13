@@ -1,8 +1,8 @@
 <template>
   <section class="form">
-    <form class="flex-vertical">
+    <form class="flex-vertical" autocomplete="nope">
       <div>
-        <span>E-mail:</span><br />
+        <span>E-mail :</span><br />
         <input
         v-if="!placeHolderMail"
         v-model="patientMail"
@@ -19,7 +19,7 @@
         v-bind:class="{ shadowred: errorMail }">
       </div>
       <div>
-        <span>Date de naissance:</span><br />
+        <span>Date de naissance :</span><br />
         <input
         v-if="!placeHolderDDN"
         v-model="patientDDN"
@@ -36,7 +36,7 @@
         v-bind:class="{ shadowred: errorDDN }">
       </div>
       <div>
-        <span>Numéro d'Examen:</span><br />
+        <span>Numéro d'examen :</span><br />
         <input
         v-if="!placeHolderRef"
         v-model="folderRef"

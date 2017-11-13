@@ -16,9 +16,11 @@
   font-size: 1.3rem;
 
   p {
+    box-sizing: border-box;
     text-align: center;
     line-height: normal;
     word-spacing: 2px;
+    padding: 0 10px;
 
     .pop {
       font-size: 1.4rem;

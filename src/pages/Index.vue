@@ -29,15 +29,15 @@ export default {
     ResultAnapath,
   },
   metaInfo: {
-    title: 'Paiement en ligne de votre examen médical | Centre de Pathologie Amiens',
+    title: 'Paiement en ligne de votre examen médical | Centre de Pathologie des Hauts-de-France',
     link: [
-      { rel: 'canonical', href: 'https://anapath.fr/paiement-examen-en-ligne/' },
+      { rel: 'canonical', href: 'https://anapath.fr/reglement-examen' },
       { rel: 'icon', type: 'image/png', href: '/test/static/favicon-anapath-amiens.png' },
     ],
     meta: [
       { name: 'robots', content: 'index, follow, noodp' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: 'Payer en ligne votre examen d\'anapathologie effectué au laboratoire d\'Amiens. Paiement sécurisé' },
+      { name: 'description', content: 'Régler en ligne votre examen d\'anapathologie effectué au Centre de Pathologie d\'Amiens des Hauts-de-France. Paiement sécurisé' },
       { charset: 'utf-8' },
     ],
   },

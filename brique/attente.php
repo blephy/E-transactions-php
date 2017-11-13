@@ -10,7 +10,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Paiement en attente | Centre de Pathologie</title>
+  <title>Règlement en attente | Centre de Pathologie</title>
   <meta name="description" content="Votre paiement est en attente !">
   <meta name="robots" content="noindex, nofollow, noodp">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,7 +28,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
     if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
   ?>
       <div class="entete">
-        <img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens">
+        <a href="//www.anapath.fr" title="retour sur le site du Centre de Pathologie Haut de France"><img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens"></a>
         <h1>Transaction en attente</h1>
       </div>
       <div class="info">
