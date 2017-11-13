@@ -47,7 +47,7 @@ function sendNotifIPN($case, $message_json = NULL) {
                  "Code retour : ".$message_obj->$client_pbx_error.$new_line.
                  "Traduction code retour : ".$message_obj->$client_prv_error_trad.$new_line.
                  "Numéro d'autorisation bancaire : ".$message_obj->$client_pbx_autorisation.$new_line.
-                 "IP du server appelant : ".$ip.$new_line.$new_line.
+                 "IP du serveur appelant : ".$ip.$new_line.$new_line.
                  "---------------------------------------------------------------------------".$new_line.
                  "Informations utiles pour la compréhension :".$new_line.
                  $tabulation."- Cas d'un paiement effectué :".$new_line.
@@ -80,13 +80,13 @@ function sendNotifIPN($case, $message_json = NULL) {
     case 'AUTH_FAIL':
       $sujet = "!! URGENT !! Clé publique probablement obselète";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
-      $message = "Le server appelant ".$ip." a été autorisé avec succès mais la signature".$new_line.
+      $message = "Le serveur appelant ".$ip." a été autorisé avec succès mais la signature".$new_line.
                  "de la requête n'est pas authentifiée !".$new_line.$new_line.
                  "Ceci est forcément du à un changement de la clé publique d'e-transactions".$new_line.
                  "ou alors d'un problème d'e-transaction dans l'envoie des données.".$new_line.$new_line.
                  "Appelez e-transactions au 0810 812 810 pour leur faire part de l'erreur.".$new_line.
                  "Avertissez votre responsable informatique car une transaction client acceptée".$new_line.
-                 "par la banque n'a peut-être pas pu être enregistrée sur vos server locaux.".$new_line.$new_line.
+                 "par la banque n'a peut-être pas pu être enregistrée sur vos serveur locaux.".$new_line.$new_line.
                  "Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
                  "et de lui fournir cette information supplémentaire (query string) :".$new_line.
                  $qs;
@@ -94,10 +94,10 @@ function sendNotifIPN($case, $message_json = NULL) {
     case 'CRITIQUE':
       $sujet = "!! CRITIQUE !! Problème interne de décodage signature";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
-      $message = "Le server appelant ".$ip." a été autorisé avec succès mais la signature".$new_line.
-                 "de la requête n'a pas pu être vérifié en raison d'un problème interne !".$new_line.$new_line.
+      $message = "Le serveur appelant ".$ip." a été autorisé avec succès mais la signature".$new_line.
+                 "de la requête n'a pas pu être vérifiée en raison d'un problème interne !".$new_line.$new_line.
                  "Cela peut-être du à un problème de votre hébergeur, un problème unique et temporaire".$new_line.
-                 "de surcharge du server ou encore d'une dépendance PHP défaillante.".$new_line.$new_line.
+                 "de surcharge du serveur ou encore d'une dépendance PHP défaillante.".$new_line.$new_line.
                  "Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
                  "et de lui fournir cette information supplémentaire (query string) :".$new_line.
                  $qs;
@@ -105,7 +105,7 @@ function sendNotifIPN($case, $message_json = NULL) {
     case 'FILTER_IP':
       $sujet = "!! FRAUDE !! Changement IP e-transactions ou fraude potentielle";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
-      $message = "Le server appelant ".$ip." a essayé de communiquer avec vos serveurs".$new_line.
+      $message = "Le serveur appelant ".$ip." a essayé de communiquer avec vos serveurs".$new_line.
                  "mais il ne fait pas partie des IP restreintes d'e-transactions.".$new_line.$new_line.
                  "Soit les serveurs d'e-transactions ont de nouvelles IP, il faut donc".$new_line.
                  "mettre à jour le code source avec les nouvelles adresse IP d'e-transactions :".$new_line.
@@ -118,8 +118,8 @@ function sendNotifIPN($case, $message_json = NULL) {
     case 'ERR_CURL':
       $sujet = "!! ERR TRANSFERT !! Erreur de communication serveur";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
-      $message = "Le server appelant ".$ip." a bien communiqué avec vos serveurs".$new_line.
-                 "et la requête à bien été authentifié.".$new_line.$new_line.
+      $message = "Le serveur appelant ".$ip." a bien communiqué avec vos serveurs".$new_line.
+                 "et la requête à bien été authentifiée.".$new_line.$new_line.
                  "Mais une erreur de transfert CURL est survenue avec l'API SOTRAIG".$new_line.
                  "Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
                  "et de lui fournir ces informations supplémentaires (query string) :".$new_line.
