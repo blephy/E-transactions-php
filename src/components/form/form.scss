@@ -51,3 +51,6 @@
     }
   }
 }
+.no-autofill::-webkit-credentials-auto-fill-button {
+     visibility: hidden;
+}

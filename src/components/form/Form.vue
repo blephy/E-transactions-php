@@ -1,6 +1,6 @@
 <template>
   <section class="form">
-    <form class="flex-vertical" autocomplete="nope">
+    <form class="flex-vertical no-autofill" autocomplete="off">
       <div>
         <span>E-mail :</span><br />
         <input
@@ -8,6 +8,7 @@
         v-model="patientMail"
         type="text"
         name="patientMail"
+        autocomplete="off"
         placeholder="dupont@gmail.com"
         v-bind:class="{ shadowred: errorMail }">
         <input
@@ -15,6 +16,7 @@
         v-model="patientMail"
         type="text"
         name="patientMail"
+        autocomplete="off"
         v-bind:placeholder="placeHolderMail"
         v-bind:class="{ shadowred: errorMail }">
       </div>
@@ -25,6 +27,7 @@
         v-model="patientDDN"
         type="text"
         name="patientDDN"
+        autocomplete="off"
         placeholder="31/12/1990"
         v-bind:class="{ shadowred: errorDDN }">
         <input
@@ -32,6 +35,7 @@
         v-model="patientDDN"
         type="text"
         name="patientDDN"
+        autocomplete="off"
         v-bind:placeholder="placeHolderDDN"
         v-bind:class="{ shadowred: errorDDN }">
       </div>
@@ -42,6 +46,7 @@
         v-model="folderRef"
         type="text"
         name="folderRef"
+        autocomplete="off"
         placeholder="X18/65432"
         v-bind:class="{ shadowred: errorRef }">
         <input
@@ -49,6 +54,7 @@
         v-model="folderRef"
         type="text"
         name="folderRef"
+        autocomplete="off"
         v-bind:placeholder="placeHolderRef"
         v-bind:class="{ shadowred: errorRef }">
       </div>
