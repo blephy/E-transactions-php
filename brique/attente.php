@@ -28,7 +28,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
     if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
   ?>
       <div class="entete">
-        <a href="//www.anapath.fr" title="retour sur le site du Centre de Pathologie Haut de France"><img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens"></a>
+        <a href="<?php echo $client_url_server ?>" title="retour sur le site du Centre de Pathologie Haut de France"><img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens"></a>
         <h1>Transaction en attente</h1>
       </div>
       <div class="info">

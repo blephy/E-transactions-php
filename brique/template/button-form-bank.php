@@ -85,7 +85,7 @@ if ($debug) {
   if ( isPage($page_redirect) ) {
     echo 'Réessayer';
   } else {
-    echo 'Retour au paiement';
+    echo 'Retour au règlement';
   }
 ?>"
 class="<?php

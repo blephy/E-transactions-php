@@ -28,7 +28,7 @@ $client_protocol = 'http://';
 // URL du serveur client
 $client_url_server = $client_protocol.'www.anapath.fr';
 
-// Repertoire commun des fichiers .php de retour
+// Repertoire commun des fichiers .php de retour (PROD = reglement-examen)
 $client_dir_php = '/test/brique';
 
 // Repertoire contenant le fichier index.html de l'UI VueJs
@@ -53,9 +53,9 @@ $pbx_attente = $client_url_server.$client_dir_php.'/'.$page_attente;
 $pbx_repondre_a = $client_url_server.$client_dir_php.'/'.$page_retour_ipn;
 
 // Informations propre à l'abonnement e-transactions du client
-$pbx_site = '1542364';
-$pbx_rang = '01';
-$pbx_identifiant = '651499961';
+$pbx_site = '';
+$pbx_rang = '';
+$pbx_identifiant = '';
 
 // Email de contact pour les patient si problème lors de la transaction
 $client_email_contact = 'contact@anapath.fr';
