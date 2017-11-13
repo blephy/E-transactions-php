@@ -24,7 +24,7 @@ function sendNotifIPN($case, $message_json = NULL) {
  $qs = $_SERVER['QUERY_STRING'];
  $headers = "From: Retour Bancaire IPN <".$client_email_ipn_from.">".$new_line.
             "Return-Path: ".$client_email_contact.$new_line.
-            "Reply-To: ".$client_email_ipn_from.$new_line.
+            "Reply-To: ".$client_email_master.$new_line.
             "Date: ".$date.$new_line.
             "X-Mailer: PHP/".phpversion();
 
