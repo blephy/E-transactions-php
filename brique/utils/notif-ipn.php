@@ -66,12 +66,12 @@ function sendNotifIPN($case, $message_json = NULL) {
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
       $message = "Un problème nécessitant des investigations vient d'arriver :".$new_line.$new_line.
                  "La transaction a été envoyée par l'IP autorisée suivante : ".$ip.$new_line.
-                 "La signature de la requète est bien signée, mais il manque des variables :".$new_line.
+                 "La signature de la requête est bien signée, mais il manque des variables :".$new_line.
                  $tabulation."- Soit le montant de la transaction".$new_line.
                  $tabulation."- Soit la référence de la transaction".$new_line.
                  $tabulation."- Soit la date de naissance".$new_line.
                  $tabulation."- Soit l'adresse email du patient".$new_line.$new_line.
-                 "Ce qui n'est pas normal, car une requète signée ne peux théoriquement pas".$new_line.
+                 "Ce qui n'est pas normal, car une requête signée ne peux théoriquement pas".$new_line.
                  "ne pas contenir toutes les variables.".$new_line.$newline.
                  "Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
                  "et de lui fournir cette information supplémentaire (query string) :".$new_line.
@@ -81,7 +81,7 @@ function sendNotifIPN($case, $message_json = NULL) {
       $sujet = "!! URGENT !! Clé publique probablement obselète";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
       $message = "Le server appelant ".$ip." a été autorisé avec succès mais la signature".$new_line.
-                 "de la requète n'est pas authentifiée !".$new_line.$new_line.
+                 "de la requête n'est pas authentifiée !".$new_line.$new_line.
                  "Ceci est forcément du à un changement de la clé publique d'e-transactions".$new_line.
                  "ou alors d'un problème d'e-transaction dans l'envoie des données.".$new_line.$new_line.
                  "Appelez e-transactions au 0810 812 810 pour leur faire part de l'erreur.".$new_line.
@@ -95,7 +95,7 @@ function sendNotifIPN($case, $message_json = NULL) {
       $sujet = "!! CRITIQUE !! Problème interne de décodage signature";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
       $message = "Le server appelant ".$ip." a été autorisé avec succès mais la signature".$new_line.
-                 "de la requète n'a pas pu être vérifié en raison d'un problème interne !".$new_line.$new_line.
+                 "de la requête n'a pas pu être vérifié en raison d'un problème interne !".$new_line.$new_line.
                  "Cela peut-être du à un problème de votre hébergeur, un problème unique et temporaire".$new_line.
                  "de surcharge du server ou encore d'une dépendance PHP défaillante.".$new_line.$new_line.
                  "Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
@@ -119,7 +119,7 @@ function sendNotifIPN($case, $message_json = NULL) {
       $sujet = "!! ERR TRANSFERT !! Erreur de communication serveur";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
       $message = "Le server appelant ".$ip." a bien communiqué avec vos serveurs".$new_line.
-                 "et la requète à bien été authentifié.".$new_line.$new_line.
+                 "et la requête à bien été authentifié.".$new_line.$new_line.
                  "Mais une erreur de transfert CURL est survenue avec l'API SOTRAIG".$new_line.
                  "Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
                  "et de lui fournir ces informations supplémentaires (query string) :".$new_line.
