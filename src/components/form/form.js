@@ -46,8 +46,8 @@ export default {
             ref: this.$store.state.invoice.ref,
             ddn: this.$store.state.invoice.ddn,
           }
-          this.$store.dispatch('searchInvoice', dataInvoice);
-          // this.$store.commit(SEARCH_INVOICE_SUCCESS_FOUND, dataInvoice);
+          // this.$store.dispatch('searchInvoice', dataInvoice);
+          this.$store.commit(SEARCH_INVOICE_SUCCESS_FOUND, dataInvoice);
         }
         $('html, body').animate({
           scrollTop: $('#res').offset().top - 50,

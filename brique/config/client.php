@@ -9,7 +9,7 @@ $debug = false;
 $force_https = false;
 
 // Temps en millisecondes necessaire avant redirection automatique en JS
-$redirect_time = 3500;
+$redirect_time = 4000;
 
 // Production ou Pre-prod (dev) environnement
 // true = pre-prod environnement
@@ -61,7 +61,7 @@ $pbx_identifiant = '651499961';
 $client_email_contact = 'contact@anapath.fr';
 
 // Email de notification IPN
-$client_email_ipn_to = 'dolle.allan@gmail.com';
+$client_email_ipn_to = 'compta@anapath.fr, dolle.allan@gmail.com';
 $client_email_master = 'dolle.allan@gmail.com';
 $client_email_ipn_from = 'webmaster@anapath.fr';
 

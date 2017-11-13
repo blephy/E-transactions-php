@@ -110,7 +110,7 @@ input[type="submit"], button {
 
 .appear {
   opacity: 0;
-  animation: appear 0.5s 4s forwards ease-out;
+  animation: appear 0.5s 4.5s forwards ease-out;
 }
 
 input[type="submit"]:hover, button:hover {

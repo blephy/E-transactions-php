@@ -27,7 +27,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 		</div>
 		<div class="info">
 			<p>Vous allez automatiquement être redirigé sur le siteweb sécurisé de notre banque.</p>
-			<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo ($redirect_time/1000)+2; ?> secondes :</p>
+			<p>Cliquez sur <strong>Réessayer</strong> en cas de non redirection automatique après <?php echo ($redirect_time/1000)+1; ?> secondes :</p>
 		</div>
 		<span class="loading"></span>
 		<?php include 'template/button-form-bank.php'; ?>
