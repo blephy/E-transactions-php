@@ -71,14 +71,14 @@ export default {
     }
     if (DDN_REG_EXP.test(payload.ddn)) {
       console.log('Input patientDDN is Valid !');
-      commit(VALID_FORM_DDN, payload.ddn.match(DDN_REG_EXP)[0]);
+      commit(VALID_FORM_DDN, payload.ddn.replace(/[.-]/gi, '/'));
     } else {
       console.log('Input patientDDN is Invalid !');
       commit(INVALID_FORM_DDN);
     }
     if (REF_REG_EXP.test(payload.ref)) {
       console.log('Input invoiceRef is Valid !');
-      commit(VALID_FORM_REF, payload.ref.match(REF_REG_EXP)[0]);
+      commit(VALID_FORM_REF, payload.ref.replace(/[.-]/gi, '/').toUpperCase());
     } else {
       console.log('Input invoiceRef is Invalid !');
       commit(INVALID_FORM_REF);
