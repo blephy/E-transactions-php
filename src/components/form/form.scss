@@ -84,7 +84,7 @@
         background-color: white;
         box-sizing: border-box;
         border: 1px dotted white;
-        z-index: inherit; // Mobile compatibility
+        z-index: auto; // Mobile compatibility
 
         &::after {
           content: "?";
