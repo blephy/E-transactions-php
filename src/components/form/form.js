@@ -53,6 +53,10 @@ export default {
           scrollTop: $('#res').offset().top - 50,
         }, 800, 'swing');
       });
+    },
+    showInfo(event) {
+      $(event.target).toggleClass('selected');
+      $(event.target).prev().toggle();
     }
   }
 };

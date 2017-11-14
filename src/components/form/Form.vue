@@ -2,7 +2,10 @@
   <section class="form">
     <form class="flex-vertical no-autofill" autocomplete="off">
       <div>
-        <span>E-mail :</span><br />
+        <p>E-mail :
+          <span class="content">Votre adresse e-mail est <strong>nécessaire pour recevoir la notification bancaire de règlement</strong>.</span>
+          <span class="infobulle" @click.prevent="showInfo"></span>
+        </p>
         <input
         v-if="!placeHolderMail"
         v-model="patientMail"
@@ -21,7 +24,10 @@
         v-bind:class="{ shadowred: errorMail }">
       </div>
       <div>
-        <span>Date de naissance :</span><br />
+        <p>Date de naissance :
+          <span class="content">Entrez la <strong>date de naissance du patient concerné par l'examen</strong>. S'il s'agit de l'examen de votre enfant, entrez sa date de naissance et non la votre.</span>
+          <span class="infobulle" @click.prevent="showInfo"></span>
+        </p>
         <input
         v-if="!placeHolderDDN"
         v-model="patientDDN"
@@ -40,7 +46,10 @@
         v-bind:class="{ shadowred: errorDDN }">
       </div>
       <div>
-        <span>Numéro d'examen :</span><br />
+        <p>Numéro d'examen :
+          <span class="content">Entrez le numéro d'examen figurant sur votre note d'honoraires. Il ressemble à <strong>X18/28390</strong>.</span>
+          <span class="infobulle" @click.prevent="showInfo"></span>
+        </p>
         <input
         v-if="!placeHolderRef"
         v-model="folderRef"
