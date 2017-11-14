@@ -84,6 +84,7 @@
         background-color: white;
         box-sizing: border-box;
         border: 1px dotted white;
+        z-index: inherit; // Mobile compatibility
 
         &::after {
           content: "?";
@@ -104,7 +105,7 @@
 
       .selected {
         background-color: #383a6d;
-        z-index: 400;
+        z-index: 400 !important; // Mobile compatibility
 
         &::after {
           content: "X";

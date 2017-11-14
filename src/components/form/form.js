@@ -56,6 +56,7 @@ export default {
     },
     showInfo(event) {
       $(event.target).toggleClass('selected');
+      $(event.target).css('z-index', '400'); // Mobile Fallback compatibility
       $(event.target).prev().toggle();
     }
   }
