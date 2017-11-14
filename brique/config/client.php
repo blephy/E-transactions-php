@@ -9,7 +9,7 @@ $debug = false;
 $force_https = false;
 
 // Temps en millisecondes necessaire avant redirection automatique en JS
-$redirect_time = 4000;
+$redirect_time = 2500;
 
 // Production ou Pre-prod (dev) environnement
 // true = pre-prod environnement
@@ -53,9 +53,9 @@ $pbx_attente = $client_url_server.$client_dir_php.'/'.$page_attente;
 $pbx_repondre_a = $client_url_server.$client_dir_php.'/'.$page_retour_ipn;
 
 // Informations propre à l'abonnement e-transactions du client
-$pbx_site = '';
-$pbx_rang = '';
-$pbx_identifiant = '';
+$pbx_site = '1542364';
+$pbx_rang = '01';
+$pbx_identifiant = '651499961';
 
 // Email de contact pour les patient si problème lors de la transaction
 $client_email_contact = 'contact@anapath.fr';
