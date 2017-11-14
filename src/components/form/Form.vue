@@ -3,7 +3,10 @@
     <form class="flex-vertical no-autofill" autocomplete="off">
       <div>
         <p>E-mail :
-          <span class="content">Votre adresse e-mail est <strong>nécessaire pour recevoir la notification bancaire de règlement</strong>.</span>
+          <span class="content">
+            Votre adresse e-mail est <strong>nécessaire pour recevoir la notification bancaire de règlement</strong>.
+            <span class="infobulle selected" @click.prevent="hideInfo"></span>
+          </span>
           <span class="infobulle" @click.prevent="showInfo"></span>
         </p>
         <input
@@ -25,7 +28,10 @@
       </div>
       <div>
         <p>Date de naissance :
-          <span class="content">Entrez la <strong>date de naissance du patient concerné par l'examen</strong>. S'il s'agit de l'examen de votre enfant, entrez sa date de naissance et non la votre.</span>
+          <span class="content">
+            Entrez la <strong>date de naissance du patient concerné par l'examen</strong>. S'il s'agit de l'examen de votre enfant, entrez sa date de naissance et non la votre.
+            <span class="infobulle selected" @click.prevent="hideInfo"></span>
+          </span>
           <span class="infobulle" @click.prevent="showInfo"></span>
         </p>
         <input
@@ -47,7 +53,10 @@
       </div>
       <div>
         <p>Numéro d'examen :
-          <span class="content">Entrez le numéro d'examen figurant sur votre note d'honoraires. Il ressemble à <strong>X18/28390</strong>.</span>
+          <span class="content">
+            Entrez le numéro d'examen figurant sur votre note d'honoraires. Il ressemble à <strong>X18/28390</strong>.
+            <span class="infobulle selected" @click.prevent="hideInfo"></span>
+          </span>
           <span class="infobulle" @click.prevent="showInfo"></span>
         </p>
         <input

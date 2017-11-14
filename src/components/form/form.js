@@ -55,13 +55,10 @@ export default {
       });
     },
     showInfo(event) {
-      $(event.target).toggleClass('selected');
-      if ($(event.target).hasClass('selected')) {
-        $(event.target).css('z-index', '400'); // Mobile Fallback compatibility
-      } else {
-        $(event.target).css('z-index', 'auto');
-      }
-      $(event.target).prev().toggle();
+      $(event.target).prev().css('display', 'inline');
+    },
+    hideInfo(event) {
+      $(event.target).parent().css('display', 'none');
     }
   }
 };
