@@ -29,7 +29,7 @@ export default {
     ResultAnapath,
   },
   metaInfo: {
-    title: 'Règlement en ligne de votre examen médical | Centre de Pathologie des Hauts-de-France',
+    title: 'Règlement par internet de votre examen médical | Centre de Pathologie des Hauts-de-France',
     link: [
       { rel: 'canonical', href: 'https://anapath.fr/reglement-examen' },
       { rel: 'icon', type: 'image/png', href: '/test/static/favicon-anapath-amiens.png' },
@@ -37,7 +37,7 @@ export default {
     meta: [
       { name: 'robots', content: 'index, follow, noodp' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: 'Régler en ligne votre examen d\'anapathologie effectué au Centre de Pathologie d\'Amiens des Hauts-de-France. Paiement sécurisé' },
+      { name: 'description', content: 'Régler par internet votre examen d\'anapathologie effectué au Centre de Pathologie d\'Amiens des Hauts-de-France. Règlement sécurisé' },
       { charset: 'utf-8' },
     ],
   },

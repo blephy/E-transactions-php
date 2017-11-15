@@ -9,8 +9,8 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Redirection vers l'espace de paiement bancaire | Centre de Pathologie</title>
-	<meta name="description" content="Page intermédiaire de redirection vers l'espace de paiement bancaire, afin de régler votre note d'honoraire">
+	<title>Redirection vers l'espace de paiement bancaire | Centre de Pathologie des Hauts-de-France</title>
+	<meta name="description" content="Page intermédiaire de redirection vers l'espace de paiement bancaire, afin de régler votre note d'honoraires">
 	<meta name="robots" content="noindex, nofollow, noodp">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/png" href="<?php echo $client_dir_ui_js ?>/static/favicon-anapath-amiens.png" />
@@ -22,7 +22,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 	if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) && isset($_GET[$client_pbx_montant]) ) {
 	?>
 		<div class="entete">
-			<a href="<?php echo $client_url_server ?>" title="retour sur le site du Centre de Pathologie Haut de France"><img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens"></a>
+			<a href="<?php echo $client_url_server ?>" title="Retour sur le site du Centre de Pathologie des Hauts-de-France"><img src="<?php echo $client_file_logo ?>" alt="Logo Laboratoire Anapathologie Amiens"></a>
 			<h1>Redirection en cours ...</h1>
 		</div>
 		<div class="info">

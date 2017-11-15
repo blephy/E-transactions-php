@@ -26,10 +26,10 @@ function amountToCentimes( $montant_query) {
 
 function convertDate($string, $insert) {
   if ($string) {
-    $arr=str_split($string, 2);
-    $day=array_slice($arr, 0, 1);
-    $month=array_slice($arr, 1, 1);
-    $year=array_slice($arr, 2, 2);
+    $arr = str_split($string, 2); // convertir en tableau composé de 2 caractères par entrée
+    $day = array_slice($arr, 0, 1); // Récupérer le jour
+    $month = array_slice($arr, 1, 1); // Récupérer le Mois
+    $year = array_slice($arr, 2, 2); // Récupérer l'année
 
     return $day[0].$insert.$month[0].$insert.$year[0].$year[1];
   } else {
