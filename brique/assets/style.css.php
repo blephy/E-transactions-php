@@ -59,8 +59,8 @@ p {
   color: #383a6d;
 }
 .valid {
-  background-color: rgba(20, 150, 150, 0.8);
-  color: #ededed;
+  background-color: rgba(20, 150, 150, 0.9);
+  color: white;
 }
 @keyframes load {
 	from {
