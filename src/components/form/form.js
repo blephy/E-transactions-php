@@ -55,6 +55,7 @@ export default {
       });
     },
     showInfo(event) {
+      $('.content').css('display', 'none');
       $(event.target).prev().css('display', 'inline');
     },
     hideInfo(event) {

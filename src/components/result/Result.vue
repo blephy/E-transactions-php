@@ -2,9 +2,9 @@
   <section :result="results" class="result flex-horizontal" v-bind:class="classObject" id="res">
     <template v-if="result.validForm.mail && result.validForm.ref && result.validForm.ddn">
       <template v-if="!result.errorConnect && result.found === 1">
-        <p>Email : {{result.invoice.mail}}</p>
-        <p>Date de naissance : {{result.invoice.ddn}}</p>
-        <p>N° Examen : {{result.invoice.ref}}</p>
+        <p>Email : <strong>{{result.invoice.mail}}</strong></p>
+        <p>Date de naissance : <strong>{{result.invoice.ddn}}</strong></p>
+        <p>N° Examen : <strong>{{result.invoice.ref}}</strong></p>
         <p>Montant : <span class="pop">{{result.invoice.price}} €</span></p>
         <template v-if="result.invoice.paied === false">
           <a class="button" v-bind:href="makeURL" title="Vérifiez le montant avant de cliquer">Régler cette facture</a>
@@ -14,9 +14,9 @@
         </template>
       </template>
       <template v-if="!result.errorConnect && result.found === 2">
-        <p>Email : {{result.invoice.mail}}</p>
-        <p>Date de naissance : {{result.invoice.ddn}}</p>
-        <p>N° Examen : {{result.invoice.ref}}</p>
+        <p>Email : <strong>{{result.invoice.mail}}</strong></p>
+        <p>Date de naissance : <strong>{{result.invoice.ddn}}</strong></p>
+        <p>N° Examen : <strong>{{result.invoice.ref}}</strong></p>
         <p><strong>Facture introuvable ! Vérifiez vos données sur la facture papier.</strong></p>
       </template>
       <template v-if="result.errorConnect">
