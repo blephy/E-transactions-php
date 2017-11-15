@@ -14,8 +14,10 @@ import {
 } from './mutations-types';
 import {
   REF_REG_EXP,
+  REF_REG_EXP_WITHOUT,
   MAIL_REG_EXP,
   DDN_REG_EXP,
+  DDN_REG_EXP_WITHOUT,
 } from './regexp';
 
 const API_BASE = 'https://resultats.anapath.fr';
@@ -72,6 +74,10 @@ export default {
     if (DDN_REG_EXP.test(payload.ddn)) {
       console.log('Input patientDDN is Valid !');
       commit(VALID_FORM_DDN, payload.ddn.replace(/[.-]/gi, '/'));
+    } else if (DDN_REG_EXP_WITHOUT.test(payload.ddn)) {
+      console.log('Input patientDDN is Valid !');
+      const DDN_WITH = [payload.ddn.substr(0, 2), '/', payload.ddn.substr(2, 2), '/', payload.ddn.substr(4, 4)].join('');
+      commit(VALID_FORM_DDN, DDN_WITH);
     } else {
       console.log('Input patientDDN is Invalid !');
       commit(INVALID_FORM_DDN);
@@ -79,6 +85,10 @@ export default {
     if (REF_REG_EXP.test(payload.ref)) {
       console.log('Input invoiceRef is Valid !');
       commit(VALID_FORM_REF, payload.ref.replace(/[.-]/gi, '/').toUpperCase());
+    } else if (REF_REG_EXP_WITHOUT.test(payload.ref)) {
+      console.log('Input invoiceRef is Valid !');
+      const REF_WITH = [payload.ref.substr(0, 3), '/', payload.ref.substr(3)].join('');
+      commit(VALID_FORM_REF, REF_WITH.toUpperCase());
     } else {
       console.log('Input invoiceRef is Invalid !');
       commit(INVALID_FORM_REF);

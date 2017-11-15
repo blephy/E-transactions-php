@@ -5,7 +5,7 @@ html {
   font-family: 'Source Sans Pro', sans-serif;
 }
 body {
-	background-color: #cccccc;
+	background-color: white;
 	color: #646464;
 	font-size: 16px;
 	font-size: 0.9rem;
@@ -45,15 +45,18 @@ p {
 	width: 90%;
 	margin: 0px auto 10px auto;
 	padding: 10px;
-	background-color: rgba(20, 150, 150, 0.3);
+	background-color: #383a6d;
+  color: white;
 	border-radius: 5px;
 	letter-spacing: 1.5px;
 }
 .alert {
-	background-color: rgba(208, 129, 0, 0.3);
+	background-color: rgba(208, 129, 0, 0.4);
+  color: #383a6d;
 }
 .error {
-  background-color: rgba(208, 30, 0, 0.3);
+  background-color: rgba(208, 30, 0, 0.4);
+  color: #383a6d;
 }
 @keyframes load {
 	from {

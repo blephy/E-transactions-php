@@ -55,39 +55,39 @@ function verifBeforePrintOut($query, $class = '') {
     switch ($query) {
       case $client_pbx_montant:
         $temp = $temp/100;
-        return '<p class="'.$class.'">Montant de la transaction : '.$temp.'€</p>';
+        return '<p class="'.$class.'">Montant de la transaction : <strong>'.$temp.'€</strong></p>';
         break;
       case $client_pbx_ref:
-        return '<p class="'.$class.'">Numéro d\'examen : '.$temp.'</p>';
+        return '<p class="'.$class.'">Numéro d\'examen : <strong>'.$temp.'</strong></p>';
         break;
       case $client_prv_email:
-        return '<p class="'.$class.'">Email renseigné : '.$temp.'</p>';
+        return '<p class="'.$class.'">Email renseigné : <strong>'.$temp.'</strong></p>';
         break;
       case $client_prv_ddn:
-        return '<p class="'.$class.'">Date de naissance renseignée : '.$temp.'</p>';
+        return '<p class="'.$class.'">Date de naissance renseignée : <strong>'.$temp.'</strong></p>';
         break;
       case $client_pbx_cb:
-        return '<p class="'.$class.'">Numéro de carte bancaire : XXXX XXXX XXXX '.$temp.'</p>';
+        return '<p class="'.$class.'">Numéro de carte bancaire : <strong>XXXX XXXX XXXX '.$temp.'</strong></p>';
         break;
       case $client_pbx_type_paiement:
-        return '<p class="'.$class.'">Type de paiement choisi : '.$temp.'</p>';
+        return '<p class="'.$class.'">Type de paiement choisi : <strong>'.$temp.'</strong></p>';
         break;
       case $client_pbx_autorisation:
-        return '<p class="'.$class.'">Numéro d\'autorisation bancaire : '.$temp.'</p>';
+        return '<p class="'.$class.'">Numéro d\'autorisation bancaire : <strong>'.$temp.'</strong></p>';
         break;
       case $client_pbx_transaction:
-        return '<p class="'.$class.'">Numéro de transaction bancaire : '.$temp.'</p>';
+        return '<p class="'.$class.'">Numéro de transaction bancaire : <strong>'.$temp.'</strong></p>';
         break;
       case $client_pbx_date:
         $temp = convertDate($temp, '/');
-        return '<p class="'.$class.'">Date de l\'opération : '.$temp.'</p>';
+        return '<p class="'.$class.'">Date de l\'opération : <strong>'.$temp.'</strong></p>';
         break;
       case $client_pbx_heure:
-        return '<p class="'.$class.'">Heure de l\'opération : '.$temp.'</p>';
+        return '<p class="'.$class.'">Heure de l\'opération : <strong>'.$temp.'</strong></p>';
         break;
       case $client_pbx_error:
         $temp = errorHandler($temp);
-        return '<p class="'.$class.'">Statut de l\'opération : '.$temp.'</p>';
+        return '<p class="'.$class.'">Statut de l\'opération : <strong>'.$temp.'</strong></p>';
         break;
     }
   } else {

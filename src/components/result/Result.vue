@@ -2,7 +2,8 @@
   <section :result="results" class="result flex-horizontal" v-bind:class="classObject" id="res">
     <template v-if="result.validForm.mail && result.validForm.ref && result.validForm.ddn">
       <template v-if="!result.errorConnect && result.found === 1">
-        <p>Email : <strong>{{result.invoice.mail}}</strong></p>
+        <p>Nom : <strong>{{result.invoice.lastname}}</strong></p>
+        <p>Prénom : <strong>{{result.invoice.firstname}}</strong></p>
         <p>Date de naissance : <strong>{{result.invoice.ddn}}</strong></p>
         <p>N° Examen : <strong>{{result.invoice.ref}}</strong></p>
         <p>Montant : <span class="pop">{{result.invoice.price}} €</span></p>
@@ -10,7 +11,7 @@
           <a class="button" v-bind:href="makeURL" title="Vérifiez le montant avant de cliquer">Régler cette facture</a>
         </template>
         <template v-else>
-          <p><strong>Facture déjà payée !</strong></p>
+          <p><strong>Facture déjà réglée !</strong></p>
         </template>
       </template>
       <template v-if="!result.errorConnect && result.found === 2">

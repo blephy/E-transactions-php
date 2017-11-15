@@ -10,6 +10,8 @@ export default {
   invoice: {
     price: 100.98,
     mail: null,
+    lastname: 'Stevie ray',
+    firstname: 'Vaughan',
     ddn: null,
     ref: null,
     paied: false,

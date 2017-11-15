@@ -35,16 +35,16 @@ if ( $force_https ) { include 'utils/force-https.php'; }
       </div>
       <div class="info">
         <?php
-          echo verifBeforePrintOut($client_prv_email, 'error');
-          echo verifBeforePrintOut($client_prv_ddn, 'error');
-          echo verifBeforePrintOut($client_pbx_ref, 'error');
-          echo verifBeforePrintOut($client_pbx_montant, 'error');
-          echo verifBeforePrintOut($client_pbx_type_paiement, 'error');
-          echo verifBeforePrintOut($client_pbx_cb, 'error');
-          echo verifBeforePrintOut($client_pbx_transaction, 'error');
-          echo verifBeforePrintOut($client_pbx_date, 'error');
-          echo verifBeforePrintOut($client_pbx_heure, 'error');
-          echo verifBeforePrintOut($client_pbx_autorisation, 'error');
+          echo verifBeforePrintOut($client_prv_email);
+          echo verifBeforePrintOut($client_prv_ddn);
+          echo verifBeforePrintOut($client_pbx_ref);
+          echo verifBeforePrintOut($client_pbx_montant);
+          echo verifBeforePrintOut($client_pbx_type_paiement);
+          echo verifBeforePrintOut($client_pbx_cb);
+          echo verifBeforePrintOut($client_pbx_transaction);
+          echo verifBeforePrintOut($client_pbx_date);
+          echo verifBeforePrintOut($client_pbx_heure);
+          echo verifBeforePrintOut($client_pbx_autorisation);
           echo verifBeforePrintOut($client_pbx_error, 'error');
          ?>
         <?php include 'template/button-form-vuejs.php'; ?>
