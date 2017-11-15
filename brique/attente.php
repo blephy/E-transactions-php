@@ -43,7 +43,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
           echo verifBeforePrintOut($client_pbx_date);
           echo verifBeforePrintOut($client_pbx_heure);
           echo verifBeforePrintOut($client_pbx_autorisation);
-          echo verifBeforePrintOut($client_pbx_error);
+          echo verifBeforePrintOut($client_pbx_error, 'valid');
          ?>
         <?php include 'template/button-website.php'; ?>
         <?php include 'template/button-form-vuejs.php'; ?>

@@ -58,6 +58,10 @@ p {
   background-color: rgba(208, 30, 0, 0.4);
   color: #383a6d;
 }
+.valid {
+  background-color: rgba(20, 150, 150, 0.8);
+  color: #ededed;
+}
 @keyframes load {
 	from {
 		transform: scale(0.8);
