@@ -57,7 +57,7 @@ function sendNotifIPN($case, $message_json = NULL) {
                  $tabulation.$tabulation."- Le code retour doit avoir la valeur 99999".$new_line.
                  $tabulation.$tabulation."- Le numéro d'autorisation bancaire doit être différent de 0 ou null".$new_line.
                  $tabulation."- Cas d'un paiement refusé :".$new_line.
-                 $tabulation.$tabulation."- Le code retour sera différent de 00000 ou de 99999".$new_line.
+                 $tabulation.$tabulation."- Le code retour sera différent de 00000 et de 99999".$new_line.
                  $tabulation.$tabulation."- Le numéro d'autorisation bancaire vaut 0 ou null".$new_line.
                  $tabulation."- Transaction de TEST (pré-production): le numéro d'autorisation sera toujours XXXXXX";
       break;
@@ -119,7 +119,7 @@ function sendNotifIPN($case, $message_json = NULL) {
       $sujet = "!! ERR TRANSFERT !! Erreur de communication serveur";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
       $message = "Le serveur appelant ".$ip." a bien communiqué avec vos serveurs".$new_line.
-                 "et la requête à bien été authentifiée.".$new_line.$new_line.
+                 "et la requête à bien été authentifiée et est valide.".$new_line.$new_line.
                  "Mais une erreur de transfert CURL est survenue avec l'API SOTRAIG".$new_line.
                  "Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
                  "et de lui fournir ces informations supplémentaires (query string) :".$new_line.
