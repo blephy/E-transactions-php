@@ -29,7 +29,7 @@
       <div>
         <p>Date de naissance :
           <span class="content">
-            Saisir la <strong>date de naissance du patient concerné par l'examen</strong>. S'il s'agit de l'examen de votre enfant ou de votre conjoin, entrez sa date de naissance et non la votre.
+            Saisir la <strong>date de naissance du patient concerné par l'examen</strong>. S'il s'agit de l'examen de votre enfant ou de votre conjoint, saisir sa date de naissance et non la votre.
             <span class="infobulle selected" @click.prevent="hideInfo"></span>
           </span>
           <span class="infobulle" @click.prevent="showInfo" v-bind:class="{ shake: errorDDN }"></span>
