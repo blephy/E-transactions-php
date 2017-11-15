@@ -7,7 +7,7 @@
             Votre adresse e-mail est <strong>nécessaire pour recevoir la notification bancaire de règlement</strong>.
             <span class="infobulle selected" @click.prevent="hideInfo"></span>
           </span>
-          <span class="infobulle" @click.prevent="showInfo"></span>
+          <span class="infobulle" @click.prevent="showInfo" v-bind:class="{ shake: errorMail }"></span>
         </p>
         <input
         v-if="!placeHolderMail"
@@ -32,7 +32,7 @@
             Entrez la <strong>date de naissance du patient concerné par l'examen</strong>. S'il s'agit de l'examen de votre enfant, entrez sa date de naissance et non la votre.
             <span class="infobulle selected" @click.prevent="hideInfo"></span>
           </span>
-          <span class="infobulle" @click.prevent="showInfo"></span>
+          <span class="infobulle" @click.prevent="showInfo" v-bind:class="{ shake: errorDDN }"></span>
         </p>
         <input
         v-if="!placeHolderDDN"
@@ -57,7 +57,7 @@
             Entrez le numéro d'examen figurant sur votre note d'honoraires. Il ressemble à <strong>X18/28390</strong>.
             <span class="infobulle selected" @click.prevent="hideInfo"></span>
           </span>
-          <span class="infobulle" @click.prevent="showInfo"></span>
+          <span class="infobulle" @click.prevent="showInfo" v-bind:class="{ shake: errorRef }"></span>
         </p>
         <input
         v-if="!placeHolderRef"
