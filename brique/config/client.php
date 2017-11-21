@@ -6,7 +6,7 @@
 $debug = false;
 
 // Force HTTPS et redirection codé en php
-$force_https = false;
+$force_https = true;
 
 // Temps en millisecondes necessaire avant redirection automatique en JS
 $redirect_time = 2500;
@@ -23,7 +23,7 @@ $env_dev = true;
 $amount_processing = true;
 
 // Protocole serveur client
-$client_protocol = 'http://';
+$client_protocol = 'https://';
 
 // URL du serveur client
 $client_url_server = $client_protocol.'www.anapath.fr';
@@ -66,7 +66,7 @@ $client_email_master = 'dolle.allan@gmail.com';
 $client_email_ipn_from = 'webmaster@anapath.fr';
 
 // url de l'API retour
-$client_url_api = 'http://resultats.anapath.fr/post';
+$client_url_api = 'https://resultats.anapath.fr/cts/cts/index.php';
 
 // Variables demandées en retour à la banque (cf doc PBX_RETOUR)
 $client_prv_ddn = 'DDN';

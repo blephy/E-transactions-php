@@ -50,6 +50,9 @@ if ( $IS_AUTH_REQUEST === 1 ) {
     $response[$client_pbx_error] = verifBeforeGetQuery($client_pbx_error);
     $response[$client_prv_error_trad] = errorHandler(verifBeforeGetQuery($client_pbx_error));
     $response[$client_pbx_autorisation] = verifBeforeGetQuery($client_pbx_autorisation);
+    $response['ACTION'] = 'update_invoice';
+    $response['APP'] = 'anapath';
+    $response['TICKET'] = '12345789';
     $response_json = json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     // Info pour debugging

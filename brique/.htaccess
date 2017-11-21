@@ -1,9 +1,9 @@
 # Redirect HTTPS
-#<IfModule mod_rewrite.c>
-#RewriteEngine on
-#RewriteCond %{HTTPS} !=on [NC]
-#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-#</IfModule>
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTPS} !=on [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
 
 # La cle public n'est pas accessible ( pourquoi pas ? XD )
 <files pubkey.pem>
@@ -23,7 +23,7 @@ Deny from all
 #Allow from 195.25.7.166
 #</files>
 
-# Sécuriser le fichiers .log
+# Sécuriser le fichier .log
 <files log-server.log>
 Order Deny,Allow
 Deny from all

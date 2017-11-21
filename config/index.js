@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    urlDomaine: 'http://www.anapath.fr',
+    urlDomaine: 'https://www.anapath.fr',
     phpFilesBrique: 'brique',
     assetsPublicPath: '/test/',
     redirectBankFileName: 'redirect-bank.php',

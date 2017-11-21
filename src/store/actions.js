@@ -20,26 +20,23 @@ import {
   DDN_REG_EXP_WITHOUT,
 } from './regexp';
 
-const API_BASE = 'https://resultats.anapath.fr';
-
-const configRequest = {
-  baseURL: `${API_BASE}/`,
-  timeout: 8000,
-  responseType: 'json',
-  headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    // 'Access-Control-Allow-Origin': 'resultats.anapath.fr',
-  },
-  validateStatus: function statusCheck(status) {
-    return status >= 200 && status < 450;
-  },
-};
+// const configRequest = {
+//   timeout: 8000,
+//   responseType: 'json',
+//   withCredentials: true,
+//   headers: {
+//     'Content-Type': 'application/x-www-form-urlencoded',
+//   },
+//   validateStatus: function statusCheck(status) {
+//     return status >= 200 && status < 450;
+//   },
+// };
 
 export default {
   searchInvoice({ commit }, payload) {
     console.log('Beginning to connect server. Data to being transmit:', payload);
     commit(SEARCH_INVOICE);
-    axios.get('/cts/cts/index.php', {
+    axios.get('https://resultats.anapath.fr/cts/cts/index.php', {
       params: {
         mail: payload.mail,
         ref: payload.ref,
@@ -48,12 +45,18 @@ export default {
         action: 'get_price',
         ticket: '12345789',
       },
-    }, configRequest).then((response) => {
+      timeout: 8000,
+      responseType: 'json',
+      withCredentials: true,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    }).then((response) => {
       if (response.status === 200) {
         console.log('Server respond with status 200: Invoice found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_SUCCESS_FOUND, response.data);
-      } else if (response.status === 404) {
-        console.log('Server respond with status 404: Invoice not found. Fetching data:', response.data);
+      } else if (response.status === 204) {
+        console.log('Server respond with status 204: Invoice not found. Fetching data:', response.data);
         commit(SEARCH_INVOICE_FAILURE_FOUND, response.data);
       } else {
         console.log('Server respond with unknow or no permit status. Data:', response);
@@ -65,7 +68,7 @@ export default {
         console.log('Status: ', error.response.status);
         console.log('Data: ', error.response.data);
       } else {
-        console.log('Connexion fail. This is maybe CORS, or API down, or bad client internet accès.');
+        console.log('Connexion fail. This is maybe CORS, or API down, or bad client internet accès.', error);
       }
       commit(SEARCH_INVOICE_FAILURE, payload);
     });

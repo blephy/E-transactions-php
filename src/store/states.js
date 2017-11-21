@@ -8,10 +8,10 @@ export default {
   found: 0,
   errorConnect: false,
   invoice: {
-    price: 100.98,
+    price: null,
     mail: null,
-    lastname: 'Stevie ray',
-    firstname: 'Vaughan',
+    lastname: null,
+    firstname: null,
     ddn: null,
     ref: null,
     paied: false,
