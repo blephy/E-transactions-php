@@ -1,6 +1,6 @@
 {
   "name": "Anapath-UI",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The UI interface written with vueJs to pay anapath invoice",
   "author": "Allan Dollé <dolle.allan@gmail.com>",
   "private": true,
