@@ -51,6 +51,9 @@ export default {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
+      validateStatus: function statusCheck(status) {
+        return status >= 200 && status <= 204;
+      },
     }).then((response) => {
       if (response.status === 200) {
         console.log('Server respond with status 200: Invoice found. Fetching data:', response.data);
@@ -60,6 +63,7 @@ export default {
         commit(SEARCH_INVOICE_FAILURE_FOUND, response.data);
       } else {
         console.log('Server respond with unknow or no permit status. Data:', response);
+        commit(SEARCH_INVOICE_FAILURE, payload);
       }
     }).catch((error) => {
       if (error.response) {
