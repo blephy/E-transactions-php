@@ -136,9 +136,7 @@ function sendNotifIPN($case, $message_json = NULL) {
                  "Mais une erreur est survenue avec l'API SOTRAIG, le statut retourné n'est pas".$new_line.
                  "égal à 200. Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
                  "et de lui fournir ces informations supplémentaires (query string) :".$new_line.
-                 $qs.$new_line.$new_line.
-                 "erreur :".$new_line.
-                 $message_json;
+                 $qs;
       break;
   }
   return mail($destinataire, $sujet, $message, $headers);
