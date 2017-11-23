@@ -20,18 +20,6 @@ import {
   DDN_REG_EXP_WITHOUT,
 } from './regexp';
 
-// const configRequest = {
-//   timeout: 8000,
-//   responseType: 'json',
-//   withCredentials: true,
-//   headers: {
-//     'Content-Type': 'application/x-www-form-urlencoded',
-//   },
-//   validateStatus: function statusCheck(status) {
-//     return status >= 200 && status < 450;
-//   },
-// };
-
 export default {
   searchInvoice({ commit }, payload) {
     console.log('Beginning to connect server. Data to being transmit:', payload);

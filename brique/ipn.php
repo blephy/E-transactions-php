@@ -12,18 +12,18 @@ include_once 'utils/curl.php';
 // Restreindre l'accès à l'IPN par IP (cf config/e-transactions.php)
 $CLIENT_IP = $_SERVER['REMOTE_ADDR'];
 
-// if ( in_array($CLIENT_IP, $serveur_etransactions_ip) ) {
-//   http_response_code(200);
-// } else {
-//   http_response_code(403);
-//   sendNotifIPN('FILTER_IP');
-//   echo 'Vous n\'avez pas les autorisations pour accéder à cette page.<br>';
-//   echo 'Votre adresse IP publique nous sera communiquée: <span style="color: red;">'.$CLIENT_IP.'</span><br><br>';
-//   echo 'Si vous avez été invité à visiter cette page, merci de signaler auprès du Centre de Pathologie des Haut de France la personne vous ayant invitée à le faire.<br><br>';
-//   echo '<a href='.$client_url_server.'>'.'Aller sur www.anapath.fr</a><br><br>';
-//   customLog('WARNING: Accès IPN non autorisé !');
-//   die('<h1 style="color: red;">403 - Forbidden - You don\'t have permission to access this file.</h1>');
-// }
+if ( in_array($CLIENT_IP, $serveur_etransactions_ip) ) {
+  http_response_code(200);
+} else {
+  http_response_code(403);
+  sendNotifIPN('FILTER_IP');
+  echo 'Vous n\'avez pas les autorisations pour accéder à cette page.<br>';
+  echo 'Votre adresse IP publique nous sera communiquée: <span style="color: red;">'.$CLIENT_IP.'</span><br><br>';
+  echo 'Si vous avez été invité à visiter cette page, merci de signaler auprès du Centre de Pathologie des Haut de France la personne vous ayant invitée à le faire.<br><br>';
+  echo '<a href='.$client_url_server.'>'.'Aller sur www.anapath.fr</a><br><br>';
+  customLog('WARNING: Accès IPN non autorisé !');
+  die('<h1 style="color: red;">403 - Forbidden - You don\'t have permission to access this file.</h1>');
+}
 
 // Paiement en attente: error 99999, autorisation != 0
 // Paiement effectué: error 00000, autorisation != 0
@@ -76,7 +76,7 @@ if ( $IS_AUTH_REQUEST === 1 ) {
         sendNotifIPN('ERR_RETOUR', $response_json);
         customLog('Erreur status <> 200 en retour API : '.$result);
       }
-    } catch(Exception $e) {
+    } catch( Exception $e ) {
       // erreur de transfert / communication avec API SOTRAIG
       sendNotifIPN('ERR_CURL', $e);
       customLog('Problème CURL : '.$e);
