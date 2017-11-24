@@ -131,7 +131,7 @@ function sendNotifIPN($case, $message_json = NULL) {
       $sujet = "!! ERR RETOUR !! Erreur après retour IPN";
       $destinataire = $client_email_ipn_to.", contact@anapath.fr";
       $message = "Le serveur appelant ".$ip." a bien communiqué avec vos serveurs".$new_line.
-                 "et la requête à bien été authentifiée et est valide.".$new_line.$new_line.
+                 "et la requête à bien été authentifiée et est valide.".$new_line.
                  "Le tranfert CURL s'est bien déroulé.".$new_line.$new_line.
                  "Mais une erreur est survenue avec l'API SOTRAIG, le statut retourné n'est pas".$new_line.
                  "égal à 200. Merci d'en informer votre responsable informatique : ".$client_email_master.$new_line.
