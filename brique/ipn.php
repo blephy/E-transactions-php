@@ -31,7 +31,7 @@ if ( in_array($CLIENT_IP, $serveur_etransactions_ip) ) {
 // Paiement refusé: error 001XX, autorisation = 0
 // Paiement annulé: la transaction n'est pas engagé, donc cette page n'est pas appelé (cf doc IPN)
 
-// Vérification RSA de la requète - Securité !
+// Vérification RSA de la requête - Securité !
 $IS_AUTH_REQUEST = IsAuthRequest('pbx');
 
 $response = array();

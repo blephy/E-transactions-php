@@ -19,12 +19,12 @@ if ( $force_https ) { include 'utils/force-https.php'; }
 <?php include 'assets/style.css.php'; ?>
 <body>
   <?php
-  // Vérification RSA de la requète - Securité !
+  // Vérification RSA de la requête - Securité !
   // Ici pas d'appel de la fonction avec une valeur 'all' car e-transactions crypte uniquement les variables
   // PBX alors que la documentation dit qu'e-transactions crypte sur toutes les variables. Donc on test les 2.
   $IS_AUTH_REQUEST = IsAuthRequest();
 
-  if ( $IS_AUTH_REQUEST === 1 ) { // Si le corps de la requète n'est pas modifié et provient bien de e-transactions
+  if ( $IS_AUTH_REQUEST === 1 ) { // Si le corps de la requête n'est pas modifié et provient bien de e-transactions
 
     // Si toutes les variables necessaires existent
   	if ( isset($_GET[$client_pbx_ref]) && isset($_GET[$client_prv_email]) && isset($_GET[$client_prv_ddn]) ) {
@@ -56,7 +56,7 @@ if ( $force_https ) { include 'utils/force-https.php'; }
         include 'template/query-missing.php';
         customLog('Variables manquantes dans la query string.');
     }
-  } else if ( $IS_AUTH_REQUEST === 0 ) { // Requète non sécurisée.
+  } else if ( $IS_AUTH_REQUEST === 0 ) { // requête non sécurisée.
       include 'template/query-not-sign.php';
       customLog('Query string non signée.');
   } else { // Problème interne (dépendances, ouverture clé, etc ...)

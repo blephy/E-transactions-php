@@ -3,7 +3,7 @@ include_once 'config/client.php';
 ?>
 <div class="entete">
   <a href="<?php echo $client_url_server ?>" title="Retour sur le site du Centre de Pathologie des Hauts-de-France"><img src="//www.anapath.fr/wp-content/uploads/2017/06/logo-300px.png" alt="Logo Laboratoire Anapathologie Amiens"></a>
-  <h1>Requète non signée</h1>
+  <h1>requête non signée</h1>
 </div>
 <div class="info">
   <p class="alert">Les données envoyées n'ont pas pu être vérifiées, ou il s'agit d'une tentative de pishing ou de fraude.</p>

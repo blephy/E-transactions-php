@@ -6,7 +6,7 @@
         <p>Prénom : <strong>{{result.invoice.firstname}}</strong></p>
         <p>Date de naissance : <strong>{{result.invoice.ddn}}</strong></p>
         <p>N° Examen : <strong>{{result.invoice.ref}}</strong></p>
-        <p>Montant : <span class="pop">{{result.invoice.price}} €</span></p>
+        <p>Montant à régler : <span class="pop">{{result.invoice.price}} €</span></p>
         <template v-if="result.invoice.paied === false">
           <a class="button" v-bind:href="makeURL" title="Vérifiez le montant avant de cliquer">Régler cette facture</a>
         </template>

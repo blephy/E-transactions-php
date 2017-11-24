@@ -15,7 +15,7 @@ $redirect_time = 2500;
 // true = pre-prod environnement
 // false = production environnement
 // Changez par false lorsque tous vos tests sont passés
-$env_dev = true;
+$env_dev = false;
 
 // Traitement de la chaine montant pour conversion en centimes
 // true = traiter la chaine montant
@@ -28,11 +28,11 @@ $client_protocol = 'https://';
 // URL du serveur client
 $client_url_server = $client_protocol.'www.anapath.fr';
 
-// Repertoire commun des fichiers .php de retour (PROD = reglement-examen)
-$client_dir_php = '/test/brique';
+// Repertoire commun des fichiers .php de retour (PROD = reglement-en-ligne)
+$client_dir_php = '/reglement-en-ligne/brique';
 
 // Repertoire contenant le fichier index.html de l'UI VueJs
-$client_dir_ui_js = '/test';
+$client_dir_ui_js = '/reglement-en-ligne';
 
 // Chemin de votre Logo
 $client_file_logo = $client_url_server.'/wp-content/uploads/2017/06/logo-300px.png';

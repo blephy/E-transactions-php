@@ -91,7 +91,7 @@ function verifBeforePrintOut($query, $class = '') {
         break;
     }
   } else {
-    if ($debug) { return $query.' est absent de la requète<br>';}
+    if ($debug) { return $query.' est absent de la requête<br>';}
   }
 }
 

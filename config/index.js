@@ -9,7 +9,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     urlDomaine: 'https://www.anapath.fr',
     phpFilesBrique: 'brique',
-    assetsPublicPath: '/test/',
+    assetsPublicPath: '/reglement-en-ligne/',
     redirectBankFileName: 'redirect-bank.php',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as

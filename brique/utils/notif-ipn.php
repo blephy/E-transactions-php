@@ -30,7 +30,7 @@ function sendNotifIPN($case, $message_json = NULL) {
 
   switch ($case) {
     case 'AUTH_OK':
-      $sujet = '-> Requète autorisée, transaction signée.';
+      $sujet = '-> Requête autorisée, transaction signée.';
       $message_obj = json_decode($message_json);
       $destinataire = $client_email_ipn_to;
       $message = "Une nouvelle transaction signée et autorisée vient de parvenir :".$new_line.$new_line.
