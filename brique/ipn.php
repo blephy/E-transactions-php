@@ -8,6 +8,7 @@ include_once 'utils/functions.php';
 include_once 'utils/error-handler.php';
 include_once 'utils/notif-ipn.php';
 include_once 'utils/curl.php';
+include_once 'utils/ticket.php';
 
 // Restreindre l'accès à l'IPN par IP (cf config/e-transactions.php)
 $CLIENT_IP = $_SERVER['REMOTE_ADDR'];
@@ -52,7 +53,8 @@ if ( $IS_AUTH_REQUEST === 1 ) {
     $response[$client_pbx_autorisation] = verifBeforeGetQuery($client_pbx_autorisation);
     $response['action'] = 'update_invoice';
     $response['app'] = 'anapath';
-    $response['ticket'] = '12345789';
+    $response['ticket'] = cryptTicket($_GET[$client_pbx_ref]);
+
     $response_json = json_encode($response, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     // Info pour debugging

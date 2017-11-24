@@ -68,6 +68,9 @@ $client_email_ipn_from = 'webmaster@anapath.fr';
 // url de l'API retour
 $client_url_api = 'https://resultats.anapath.fr/cts/cts/updinvoice.php';
 
+// Pass phrase for crypting ticket
+$pass_ticket = 'petit';
+
 // Variables demandées en retour à la banque (cf doc PBX_RETOUR)
 $client_prv_ddn = 'DDN';
 $client_prv_email = 'EMAIL';

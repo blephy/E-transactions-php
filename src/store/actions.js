@@ -1,4 +1,6 @@
 import axios from 'axios';
+import md5 from 'js-md5';
+
 import {
   SEARCH_INVOICE,
   SEARCH_INVOICE_SUCCESS_FOUND,
@@ -23,6 +25,15 @@ import {
 export default {
   searchInvoice({ commit }, payload) {
     console.log('Beginning to connect server. Data to being transmit:', payload);
+
+    function yyyymmdd(date) {
+      const mm = date.getMonth() + 1; // getMonth() is zero-based
+      const dd = date.getDate();
+      return [date.getFullYear(), (mm > 9 ? '' : '0') + mm, (dd > 9 ? '' : '0') + dd].join('');
+    }
+    const DATE = new Date();
+    const TICKET = md5([yyyymmdd(DATE), payload.ref, 'petit'].join(''));
+
     commit(SEARCH_INVOICE);
     axios.get('https://resultats.anapath.fr/cts/cts/index.php', {
       params: {
@@ -31,7 +42,7 @@ export default {
         ddn: payload.ddn,
         app: 'anapath',
         action: 'get_price',
-        ticket: '12345789',
+        ticket: TICKET,
       },
       timeout: 8000,
       responseType: 'json',
