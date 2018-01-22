@@ -1,11 +1,16 @@
 <template>
   <section>
-    <LoaderAnapath/>
-    <HeaderAnapath/>
-    <InfoAnapath/>
-    <FormAnapath/>
-    <ResultAnapath/>
-    <FooterAnapath/>
+    <template v-if="ie">
+      <BrowserAlert/>
+    </template>
+    <template v-else>
+      <LoaderAnapath/>
+      <HeaderAnapath/>
+      <InfoAnapath/>
+      <FormAnapath/>
+      <ResultAnapath/>
+      <FooterAnapath/>
+    </template>
   </section>
 </template>
 <script>
@@ -17,9 +22,18 @@ import FormAnapath from '@/components/form/Form.vue';
 import FooterAnapath from '@/components/footer/Footer.vue';
 import LoaderAnapath from '@/components/loader/Loader.vue';
 import ResultAnapath from '@/components/result/Result.vue';
+import BrowserAlert from '@/components/browser-alert/BrowserAlert';
+
+// Internet Explorer 6-11
+const isIE = /* @cc_on!@ */false || !!document.documentMode;
 
 export default {
   name: 'index',
+  data() {
+    return {
+      ie: isIE,
+    };
+  },
   components: {
     HeaderAnapath,
     InfoAnapath,
@@ -27,17 +41,18 @@ export default {
     FooterAnapath,
     LoaderAnapath,
     ResultAnapath,
+    BrowserAlert,
   },
   metaInfo: {
-    title: 'Règlement par internet de votre examen médical | Centre de Pathologie des Hauts-de-France',
+    title: 'Règlez par internet votre examen d\'anatomie pathologique | Centre de Pathologie des Hauts-de-France',
     link: [
-      { rel: 'canonical', href: 'https://anapath.fr/reglement-examen' },
-      { rel: 'icon', type: 'image/png', href: '/test/static/favicon-anapath-amiens.png' },
+      { rel: 'canonical', href: 'https://anapath.fr/reglement-en-ligne/' },
+      { rel: 'icon', type: 'image/png', href: '/reglement-en-ligne/static/favicon-anapath-amiens.png' },
     ],
     meta: [
       { name: 'robots', content: 'index, follow, noodp' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'description', content: 'Régler par internet votre examen d\'anapathologie effectué au Centre de Pathologie d\'Amiens des Hauts-de-France. Règlement sécurisé' },
+      { name: 'description', content: 'Régler par internet votre examen d\'anatomie pathologique effectué au Centre de Pathologie des Hauts-de-France. Règlement sécurisé.' },
       { charset: 'utf-8' },
     ],
   },
