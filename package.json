@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "js-md5": "^0.7.2",
     "vue": "^2.4.2",
     "vue-meta": "^1.2.0",
